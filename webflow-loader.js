@@ -14,6 +14,11 @@
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
     .then(function (frag) {
       host.innerHTML = frag;
+      /* Safari spielt per innerHTML eingefügte Videos nicht von selbst –
+         daher hier explizit laden und (stumm) starten. */
+      host.querySelectorAll('video').forEach(function (v) {
+        try { v.muted = true; v.load(); var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {}
+      });
       var q = [BASE + '/presse-daten.js', BASE + '/main.js', BASE + '/demos.js'];
       (function next(i) {
         if (i >= q.length) { return zumAnker(); }
