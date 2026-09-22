@@ -10,7 +10,7 @@
   if (!host) return;
   var slug = host.getAttribute('data-mys-page');
 
-  fetch(BASE + '/pages/' + slug + '.html', { cache: 'no-cache' })
+  fetch(BASE + '/' + slug + '.html', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
     .then(function (frag) {
       host.innerHTML = frag;

@@ -24,7 +24,7 @@ window.PRESSE = [
         "text": "Hierbei wurde bekanntgegeben, dass myScribe in der Teilnehmer-Abstimmung zum Sieger des Abends gewählt wurde. Auch im zweiten Jahr seit der Gründung ihres Unternehmens müssen sich CEO Ira Stoll und CTO Lars Stoll, was Preise und weitere Auszeichnungen angeht, keineswegs verstecken!"
       }
     ],
-    "bild": "https://marvscribe.github.io/my-scribe-site/assets/presse/pm-krankenhaus-it-tagung.jpeg"
+    "bild": "https://marvscribe.github.io/my-scribe-site/pm-krankenhaus-it-tagung.jpeg"
   },
   {
     "slug": "digital-health-leadership-summit",
@@ -48,7 +48,7 @@ window.PRESSE = [
         "text": "Während der erste Tag der Veranstaltung seinen Ausklang in einem Come Together im Wiener Rathauskeller fand, drehte sich der Abend des zweiten Tages um die Innovationen der für den Digitalisierungspreis nominierten Startups. Zu diesen zählten unter anderem die Firma Quickticket, die mit einem digitalen Ticket ewigen Warteschleifen bei telefonischen Terminvereinbarungen ein Ende machen will. Mit seiner Idee konnte das Startup den dritten Platz des Wettbewerbs erreichen. Auf dem zweiten Platz des Abends landete das Unternehmen nextOR, das mithilfe von KI die Ressourcenplanung in Krankenhäusern revolutionieren und somit Ärzten zu weniger Überstunden verhelfen möchte. myScribe, eine unseren regelmäßigen Lesern sicherlich nicht unbekannte Krankenhaussoftware, durfte an diesem Abend als Sieger und Pokalträger hervorgehen! Es ist der Firma eine enorme Bestätigung, unter so vielen großartigen Innovationen für die Digitalisierung der Medizinwelt herauszustechen und dank Veranstaltungen wie dieser, direkten Zugang zu digitalen Entwicklungen im Gesundheitssektor und ihren Interessenten zu erhalten."
       }
     ],
-    "bild": "https://marvscribe.github.io/my-scribe-site/assets/presse/pm-entscheiderfabrik.jpg"
+    "bild": "https://marvscribe.github.io/my-scribe-site/pm-entscheiderfabrik.jpg"
   },
   {
     "slug": "karl-lauterbach",
@@ -76,7 +76,7 @@ window.PRESSE = [
         "text": "Prof. Dr. Karl Lauterbach war begeistert über die Interoperabilität für die Weiterentwicklung des Gesundheitsdatennutzungsgesetzes und des Digitalisierungsgesetzes. Zudem wird die EPA (elektronische Patientenakte) ab 2025 verpflichtend sein und myScribe ist bereits in der Lage, Daten in die EPA einzuspeisen. Übergreifend ist es für viele Startups im Gesundheitswesen eine überaus wichtige Mitteilung, dass es einfacher werden wird, Daten einzuspeisen. Als Authentifizierung reicht dann der Heilberufsausweis der Ärzte. Ira und Lars Stoll machten Prof. Dr. Karl Lauterbach darauf aufmerksam, dass es unbedingt notwendig ist, dass die Krankenhäuser offener werden und ihre Ängstlichkeit gegenüber der Digitalisierung und den entsprechenden StartUps verlieren."
       }
     ],
-    "bild": "https://marvscribe.github.io/my-scribe-site/assets/presse/pm-karl-lauterbach.jpeg"
+    "bild": "https://marvscribe.github.io/my-scribe-site/pm-karl-lauterbach.jpeg"
   },
   {
     "slug": "weconomy",
@@ -108,7 +108,7 @@ window.PRESSE = [
         "text": "Mit auf dem Siegertreppchen durfte sich unter Anderem noch das Startup „Protein Distillery“ einreihen.  Das Unternehmen macht sich mit einfacher Bierhefe in veganen Alternativen zu Produkten wie EI, Käse oder auch Fleisch einen der in Deutschland wohl weitverbreitetsten Pilze zu Nutze und möchte somit bekannten Genuss ethisch vertretbar machen! Dank der vielseitigen Unterstützung durch Gründerinitiativen wie WECONOMY werden stetig neue Innovationen aus ganz Deutschland mit umfangreichen Mitteln gefördert, wodurch wir einer effizienteren, nachhaltigeren Zukunft Jahr für Jahr näherkommen! Von nun an Teil dieser Bewegung seien zu können erfüllt das myScribe Team mit Stolz und bringt sie ihrer Vision des digitalen Krankenhauses ein Stück weit näher!"
       }
     ],
-    "bild": "https://marvscribe.github.io/my-scribe-site/assets/presse/pm-weconomy.jpg"
+    "bild": "https://marvscribe.github.io/my-scribe-site/pm-weconomy.jpg"
   },
   {
     "slug": "ira-stoll-gewinnt-den-digital-female-leader-award",
@@ -140,7 +140,7 @@ window.PRESSE = [
         "text": "Für die junge Gründerin wurde das Event dann bei der abendlichen Preisverleihung daraufhin über den Sieg in ihrer Kategorie perfekt abgerundet. In ihrer abschließenden Rede bedankt sich Ira Stoll für den positiven Rückhalt durch ihre Familie und spricht besonderen Dank für ihre Mutter aus, die ihr als Frau in beruflicher Selbstständigkeit schon immer ein großes Vorbild war."
       }
     ],
-    "bild": "https://marvscribe.github.io/my-scribe-site/assets/presse/pm-digital-female-leader-award.jpg"
+    "bild": "https://marvscribe.github.io/my-scribe-site/pm-digital-female-leader-award.jpg"
   },
   {
     "slug": "myscribe-gewinnt-mexi-grunderpreis",
@@ -176,7 +176,7 @@ window.PRESSE = [
         "text": "Für die Gründer ein bedeutungsvoller Meilenstein – durch das MEXI-Preisgeld und die mediale Aufmerksamkeit stehen die Zeichen für das junge Softwareunternehmen jetzt auf Wachstum."
       }
     ],
-    "bild": "https://marvscribe.github.io/my-scribe-site/assets/presse/pm-mexi-gruenderpreis.jpg"
+    "bild": "https://marvscribe.github.io/my-scribe-site/pm-mexi-gruenderpreis.jpg"
   },
   {
     "slug": "myscribe-beantragt-patent-auf-kunstliche-intelligenz",
@@ -208,7 +208,7 @@ window.PRESSE = [
         "text": "Sämtliche Bedenken dieser Art werden jedoch durch die letztendliche Sicherheit, die ein Patent gerade für potentielle zukünftige Investoren und Partner bietet, relativiert. Zudem darf bereits nach der erfolgreichen Anmeldung des Patents kein weiteres Patent auf eine Erfindung der gleichen Art beantragt werden, was wiederum auch den beiden Firmeninhabern eine große Sicherheit für ihr Produkt bietet. All dem voraus geht aber selbstverständlich die Überprüfung nach dem alleinigen Bestand des Patents von myScribe auf seine Software, um mit Gewissheit sagen zu können, dass nicht bereits identische Patente auf dem Markt bestehen. Sollte dies nicht der Fall sein, kann für myScribe eine sogenannte FTO (Freedom To Operate) ausgesprochen werden, womit auch einer erfolgreichen Patentanmeldung nichts mehr im Weg steht. Ein weiterer Gewinn aus den Bemühungen der myScribe Gründer um eine Patentanmeldung ist das vom Bundesministerium für Wirtschaft und Energie ins Leben gerufene Förderprogramm WIPANO, das Startups im Rahmen einer Patentanmeldung umfangreiche Förderungen bietet und finanziellen Rückhalt gibt."
       }
     ],
-    "bild": "https://marvscribe.github.io/my-scribe-site/assets/presse/pm-ki-patent.jpg"
+    "bild": "https://marvscribe.github.io/my-scribe-site/pm-ki-patent.jpg"
   },
   {
     "slug": "das-ki-startup-myscribe-wird-erneut-preistrager",
@@ -240,7 +240,7 @@ window.PRESSE = [
         "text": "Während das Unternehmen Knowbody mit seinem Firmenkonzept die Jury im Bereich EdTech überzeugen konnte, wurde myScribe die gleiche Freude in der zweiten Kategorie der Veranstaltung zuteil. Mit einem weiteren Preisgeld in der Höhe von 10.000 Euro ausgezeichnet zu werden stellt für das Softwareunternehmen neben einer dem laufenden Firmenausbau zuträglichen, finanziellen Unterstützung auch einen enormen Vertrauensbeweis für das eigene Firmenkonzept dar, wodurch das Startup ein ganzes Stück weit näher an sein Ziel der Eigenständigkeit gebracht wird!"
       }
     ],
-    "bild": "https://marvscribe.github.io/my-scribe-site/assets/presse/pm-bitkom-innovators-pitch.jpg"
+    "bild": "https://marvscribe.github.io/my-scribe-site/pm-bitkom-innovators-pitch.jpg"
   },
   {
     "slug": "myscribe-receives-exist",
@@ -288,6 +288,6 @@ window.PRESSE = [
         "text": "The EXSIST Start-Up Grant supports university graduates, scientists and students throughout Germany in preparing their technology-oriented and knowledge-based start-ups. The EXIST funding programme is financed by the Federal Ministry of Economic Affairs and Climate Action."
       }
     ],
-    "bild": "https://marvscribe.github.io/my-scribe-site/assets/presse/pm-exist.jpg"
+    "bild": "https://marvscribe.github.io/my-scribe-site/pm-exist.jpg"
   }
 ];
