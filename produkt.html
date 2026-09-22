@@ -1,0 +1,347 @@
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" data-scroll-progress></div></div>
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo"><img src="https://marvscribe.github.io/my-scribe-site/assets/logos/myscribe-logo-green-cropped.webp" alt="myScribe" class="nav__logo-img"></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a href="/produkt" aria-current="page">Produkt</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/presse">Presse</a>
+      <a href="/ueber-uns">Über Uns</a>
+      <a href="/karriere">Karriere</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="/#demo" class="btn btn--primary">Demotermin vereinbaren</a>
+      <button class="nav__toggle" data-nav-toggle aria-label="Menü öffnen" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+  <div class="container">
+    <nav class="nav__mobile" data-nav-mobile aria-label="Mobile Navigation">
+      <a href="/produkt">Produkt</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/presse">Presse</a>
+      <a href="/ueber-uns">Über Uns</a>
+      <a href="/karriere">Karriere</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero-centered section-pad">
+    <div class="container container--narrow" style="text-align:center;" data-reveal>
+      <span class="eyebrow" style="justify-content:center;">myScribe CDR</span>
+      <h1 style="font-size:var(--step-2xl); line-height:1.1; margin-bottom:var(--space-s); max-width:22ch; margin-inline:auto;">Die App, mit der Sie Arztbriefentwürfe in Sekunden erstellen</h1>
+      <p class="muted" style="font-size:var(--step-body-l); font-weight:300; max-width:48ch; margin-inline:auto; margin-bottom:var(--space-m);">Nehmen Sie Ihren Ärzt*innen den täglichen Dokumentationsaufwand ab – für mehr Zeit am Patientenbett und weniger Stress im Klinikalltag.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-bottom:var(--space-l);">
+        <a href="/#demo" class="btn btn--primary">Demotermin vereinbaren</a>
+        <a href="#prozess" class="btn btn--ghost">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          So funktioniert's
+        </a>
+      </div>
+    </div>
+    <div class="container" data-reveal>
+      <img src="https://marvscribe.github.io/my-scribe-site/assets/app/hero-woman-tablet.avif" alt="Ärztin nutzt myScribe CDR auf einem Tablet" class="hero-photo">
+    </div>
+  </section>
+
+  <!-- Stat row -->
+  <section class="section-pad bg-dark">
+    <div class="container" data-reveal>
+      <div class="stat-grid">
+        <div class="stat stat--lead"><span class="stat__value" data-count-to="10" data-suffix="+">0+</span><span class="stat__label">Kliniken nutzen bereits myScribe</span></div>
+        <div class="stat"><span class="stat__value" data-count-to="66" data-prefix="bis zu " data-suffix="%">bis zu 0%</span><span class="stat__label">Zeitersparnis bei der Arztbriefschreibung</span></div>
+        <div class="stat"><span class="stat__value">0</span><span class="stat__label">Bögen Papier</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automatisierte Datenübernahme / HL7-FHIR -->
+  <section class="section-pad bg-paper-dim">
+    <div class="container container--narrow" data-reveal>
+      <span class="eyebrow">Alle Daten in Echtzeit</span>
+      <h2 style="font-size:var(--step-l); margin-bottom:var(--space-m); max-width:22ch;">Dank HL7-FHIR nichts mehr doppelt eintragen</h2>
+      <p class="muted" style="font-size:var(--step-body-l); font-weight:300; max-width:56ch;">Über einen HL7-FHIR-Server zieht myScribe CDR Patientendaten in Echtzeit aus KIS, RIS und LIS. Was darin dokumentiert oder als Arztbrief erzeugt wird, fließt ebenso unkompliziert zurück – Ihre Patientendaten bleiben an einem zentralen Ort und gehen nicht verloren.</p>
+    </div>
+
+    <!-- Anbindungsskizze: der Datenfluss, den der Text oben beschreibt -->
+    <div class="container" style="margin-top:var(--space-l);">
+      <div class="fhir-diagram" data-reveal>
+        <div class="fhir-diagram__scroll">
+          <svg class="fhir-diagram__svg" viewBox="0 0 900 600" role="img"
+               aria-label="Radiologiesystem, KIS und Laborsystem sind über einen HL7-FHIR-Server mit myScribe CDR verbunden. myScribe CDR erzeugt daraus den KI-Arztbrief und kann Daten ins KIS zurückschreiben. Weitere Systeme lassen sich am FHIR-Server anbinden.">
+
+            <!-- Leitungen (statisch) -->
+            <path class="fhir-line" d="M140 112 L140 186 L450 186"/>
+            <path class="fhir-line" d="M760 112 L760 186 L450 186"/>
+            <path class="fhir-line" d="M450 112 L450 186"/>
+            <path class="fhir-line" d="M450 186 L450 248"/>
+            <path class="fhir-line" d="M572 292 L658 292"/>
+            <path class="fhir-line" d="M450 340 L450 462"/>
+            <path class="fhir-line" d="M572 508 L658 508"/>
+
+            <!-- Datenfluss: Quellsysteme -> FHIR-Server -->
+            <path class="fhir-flow fhir-flow--d1" d="M140 112 L140 186 L450 186 L450 248"/>
+            <path class="fhir-flow fhir-flow--d2" d="M450 112 L450 248"/>
+            <path class="fhir-flow fhir-flow--d3" d="M760 112 L760 186 L450 186 L450 248"/>
+            <!-- FHIR-Server -> App -> Arztbrief -->
+            <path class="fhir-flow fhir-flow--d4" d="M450 340 L450 462"/>
+            <path class="fhir-flow fhir-flow--d5" d="M572 508 L658 508"/>
+            <path class="fhir-flow fhir-flow--d6" d="M572 292 L658 292"/>
+            <!-- Rückschreibung ins KIS -->
+            <path class="fhir-flow fhir-flow--back fhir-flow--d4" d="M450 112 L450 248"/>
+            <path class="fhir-flow fhir-flow--back fhir-flow--d2" d="M450 340 L450 462"/>
+
+            <!-- Quellsysteme -->
+            <rect class="fhir-box" x="40"  y="42" width="200" height="70" rx="14"/>
+            <text class="fhir-label" x="140" y="85">Radiologiesystem</text>
+            <rect class="fhir-box" x="350" y="42" width="200" height="70" rx="14"/>
+            <text class="fhir-label" x="450" y="85">KIS</text>
+            <rect class="fhir-box" x="660" y="42" width="200" height="70" rx="14"/>
+            <text class="fhir-label" x="760" y="85">Laborsystem</text>
+
+            <!-- FHIR-Server -->
+            <rect class="fhir-box fhir-box--core" x="330" y="248" width="242" height="92" rx="16"/>
+            <text class="fhir-label fhir-label--core" x="451" y="288" style="font-size:19px;">HL7 · FHIR</text>
+            <text class="fhir-label fhir-label--sub" x="451" y="312">FHIR-Server</text>
+
+            <!-- Weitere Systeme -->
+            <rect class="fhir-box" x="658" y="252" width="202" height="80" rx="14"/>
+            <text class="fhir-label" x="759" y="298">Weitere Systeme</text>
+
+            <!-- myScribe CDR -->
+            <rect class="fhir-box fhir-box--core" x="330" y="462" width="242" height="92" rx="16"/>
+            <text class="fhir-label fhir-label--core" x="451" y="514" style="font-size:18px;">myScribe CDR</text>
+
+            <!-- KI-Arztbrief -->
+            <rect class="fhir-box" x="658" y="468" width="202" height="80" rx="14"/>
+            <text class="fhir-label" x="759" y="514">KI-Arztbrief</text>
+          </svg>
+        </div>
+        <span class="fhir-diagram__note">Datenfluss in beide Richtungen — eine Rückschreibung ins KIS ist möglich.</span>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top:var(--space-l);">
+      <div class="compare-grid" data-reveal>
+        <div class="compare-col">
+          <div class="compare-col__title">Traditionelle Arztbriefschreibung</div>
+          <ul>
+            <li><span class="compare-col__mark">–</span><span>Manuelles Einfügen von Befunden und Laborwerten</span></li>
+            <li><span class="compare-col__mark">–</span><span>Handschriftliches Verfassen der Epikrise kostet viel Zeit</span></li>
+            <li><span class="compare-col__mark">–</span><span>Keine automatische Korrektur von Rechtschreibfehlern</span></li>
+          </ul>
+        </div>
+        <div class="compare-col compare-col--myscribe">
+          <div class="compare-col__title">Mit myScribe</div>
+          <ul>
+            <li><span class="compare-col__mark">✓</span><span>Automatische Übernahme von Laborwerten und Befunden</span></li>
+            <li><span class="compare-col__mark">✓</span><span>Zeitersparnis durch KI-gestützte Epikrisenschreibung</span></li>
+            <li><span class="compare-col__mark">✓</span><span>Abbau von Sprachbarrieren und weniger Rechtschreibfehler</span></li>
+            <li><span class="compare-col__mark">✓</span><span>Mehr Zeit für Patient*innen und medizinische Ausbildung</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-Schritte-Prozess als Reiter (1/2/3) -->
+  <section id="prozess" class="section-pad">
+    <div class="container container--narrow stepswitch__head" data-reveal>
+      <span class="eyebrow">So entsteht der Brief</span>
+      <h2>Drei Schritte von der Aufnahme bis zur Vidierung</h2>
+    </div>
+
+    <div class="container stepswitch" data-reveal data-stepswitch>
+
+      <!-- Reiter statt Sticky-Scroll: die Schritte laufen nicht mehr am
+           Scrollrad vorbei, sondern werden angeklickt. -->
+      <div class="stepswitch__bar" role="tablist" aria-label="Drei Schritte zum Arztbrief">
+        <button class="stepswitch__pill is-active" type="button" role="tab"
+                id="step-tab-1" aria-controls="step-panel-1" aria-selected="true"
+                data-step-tab="1"><span class="sr-only">Schritt </span>1</button>
+        <button class="stepswitch__pill" type="button" role="tab"
+                id="step-tab-2" aria-controls="step-panel-2" aria-selected="false" tabindex="-1"
+                data-step-tab="2"><span class="sr-only">Schritt </span>2</button>
+        <button class="stepswitch__pill" type="button" role="tab"
+                id="step-tab-3" aria-controls="step-panel-3" aria-selected="false" tabindex="-1"
+                data-step-tab="3"><span class="sr-only">Schritt </span>3</button>
+      </div>
+
+      <div class="stepswitch__body">
+
+        <!-- Der Brief ist echter Text, kein Screenshot: nur so kann er sich
+             Schritt für Schritt selbst schreiben. -->
+        <div class="stepswitch__media">
+          <div class="brief" data-brief role="img"
+               aria-label="Musterhafter Entlassbrief über zwei Seiten, der sich mit jedem Schritt weiter füllt">
+
+            <div class="brief__seite is-da" data-brief-seite="1">
+            <div class="brief__kopf">
+              <img class="brief__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/myscribe-logo-green-cropped.webp" alt="">
+            </div>
+
+            <div class="brief__adressen">
+              <div>
+                <span class="brief__mini" data-brief-ein="1">myScribe GmbH · Franz-Volhard-Straße 5 · 68167 Mannheim</span>
+                <span class="brief__zeile" data-brief-zeile="1">Herrn</span>
+                <span class="brief__zeile" data-brief-zeile="1">Dr. med. Thomas Hausarzt</span>
+                <span class="brief__zeile" data-brief-zeile="1">Bahnhofstraße 12</span>
+                <span class="brief__zeile" data-brief-zeile="1">68309 Mannheim</span>
+              </div>
+              <div class="brief__klinik" data-brief-ein="1">
+                <span class="brief__klinik-name">Klinik und Poliklinik für<br>Pneumologie und Allergologie</span>
+                <span>Franz-Volhard-Straße 5</span>
+                <span>68167 Mannheim</span>
+                <span class="brief__klinik-name">Direktor der Klinik:</span>
+                <span>Prof. Dr. med. A. Koch</span>
+              </div>
+            </div>
+
+            <div class="brief__titel">
+              <span class="brief__h1" data-brief-zeile="1">Entlassbrief</span>
+              <span class="brief__datum" data-brief-zeile="1">02.12.2025</span>
+            </div>
+
+            <div class="brief__anrede">
+            <p class="brief__zeile" data-brief-zeile="1">Sehr geehrter Herr Hausarzt,</p>
+            <p class="brief__zeile" data-brief-zeile="1">wir berichten über unsere gemeinsame Patientin Gertrud Musterfrau, die sich vom 27.11.2025 bis 02.12.2025 in unserer stationären Behandlung befand.</p>
+            </div>
+
+            <h4 class="brief__abschnitt" data-brief-ein="1">Diagnosen</h4>
+            <ul class="brief__liste brief__liste--diagnosen">
+            <li class="brief__zeile brief__zeile--fett" data-brief-zeile="2">Aktuell: Ambulant erworbene Pneumonie des rechten Unterlappens</li>
+            <li class="brief__zeile brief__zeile--unter" data-brief-zeile="2">CRB-65 Score: 2</li>
+            <li class="brief__zeile brief__zeile--unter" data-brief-zeile="2">Erreger: kein Keimnachweis</li>
+            <li class="brief__zeile brief__zeile--fett" data-brief-zeile="2">Permanentes Vorhofflimmern</li>
+            <li class="brief__zeile brief__zeile--unter" data-brief-zeile="2">Frequenznormoform, Dauerantikoagulation mit Apixaban</li>
+            <li class="brief__zeile brief__zeile--fett" data-brief-zeile="2">Arterielle Hypertonie</li>
+            <li class="brief__zeile brief__zeile--fett" data-brief-zeile="2">Chronische Nierenkrankheit Stadium G3b A1 (nach KDIGO)</li>
+            <li class="brief__zeile brief__zeile--unter" data-brief-zeile="2">eGFR (CKD-EPI): 38 ml/min/1,73 m²</li>
+            <li class="brief__zeile brief__zeile--fett" data-brief-zeile="2">Z. n. Schenkelhalsfraktur rechts (2019)</li>
+            <li class="brief__zeile brief__zeile--unter" data-brief-zeile="2">Versorgung mittels TEP, aktuell voll mobilisiert</li>
+            <li class="brief__zeile brief__zeile--fett" data-brief-zeile="2">Osteoporose</li>
+            </ul>
+
+            <h4 class="brief__abschnitt" data-brief-ein="1">Prozeduren</h4>
+            <ul class="brief__liste brief__liste--prozeduren">
+            <li class="brief__zeile brief__zeile--fett" data-brief-zeile="2">Röntgen-Thorax (in 2 Ebenen)</li>
+            <li class="brief__zeile brief__zeile--fett" data-brief-zeile="2">Elektrokardiographie (EKG)</li>
+            <li class="brief__zeile brief__zeile--fett" data-brief-zeile="2">Gewinnung von Blutkulturen (aerob/anaerob)</li>
+            </ul>
+
+            <h4 class="brief__abschnitt" data-brief-ein="1">Labor</h4>
+            <p class="brief__zeile brief__zeile--fett" data-brief-zeile="2">s. Anhang</p>
+            </div>
+
+            <!-- Seite 2: die übernommenen Befunde und die KI-Epikrise.
+                 Auf myscribe.de hat der Musterbrief ebenfalls zwei Seiten. -->
+            <div class="brief__seite" data-brief-seite="2">
+              <h4 class="brief__abschnitt" data-brief-ein="2">Anamnese</h4>
+              <p class="brief__fliess" data-brief-ein="2">Die 85-jährige Patientin stellte sich mit zunehmender Dyspnoe, produktivem Husten mit gelblich-grünlichem Auswurf sowie Fieber bis 38,8 °C in unserer Notaufnahme vor. Die Symptome bestehen seit etwa drei Tagen, die Dyspnoe trat heute erstmals auch in Ruhe auf.</p>
+              <p class="brief__fliess" data-brief-ein="2">Die Patientin lebt in einem Pflegeheim, ist mobil mit dem Rollator und benötigt Hilfe bei der Körperpflege. Nichtraucherin seit zehn Jahren, davor etwa 40 Packungsjahre. Allergien sind nicht bekannt.</p>
+
+              <h4 class="brief__abschnitt" data-brief-ein="2">Körperliche Untersuchung</h4>
+              <p class="brief__fliess" data-brief-ein="2">Reduzierter Allgemeinzustand, somnolent, jedoch erweckbar und orientiert zu Person und Ort. Temperatur 38,4 °C, Puls 96/min, arrhythmisch, Blutdruck 135/75 mmHg, SpO₂ 90 % unter Raumluft.</p>
+              <p class="brief__fliess" data-brief-ein="2">Auskultatorisch feinblasige, feuchte Rasselgeräusche basal rechts, abgeschwächtes Atemgeräusch über dem rechten Unterlappen. Abdomen weich, nicht druckschmerzhaft.</p>
+
+              <h4 class="brief__abschnitt" data-brief-ein="2">Röntgen-Thorax vom 27.11.2025</h4>
+              <p class="brief__fliess" data-brief-ein="2">Rechtsbasale konsolidierende Infiltrate, vereinbar mit einer Pneumonie des rechten Unterlappens. Kleiner reaktiver rechtsbasaler Pleuraerguss. Kein Nachweis eines Pneumothorax.</p>
+
+              <h4 class="brief__abschnitt" data-brief-ein="2">Epikrise</h4>
+              <p class="brief__zeile brief__fliess" data-brief-zeile="2">Die stationäre Aufnahme der 85-jährigen Patientin erfolgte über unsere Rettungsstelle bei Pneumonie des rechten Unterlappens. Laborchemisch zeigten sich erhöhte Infektwerte. Aufgrund der Wohnsituation im Pflegeheim initiierten wir die leitliniengerechte kalkulierte antiinfektive Therapie mit Piperacillin/Tazobactam. Im Verlauf kam es zu einer deutlichen Besserung der Symptomatik, Infekt- und Retentionsparameter waren rückläufig. Ein Keimnachweis aus Blutkulturen gelang nicht. Wir konnten die Patientin in die vorbestehende Pflegeeinrichtung entlassen.</p>
+
+              <p class="brief__zeile brief__gruss" data-brief-zeile="3">Mit freundlichen kollegialen Grüßen</p>
+
+              <div class="brief__unterschriften" data-brief-ein="3">
+                <span><strong>Prof. Dr. A. Koch</strong>Chefärztin</span>
+                <span><strong>Prof. Dr. S. Schmidt</strong>Oberarzt</span>
+                <span><strong>R. Wagner</strong>Assistenzärztin</span>
+              </div>
+            </div>
+
+            <span class="brief__stempel" data-brief-stempel="3" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7.4l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Vidiert
+            </span>
+
+            <span class="brief__seitenzahl" data-brief-seitenzahl aria-hidden="true">Seite 1 von 2</span>
+          </div>
+        </div>
+
+        <div class="stepswitch__panels">
+
+          <div class="stepswitch__panel is-active" role="tabpanel" id="step-panel-1"
+               aria-labelledby="step-tab-1" data-step-panel="1">
+            <span class="stepswitch__status"><span class="live-dot" aria-hidden="true"></span>Struktur</span>
+            <h3>Vollständige Dokumentation</h3>
+            <p>Die Basis ist eine lückenlose Dokumentation zur Patient*in – etwa zur Anamnese oder zum Verlauf. Das gelingt über eine begleitende KI-Zuhörlösung, per Spracherkennung oder klassisch per Tastatur.</p>
+          </div>
+
+          <div class="stepswitch__panel" role="tabpanel" id="step-panel-2"
+               aria-labelledby="step-tab-2" data-step-panel="2" hidden>
+            <span class="stepswitch__status"><span class="live-dot" aria-hidden="true"></span>Befunde übernommen</span>
+            <h3>Arztbrieferstellung auf Knopfdruck</h3>
+            <p>Auf Knopfdruck übernimmt myScribe automatisch alle Laborwerte und Befunde in die Briefvorlage Ihrer Klinik. Anschließend verfasst unser Sprachmodell (LLM) die Epikrise als fertigen Vorschlag.</p>
+          </div>
+
+          <div class="stepswitch__panel" role="tabpanel" id="step-panel-3"
+               aria-labelledby="step-tab-3" data-step-panel="3" hidden>
+            <span class="stepswitch__status"><span class="live-dot" aria-hidden="true"></span>Zur Vidierung</span>
+            <h3>Prüfung und Vidierung</h3>
+            <p>Die Ärztin oder der Arzt prüft den Entwurf, korrigiert ihn und gibt ihn zur Vidierung frei. Die Oberärztin oder der Oberarzt kann den Brief anschließend im Vidierungssystem von myScribe CDR freigeben.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section-pad bg-paper-dim">
+    <div class="container">
+      <div class="testimonial" data-reveal>
+        <span class="testimonial__mark" aria-hidden="true">"</span>
+        <!-- PLATZHALTER: Zitat und Person folgen. Layout bleibt wie es ist —
+             Text in .testimonial__quote, Name und Funktion darunter, statt
+             des leeren Kreises wieder ein <img class="testimonial__avatar-img">. -->
+        <p class="testimonial__quote testimonial__quote--offen">Zitat folgt.</p>
+        <div class="testimonial__author">
+          <span class="testimonial__avatar-leer" aria-hidden="true"></span>
+          <div>
+            <div class="testimonial__name">Name folgt</div>
+            <div class="testimonial__role">Funktion, Klinik</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="section-pad">
+    <div class="container" style="text-align:center;" data-reveal>
+      <span class="eyebrow" style="justify-content:center;">Nächster Schritt</span>
+      <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s); margin-inline:auto; max-width:26ch;">Lernen Sie myScribe CDR im Demotermin kennen</h2>
+      <p class="muted" style="max-width:44ch; margin-inline:auto; margin-bottom:var(--space-m);">Wir zeigen Ihnen die Anwendung und klären gemeinsam die technischen Gegebenheiten Ihrer Klinik.</p>
+      <a href="/#demo" class="btn btn--primary">Demotermin vereinbaren</a>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer bg-dark">
+  <div class="container">
+    <div class="site-footer__grid">
+      <a href="/" class="nav__logo"><img src="https://marvscribe.github.io/my-scribe-site/assets/logos/myscribe-logo-footer.webp" alt="myScribe" class="nav__logo-img nav__logo-img--on-dark"></a>
+      <nav class="site-footer__links" aria-label="Footer-Navigation">
+        <a href="/">Homepage</a>
+        <a href="/ueber-uns">Über Uns</a>
+        <a href="/karriere">Karriere</a>
+        <a href="/presse">Presse</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="site-footer__bottom"><span>kontakt@myscribe.de · +49 172 3603198</span><span>© 2026 myScribe GmbH</span></div>
+  </div>
+</footer>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" role="img" aria-label="Klinikum B (Platzhalter-Logo)">
+  <g fill="none" stroke="#4C5852" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="translate(4,6)">
+    <path d="M6 6 H16 A5 5 0 0 1 16 13 H6 Z M6 13 H17 A5 5 0 0 1 17 20 H6 Z"/>
+  </g>
+  <text x="42" y="26" font-family="Cabin, Arial, sans-serif" font-size="16" font-weight="600" fill="#4C5852">Klinikum B</text>
+</svg>

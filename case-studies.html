@@ -1,0 +1,301 @@
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" data-scroll-progress></div></div>
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo"><img src="https://marvscribe.github.io/my-scribe-site/assets/logos/myscribe-logo-green-cropped.webp" alt="myScribe" class="nav__logo-img"></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a href="/produkt">Produkt</a>
+      <a href="/case-studies" aria-current="page">Case Studies</a>
+      <a href="/presse">Presse</a>
+      <a href="/ueber-uns">Über Uns</a>
+      <a href="/karriere">Karriere</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="/#demo" class="btn btn--primary">Demotermin vereinbaren</a>
+      <button class="nav__toggle" data-nav-toggle aria-label="Menü öffnen" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+  <div class="container">
+    <nav class="nav__mobile" data-nav-mobile aria-label="Mobile Navigation">
+      <a href="/produkt">Produkt</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/presse">Presse</a>
+      <a href="/ueber-uns">Über Uns</a>
+      <a href="/karriere">Karriere</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+  <!-- Intro -->
+  <section class="section-pad">
+    <div class="container container--narrow" data-reveal>
+      <span class="eyebrow">Case Studies</span>
+      <h1 style="font-size:var(--step-xl); line-height:1.15; margin-bottom:var(--space-s); max-width:24ch;">Was sich in Kliniken tatsächlich verändert</h1>
+      <p class="muted" style="font-size:var(--step-body-l); font-weight:300; max-width:52ch;">Keine Versprechen, sondern nachvollziehbare Ergebnisse: Ausgangslage, Umsetzung und was danach messbar anders war.</p>
+    </div>
+  </section>
+
+  <!-- Ausgewählte Case Study mit Video-Platzhalter -->
+  <section class="section-pad bg-paper-dim" style="padding-top:var(--space-l);">
+    <div class="container">
+      <div class="cs-feature" data-reveal>
+
+        <div class="cs-feature__media">
+          <!-- ERSETZEN durch echtes Video:
+               <video class="video-slot__media" poster="https://marvscribe.github.io/my-scribe-site/assets/case-studies/…jpg" controls playsinline>
+                 <source src="https://marvscribe.github.io/my-scribe-site/assets/video/case-study-1.mp4" type="video/mp4">
+               </video>
+               … und den Leerzustand darunter entfernen.
+               Alternativ das .yt-facade-Muster aus index.html (#video) nutzen,
+               falls das Video auf YouTube liegt. -->
+          <div class="video-slot">
+            <div class="video-slot__empty">
+              <span class="video-slot__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 14 14" fill="none"><path d="M3 1.5v11l10-5.5-10-5.5z" fill="currentColor"/></svg>
+              </span>
+              <span class="video-slot__label">Video folgt</span>
+              <span class="video-slot__hint">Interview mit der Klinik, ca. 2 Min. Querformat 16:9.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-feature__text">
+          <span class="field-tag">
+            <span class="live-dot" aria-hidden="true"></span>Im Einsatz
+          </span>
+          <h2 style="font-size:var(--step-l); margin:var(--space-xs) 0 var(--space-s); max-width:22ch;">Klinikname folgt</h2>
+          <p class="muted" style="max-width:48ch; margin-bottom:var(--space-s);">Platzhalter für die Kernaussage der Klinik – idealerweise ein Satz, der das Ergebnis auf den Punkt bringt. Danach zwei bis drei Sätze zur Ausgangslage und zum Vorgehen.</p>
+
+          <dl class="cs-facts">
+            <div><dt>Fachrichtung</dt><dd>folgt</dd></div>
+            <div><dt>Bettenzahl</dt><dd>folgt</dd></div>
+            <div><dt>Seit</dt><dd>folgt</dd></div>
+            <div><dt>Anbindung</dt><dd>HL7 · FHIR</dd></div>
+          </dl>
+
+          <a href="/#demo" class="btn btn--primary" style="margin-top:var(--space-s);">Demotermin vereinbaren</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Kundenstimmen: Logo anklicken, Zitat darunter wechselt.
+       Die Logos sind abstrakte Platzhalter — bewusst keine erfundenen
+       Klinik-Namen, die man für echte Kunden halten könnte. -->
+  <section class="section-pad bg-paper-dim">
+    <div class="container container--narrow" data-reveal>
+      <span class="eyebrow">Kundenstimmen</span>
+      <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s); max-width:24ch;">Wer mit myScribe arbeitet</h2>
+      <p class="muted" style="max-width:52ch; font-weight:300;">Ein Logo auswählen, um die Stimme des jeweiligen Hauses zu lesen.</p>
+    </div>
+
+    <div class="container">
+      <div class="logoswitch" data-logoswitch data-reveal>
+
+        <div class="logoswitch__logos" role="tablist" aria-label="Kunden auswählen">
+          <button class="logoswitch__logo" type="button" role="tab"
+                  id="ls-tab-a" aria-controls="ls-panel-a"
+                  aria-selected="true"
+                  data-logo-tab="a">
+            <img src="https://marvscribe.github.io/my-scribe-site/assets/logos/platzhalter/klinik-a.svg" alt="Klinikum A">
+          </button>
+          <button class="logoswitch__logo" type="button" role="tab"
+                  id="ls-tab-b" aria-controls="ls-panel-b"
+                  aria-selected="false" tabindex="-1"
+                  data-logo-tab="b">
+            <img src="https://marvscribe.github.io/my-scribe-site/assets/logos/platzhalter/klinik-b.svg" alt="Klinikum B">
+          </button>
+          <button class="logoswitch__logo" type="button" role="tab"
+                  id="ls-tab-c" aria-controls="ls-panel-c"
+                  aria-selected="false" tabindex="-1"
+                  data-logo-tab="c">
+            <img src="https://marvscribe.github.io/my-scribe-site/assets/logos/platzhalter/klinik-c.svg" alt="Klinikum C">
+          </button>
+          <button class="logoswitch__logo" type="button" role="tab"
+                  id="ls-tab-d" aria-controls="ls-panel-d"
+                  aria-selected="false" tabindex="-1"
+                  data-logo-tab="d">
+            <img src="https://marvscribe.github.io/my-scribe-site/assets/logos/platzhalter/klinik-d.svg" alt="Klinikum D">
+          </button>
+        </div>
+
+        <div class="logoswitch__panel is-active" id="ls-panel-a"
+             role="tabpanel" aria-labelledby="ls-tab-a" data-logo-panel="a">
+          <div class="quotecard">
+            <div class="quotecard__text">
+              <blockquote class="quotecard__quote">„Zitat folgt – ein Satz, der das Ergebnis für Klinikum A auf den Punkt bringt."</blockquote>
+              <div>
+                <div class="quotecard__name">Name folgt</div>
+                <div class="quotecard__role">Funktion, Klinikum A</div>
+              </div>
+            </div>
+            <div class="quotecard__media">
+              <!-- ERSETZEN: <img class="quotecard__photo" src="https://marvscribe.github.io/my-scribe-site/assets/case-studies/…jpg" alt="…"> -->
+              <div class="quotecard__empty">
+                <span>Porträt folgt</span>
+                <span style="font-size:0.82rem;">Querformat, Person freigestellt<br>oder vor ruhigem Hintergrund</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="logoswitch__panel" id="ls-panel-b"
+             role="tabpanel" aria-labelledby="ls-tab-b" data-logo-panel="b" hidden>
+          <div class="quotecard">
+            <div class="quotecard__text">
+              <blockquote class="quotecard__quote">„Zitat folgt – ein Satz, der das Ergebnis für Klinikum B auf den Punkt bringt."</blockquote>
+              <div>
+                <div class="quotecard__name">Name folgt</div>
+                <div class="quotecard__role">Funktion, Klinikum B</div>
+              </div>
+            </div>
+            <div class="quotecard__media">
+              <!-- ERSETZEN: <img class="quotecard__photo" src="https://marvscribe.github.io/my-scribe-site/assets/case-studies/…jpg" alt="…"> -->
+              <div class="quotecard__empty">
+                <span>Porträt folgt</span>
+                <span style="font-size:0.82rem;">Querformat, Person freigestellt<br>oder vor ruhigem Hintergrund</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="logoswitch__panel" id="ls-panel-c"
+             role="tabpanel" aria-labelledby="ls-tab-c" data-logo-panel="c" hidden>
+          <div class="quotecard">
+            <div class="quotecard__text">
+              <blockquote class="quotecard__quote">„Zitat folgt – ein Satz, der das Ergebnis für Klinikum C auf den Punkt bringt."</blockquote>
+              <div>
+                <div class="quotecard__name">Name folgt</div>
+                <div class="quotecard__role">Funktion, Klinikum C</div>
+              </div>
+            </div>
+            <div class="quotecard__media">
+              <!-- ERSETZEN: <img class="quotecard__photo" src="https://marvscribe.github.io/my-scribe-site/assets/case-studies/…jpg" alt="…"> -->
+              <div class="quotecard__empty">
+                <span>Porträt folgt</span>
+                <span style="font-size:0.82rem;">Querformat, Person freigestellt<br>oder vor ruhigem Hintergrund</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="logoswitch__panel" id="ls-panel-d"
+             role="tabpanel" aria-labelledby="ls-tab-d" data-logo-panel="d" hidden>
+          <div class="quotecard">
+            <div class="quotecard__text">
+              <blockquote class="quotecard__quote">„Zitat folgt – ein Satz, der das Ergebnis für Klinikum D auf den Punkt bringt."</blockquote>
+              <div>
+                <div class="quotecard__name">Name folgt</div>
+                <div class="quotecard__role">Funktion, Klinikum D</div>
+              </div>
+            </div>
+            <div class="quotecard__media">
+              <!-- ERSETZEN: <img class="quotecard__photo" src="https://marvscribe.github.io/my-scribe-site/assets/case-studies/…jpg" alt="…"> -->
+              <div class="quotecard__empty">
+                <span>Porträt folgt</span>
+                <span style="font-size:0.82rem;">Querformat, Person freigestellt<br>oder vor ruhigem Hintergrund</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Weitere Case Studies -->
+  <section class="section-pad">
+    <div class="container container--narrow" data-reveal>
+      <span class="eyebrow">Weitere Häuser</span>
+      <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s); max-width:24ch;">Aus dem laufenden Betrieb</h2>
+      <p class="muted" style="max-width:52ch; font-weight:300;">Drei Plätze sind vorbereitet. Inhalte kommen, sobald die Interviews geführt sind.</p>
+    </div>
+    <div class="container" style="margin-top:var(--space-l);">
+      <div class="cs-grid" data-reveal>
+        <article class="cs-card">
+          <div class="cs-card__media">
+            <div class="video-slot" style="--slot-ar: 16 / 10;">
+              <div class="video-slot__empty">
+                <span class="video-slot__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 14 14" fill="none"><path d="M3 1.5v11l10-5.5-10-5.5z" fill="currentColor"/></svg>
+                </span>
+                <span class="video-slot__label">Bild oder Video folgt</span>
+              </div>
+            </div>
+          </div>
+          <span class="field-tag">Gastroenterologie</span>
+          <h3>Klinik folgt</h3>
+          <p class="muted">Kurzbeschreibung folgt: Ausgangslage, Vorgehen, Ergebnis in zwei bis drei Sätzen.</p>
+          <div class="cs-card__metric">
+            <span class="cs-card__metric-value">–</span>
+            <span class="cs-card__metric-label">Kennzahl folgt</span>
+          </div>
+        </article>
+        <article class="cs-card">
+          <div class="cs-card__media">
+            <div class="video-slot" style="--slot-ar: 16 / 10;">
+              <div class="video-slot__empty">
+                <span class="video-slot__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 14 14" fill="none"><path d="M3 1.5v11l10-5.5-10-5.5z" fill="currentColor"/></svg>
+                </span>
+                <span class="video-slot__label">Bild oder Video folgt</span>
+              </div>
+            </div>
+          </div>
+          <span class="field-tag">Orthopädie</span>
+          <h3>Klinik folgt</h3>
+          <p class="muted">Kurzbeschreibung folgt: Ausgangslage, Vorgehen, Ergebnis in zwei bis drei Sätzen.</p>
+          <div class="cs-card__metric">
+            <span class="cs-card__metric-value">–</span>
+            <span class="cs-card__metric-label">Kennzahl folgt</span>
+          </div>
+        </article>
+        <article class="cs-card">
+          <div class="cs-card__media">
+            <div class="video-slot" style="--slot-ar: 16 / 10;">
+              <div class="video-slot__empty">
+                <span class="video-slot__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 14 14" fill="none"><path d="M3 1.5v11l10-5.5-10-5.5z" fill="currentColor"/></svg>
+                </span>
+                <span class="video-slot__label">Bild oder Video folgt</span>
+              </div>
+            </div>
+          </div>
+          <span class="field-tag">Innere Medizin</span>
+          <h3>Klinik folgt</h3>
+          <p class="muted">Kurzbeschreibung folgt: Ausgangslage, Vorgehen, Ergebnis in zwei bis drei Sätzen.</p>
+          <div class="cs-card__metric">
+            <span class="cs-card__metric-value">–</span>
+            <span class="cs-card__metric-label">Kennzahl folgt</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abschluss -->
+  <section class="section-pad bg-mist">
+    <div class="container" style="text-align:center;" data-reveal>
+      <span class="eyebrow" style="justify-content:center;">Nächster Schritt</span>
+      <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s); margin-inline:auto; max-width:26ch;">Sehen, wie das in Ihrem Haus aussehen würde</h2>
+      <p class="muted" style="max-width:44ch; margin-inline:auto; margin-bottom:var(--space-m);">Wir zeigen die Anwendung und klären die technischen Gegebenheiten Ihrer Klinik.</p>
+      <a href="/#demo" class="btn btn--primary">Demotermin vereinbaren</a>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer bg-dark">
+  <div class="container">
+    <div class="site-footer__grid">
+      <a href="/" class="nav__logo"><img src="https://marvscribe.github.io/my-scribe-site/assets/logos/myscribe-logo-footer.webp" alt="myScribe" class="nav__logo-img nav__logo-img--on-dark"></a>
+      <nav class="site-footer__links" aria-label="Footer-Navigation">
+        <a href="/">Homepage</a>
+        <a href="/ueber-uns">Über Uns</a>
+        <a href="/karriere">Karriere</a>
+        <a href="/presse">Presse</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="site-footer__bottom"><span>kontakt@myscribe.de · +49 172 3603198</span><span>© 2026 myScribe GmbH</span></div>
+  </div>
+</footer>

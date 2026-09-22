@@ -1,0 +1,642 @@
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" data-scroll-progress></div></div>
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo"><img src="https://marvscribe.github.io/my-scribe-site/assets/logos/myscribe-logo-green-cropped.webp" alt="myScribe" class="nav__logo-img"></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a href="/produkt">Produkt</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/presse">Presse</a>
+      <a href="/ueber-uns">Über Uns</a>
+      <a href="/karriere">Karriere</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="/#demo" class="btn btn--primary">Demotermin vereinbaren</a>
+      <button class="nav__toggle" data-nav-toggle aria-label="Menü öffnen" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+  <div class="container">
+    <nav class="nav__mobile" data-nav-mobile aria-label="Mobile Navigation">
+      <a href="/produkt">Produkt</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/presse">Presse</a>
+      <a href="/ueber-uns">Über Uns</a>
+      <a href="/karriere">Karriere</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero">
+    <video class="hero__media" autoplay muted loop playsinline preload="auto" aria-hidden="true" data-hero-video>
+      <source src="https://marvscribe.github.io/my-scribe-site/assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <div class="container hero__content">
+      <div class="hero__grid hero__grid--single" data-reveal>
+        <span class="eyebrow">Klinische Dokumentation neu gedacht</span>
+        <h1 style="font-size:var(--step-2xl); line-height:1.1; margin-bottom:var(--space-s); max-width:16ch;">Der<br><span style="color:var(--on-dark-muted); font-weight:300; font-style:italic;">KI-generierte Arztbrief</span></h1>
+        <p class="muted" style="font-size:var(--step-body-l); font-weight:300; max-width:34ch; margin-bottom:var(--space-m);">myScribe erfindet die klinische Dokumentation neu – intuitiv und effizient.</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="#demo" class="btn btn--primary">Demotermin vereinbaren</a>
+          <a href="#video" class="btn btn--ghost">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 1.5v11l10-5.5-10-5.5z" fill="currentColor"/></svg>
+            Elevator Pitch ansehen
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a class="hero__scroll-hint" href="#live-demo">
+      Scrollen
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v11M3.5 8.5L8 13l4.5-4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- Vertrauens-Leiste: direkt unter dem Video, weil das laut Review-Call
+       die Punkte sind, auf die Klinik-Entscheider zuerst schauen. -->
+  <section class="section-pad bg-dark" style="padding-block:var(--space-l);">
+    <div class="container" data-reveal>
+      <div class="trustbar">
+
+        <div class="trust-item trust-item--lead">
+          <span class="trust-item__top">
+            <span class="trust-item__value" data-count-to="2" data-suffix=" h">0 h</span>
+          </span>
+          <span class="trust-item__label">Zeitersparnis pro Arzt und Tag</span>
+        </div>
+
+        <div class="trust-item">
+          <span class="trust-item__top">
+            <span class="trust-item__value" data-count-to="100" data-suffix=" %">0 %</span>
+          </span>
+          <span class="trust-item__label">DSGVO-konform – auf Wunsch lokal gehostet</span>
+        </div>
+
+        <div class="trust-item">
+          <span class="trust-item__top">
+            <span class="trust-item__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 20 20" fill="none"><path d="M10 2.5l6 2.2v5.1c0 3.4-2.4 6.5-6 7.7-3.6-1.2-6-4.3-6-7.7V4.7l6-2.2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.2 10.2l1.9 1.9 3.7-3.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+          <span class="trust-item__label">Kein KI-Training mit Patientendaten</span>
+        </div>
+
+        <div class="trust-item">
+          <span class="trust-item__top">
+            <!-- ERSETZEN: <img class="trust-item__seal" src="https://marvscribe.github.io/my-scribe-site/assets/logos/iso-siegel.png"
+                                alt="ISO 9001 zertifiziert" width="60" height="60">
+                 und den gestrichelten Kreis samt Hinweis darunter entfernen.
+                 Bitte prüfen, welche Norm gemeint ist – 9001 (Qualitätsmanagement),
+                 27001 (Informationssicherheit) oder 13485 (Medizinprodukte). -->
+            <span class="trust-item__icon trust-item__icon--offen" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="5.6" stroke="currentColor" stroke-width="1.5"/><path d="M8.6 13.6L7.5 21l4.5-2.3 4.5 2.3-1.1-7.4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+          <span class="trust-item__label">Zertifiziert nach ISO&nbsp;9001</span>
+          <span class="trust-item__hint">Siegel folgt</span>
+        </div>
+
+        <div class="trust-item">
+          <span class="trust-item__top">
+            <span class="trust-item__icon" aria-hidden="true">
+              <!-- Doppeltes Häkchen: geprüft und vom Kontrollmodell gegengeprüft -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M2.5 12.6l3.6 3.6L13.4 9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12.6l3.6 3.6L21.5 8.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+          <span class="trust-item__label">Halluzinationsschutz durch ein zweites Kontrollmodell</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Kunden & Partner -->
+  <section class="section-pad bg-paper-dim partners">
+    <div class="container" data-reveal>
+      <h2 style="font-size:var(--step-l);">Unsere Kunden &amp; Partner</h2>
+    </div>
+    <div class="partners__viewport" data-reveal>
+      <!-- Vier gleiche Sätze: verschoben wird um genau einen Satz.
+           Ein Satz allein ist schmaler als ein breiter Bildschirm —
+           deshalb vier, sonst klafft hinter dem letzten Logo eine Lücke. -->
+      <div class="partners__track">
+        <div class="partners__set">
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/uksh.avif" alt="UKSH" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/umm.svg" alt="Universitätsmedizin Mannheim" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/harzklinikum.svg" alt="Harzklinikum Dorothea Christiane Erxleben" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/entscheiderfabrik.avif" alt="Entscheiderfabrik" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/akg-innovationspreis.avif" alt="AKG Innovationspreis 2025" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/handelsblatt.avif" alt="Handelsblatt" loading="lazy"></div>
+        </div>
+        <div class="partners__set" aria-hidden="true">
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/uksh.avif" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/umm.svg" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/harzklinikum.svg" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/entscheiderfabrik.avif" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/akg-innovationspreis.avif" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/handelsblatt.avif" alt="" loading="lazy"></div>
+        </div>
+        <div class="partners__set" aria-hidden="true">
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/uksh.avif" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/umm.svg" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/harzklinikum.svg" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/entscheiderfabrik.avif" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/akg-innovationspreis.avif" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/handelsblatt.avif" alt="" loading="lazy"></div>
+        </div>
+        <div class="partners__set" aria-hidden="true">
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/uksh.avif" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/umm.svg" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/harzklinikum.svg" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/entscheiderfabrik.avif" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/akg-innovationspreis.avif" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/assets/logos/handelsblatt.avif" alt="" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ein System -->
+  <section class="section-pad bg-paper-dim">
+    <div class="container container--narrow" data-reveal>
+      <span class="eyebrow">Ein System</span>
+      <h2 style="font-size:var(--step-l); margin-bottom:var(--space-m); max-width:20ch;">Alle Patientendaten in einer Anwendung</h2>
+      <p class="muted" style="font-size:var(--step-body-l); font-weight:300; max-width:52ch;">Unendliche Ladezeiten, mehrere Programme, die Patientendaten anzeigen und Doppeldokumentation – all das kostet Ärzt*innen nicht nur Zeit, sondern baut auch Frustration und Stress auf.</p>
+    </div>
+
+    <div class="container" style="margin-top:var(--space-l);">
+      <div class="gallery" data-gallery>
+
+        <!-- Benannte Reiter statt Pfeilen: die drei Ansichten sagen selbst,
+             worum es geht — vorher stand da nur "01 / 03". -->
+        <div class="gallery__tabs" role="tablist" aria-label="Ansicht wählen" data-gallery-tabs>
+          <button class="gallery__tab" type="button" role="tab" aria-selected="true"
+                  aria-label="Ansicht 1: Strukturierte Daten in HL7-FHIR"
+                  data-gallery-dot="1">HL7-FHIR</button>
+          <button class="gallery__tab" type="button" role="tab" aria-selected="false" tabindex="-1"
+                  aria-label="Ansicht 2: KI-generierte Arztbriefe"
+                  data-gallery-dot="2">Arztbrief</button>
+          <button class="gallery__tab" type="button" role="tab" aria-selected="false" tabindex="-1"
+                  aria-label="Ansicht 3: Digitale Aufnahmebögen"
+                  data-gallery-dot="3">Aufnahme</button>
+        </div>
+
+        <div class="gallery__stage" tabindex="0" role="group" aria-roledescription="Galerie" aria-label="Ansichten der myScribe App">
+          <div class="gallery__slide is-active" data-gallery-slide="1">
+            <span class="gallery__media"><img class="gallery__img" src="https://marvscribe.github.io/my-scribe-site/assets/home/visitenansicht.webp" alt="Tablet mit der Visitenansicht der myScribe App" decoding="async"></span>
+            <span class="gallery__scrim" aria-hidden="true"></span>
+            <div class="gallery__caption">
+              <span class="field-tag">HL7 · FHIR</span>
+              <h3>Strukturierte Daten in HL7-FHIR</h3>
+              <p>Dank HL7-FHIR zeigt myScribe Patientendaten aus allen Anwendungen blitzschnell an – und speist sie zurück, sodass keine Doppeldokumentation nötig ist.</p>
+            </div>
+            <span class="gallery__status"><span class="live-dot" aria-hidden="true"></span>Live aus dem FHIR-Server</span>
+          </div>
+          <div class="gallery__slide" data-gallery-slide="2" aria-hidden="true">
+            <span class="gallery__media"><img class="gallery__img" src="https://marvscribe.github.io/my-scribe-site/assets/home/ki-arztbrief.webp" alt="Tablet mit einer KI-generierten Epikrise für einen Arztbrief" loading="lazy" decoding="async"></span>
+            <span class="gallery__scrim" aria-hidden="true"></span>
+            <div class="gallery__caption">
+              <span class="field-tag">Epikrise</span>
+              <h3>KI-generierte Arztbriefe innerhalb von Sekunden</h3>
+              <p>Automatische Befundübernahme, eine KI-Epikrise als Vorschlag – rund 2 Stunden Zeitersparnis pro Arzt und Tag.</p>
+            </div>
+            <span class="gallery__status"><span class="live-dot" aria-hidden="true"></span>Live aus dem FHIR-Server</span>
+          </div>
+          <div class="gallery__slide" data-gallery-slide="3" aria-hidden="true">
+            <span class="gallery__media"><img class="gallery__img" src="https://marvscribe.github.io/my-scribe-site/assets/home/patientenaufnahme.webp" alt="Tablet mit einem digitalen Aufnahmeformular zur Patientenaufnahme" loading="lazy" decoding="async"></span>
+            <span class="gallery__scrim" aria-hidden="true"></span>
+            <div class="gallery__caption">
+              <span class="field-tag">Aufnahme</span>
+              <h3>Digitale Aufnahmebögen nach Ihren Anforderungen</h3>
+              <p>Digitale Aufnahme, gespeichert direkt in App und KIS – konfigurierbar für jede Fachrichtung.</p>
+            </div>
+            <span class="gallery__status"><span class="live-dot" aria-hidden="true"></span>Live aus dem FHIR-Server</span>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Live-Demos als Kapitel: nur das aktive Kapitel animiert -->
+  <section id="live-demo" class="section-pad demo-trilogy bg-dark">
+    <div class="demo-trilogy__ambient" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <div class="container container--narrow" data-reveal>
+      <span class="eyebrow">Live in der App</span>
+      <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s); max-width:24ch;">Drei Handgriffe, die den Brief schreiben</h2>
+      <p class="muted" style="max-width:52ch; font-weight:300;">Dokumentieren, nachfragen, formulieren – alles in derselben Akte. Wählen Sie ein Kapitel, um es laufen zu sehen.</p>
+    </div>
+
+    <div class="container demo-chapters" data-reveal data-demo-tabs>
+      <span class="demo-chapters__hint">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Kapitel wählen
+      </span>
+      <div class="demo-chapters__bar" role="tablist" aria-label="Live-Demos">
+        <button class="demo-chapter is-active" type="button" role="tab" id="demo-tab-1"
+                aria-selected="true" aria-controls="demo-panel-1" data-demo-tab="1">
+          <span class="demo-chapter__num">01</span>
+          <span class="demo-chapter__label">Quellenanzeige</span>
+          <span class="demo-chapter__desc">Jeder Satz zeigt, woraus er entstanden ist.</span>
+          <span class="demo-chapter__state">
+            <span class="demo-chapter__state-idle">Ansehen &rarr;</span>
+            <span class="demo-chapter__state-live"><span class="live-dot" aria-hidden="true"></span>Läuft</span>
+          </span>
+        </button>
+        <button class="demo-chapter" type="button" role="tab" id="demo-tab-2"
+                aria-selected="false" aria-controls="demo-panel-2" data-demo-tab="2" tabindex="-1">
+          <span class="demo-chapter__num">02</span>
+          <span class="demo-chapter__label">KI-Assistent</span>
+          <span class="demo-chapter__desc">Antworten aus der Akte, mit Quellenangabe.</span>
+          <span class="demo-chapter__state">
+            <span class="demo-chapter__state-idle">Ansehen &rarr;</span>
+            <span class="demo-chapter__state-live"><span class="live-dot" aria-hidden="true"></span>Läuft</span>
+          </span>
+        </button>
+        <button class="demo-chapter" type="button" role="tab" id="demo-tab-3"
+                aria-selected="false" aria-controls="demo-panel-3" data-demo-tab="3" tabindex="-1">
+          <span class="demo-chapter__num">03</span>
+          <span class="demo-chapter__label">Text verbessern</span>
+          <span class="demo-chapter__desc">Aus Stichworten wird Fachsprache.</span>
+          <span class="demo-chapter__state">
+            <span class="demo-chapter__state-idle">Ansehen &rarr;</span>
+            <span class="demo-chapter__state-live"><span class="live-dot" aria-hidden="true"></span>Läuft</span>
+          </span>
+        </button>
+      </div>
+
+      <div class="demo-chapters__stage">
+        <div class="demo-panel is-active" id="demo-panel-1" role="tabpanel" aria-labelledby="demo-tab-1" data-demo-panel="1">
+          <div class="container demo-stage" data-reveal data-quellen-root>
+                <div class="demo-glow" aria-hidden="true"></div>
+                <div class="demo-device" data-demo-device>
+                  <div class="demo-device__bar">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 4h10M2 7h10M2 10h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    <span class="demo-device__breadcrumb">Organisationen <span class="demo-device__sep">›</span> Gastroenterologie <span class="demo-device__sep">›</span> G3 <span class="demo-device__sep">›</span> <strong>Arztbrief: Isabella Schulze, 68&nbsp;J., Weiblich</strong></span>
+                  </div>
+                  <div class="demo-device__meta">
+                    <div class="demo-device__meta-field"><span>Leitsymptom</span><strong>Flankenschmerz rechts</strong></div>
+                    <div class="demo-device__meta-field"><span>Diagnose</span><strong>Nierenstein</strong></div>
+                    <div class="demo-device__meta-field"><span>Momentane Behandlung</span><strong>ESWL von Steinen im Ureter</strong></div>
+                  </div>
+                  <div class="demo-device__body">
+                    <aside class="demo-device__nav">
+                      <span>Anamnese</span>
+                      <span>Körperliche Untersuchung</span>
+                      <span>Diagnosen</span>
+                      <span>Prozeduren</span>
+                      <span>Medikamente</span>
+                      <span>Vitalparameter</span>
+                      <span>Laborwerte</span>
+                      <span class="is-active">Arztbrief</span>
+                    </aside>
+                    <div class="demo-device__main">
+                      <div class="demo-device__section-title">
+                        Epikrise
+                        <span class="quellen__flag">KI-generiert</span>
+                      </div>
+
+                      <!-- Quellenanzeige: ein Klick auf einen Satz zeigt, aus
+                           welchem Eintrag der Akte er stammt. -->
+                      <div class="quellen">
+                        <p class="quellen__text">
+                          <span class="quellen__satz" data-quellen-satz="1">Die Patientin stellte sich mit seit zwei Tagen bestehenden kolikartigen Flankenschmerzen rechts vor.</span>
+                          <span class="quellen__satz" data-quellen-satz="2">Sonografisch zeigte sich eine Harnstauungsniere Grad&nbsp;II bei Konkrement im proximalen Ureter.</span>
+                          <span class="quellen__satz" data-quellen-satz="3">Nach komplikationsloser ESWL waren die Schmerzen rückläufig, ein Konkrement war nicht mehr nachweisbar.</span>
+                        </p>
+
+                        <aside class="quellen__karte" data-quellen-karte>
+                          <span class="quellen__leer" data-quellen-leer>Satz anklicken, um die Quelle zu sehen</span>
+                          <div class="quellen__inhalt" data-quellen-inhalt hidden>
+                            <span class="quellen__badge">
+                              <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 1.8h5.4L11 4.4V12a.8.8 0 0 1-.8.8H3a.8.8 0 0 1-.8-.8V2.6A.8.8 0 0 1 3 1.8z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M8.2 1.8v2.8H11" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+                              Quelle
+                            </span>
+                            <strong class="quellen__titel" data-quellen-titel></strong>
+                            <span class="quellen__meta" data-quellen-meta></span>
+                            <p class="quellen__zitat" data-quellen-zitat></p>
+                          </div>
+                        </aside>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-cursor" data-quellen-cursor aria-hidden="true"></div>
+              </div>
+        </div>
+        <div class="demo-panel" id="demo-panel-2" role="tabpanel" aria-labelledby="demo-tab-2" data-demo-panel="2" hidden>
+          <div class="container demo-stage" data-reveal data-chat-root>
+                <div class="demo-glow" aria-hidden="true"></div>
+                <div class="demo-device" data-demo-device>
+                  <div class="demo-device__bar">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 4h10M2 7h10M2 10h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    <span class="demo-device__breadcrumb">Organisationen <span class="demo-device__sep">›</span> Gastroenterologie <span class="demo-device__sep">›</span> G3 <span class="demo-device__sep">›</span> <strong>Aufnahme: Isabella Schulze, 68&nbsp;J., Weiblich</strong></span>
+                  </div>
+                  <div class="demo-device__meta">
+                    <div class="demo-device__meta-field"><span>Leitsymptom</span><strong>Rückenschmerzen</strong></div>
+                    <div class="demo-device__meta-field"><span>Diagnose</span><strong>Nierenstein</strong></div>
+                    <div class="demo-device__meta-field"><span>Momentane Behandlung</span><strong>ESWL von Steinen im Ureter</strong></div>
+                  </div>
+                  <div class="demo-device__body demo-device__body--chat">
+                    <div class="chat-panel">
+                      <div class="chat-panel__header">
+                        <span class="chat-panel__icon" aria-hidden="true">
+                          <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M10 2l1.6 4.8L16.4 8l-4.8 1.6L10 14.4 8.4 9.6 3.6 8l4.8-1.6L10 2z" fill="currentColor"/></svg>
+                        </span>
+                        <span>KI-Assistent</span>
+                      </div>
+                      <div class="chat-panel__thread" data-chat-thread>
+                        <div class="chat-msg chat-msg--user" data-chat-msg="1"><span class="chat-msg__bubble">Welche Auffälligkeiten zeigen die Laborwerte?</span></div>
+                        <div class="chat-msg chat-msg--assistant" data-chat-msg="2">
+                          <span class="chat-msg__avatar">M</span>
+                          <div>
+                            <span class="chat-msg__bubble" data-chat-text></span>
+                            <span class="chat-msg__source">Quelle: Laborwerte · 21.08.2026</span>
+                          </div>
+                        </div>
+                        <div class="chat-msg chat-msg--user" data-chat-msg="3"><span class="chat-msg__bubble">Fasse die Anamnese in einem Satz zusammen.</span></div>
+                        <div class="chat-msg chat-msg--assistant" data-chat-msg="4">
+                          <span class="chat-msg__avatar">M</span>
+                          <div>
+                            <span class="chat-msg__bubble" data-chat-text></span>
+                          </div>
+                        </div>
+                        <div class="chat-msg chat-msg--typing" data-chat-typing aria-hidden="true"><span></span><span></span><span></span></div>
+                      </div>
+                      <div class="chat-panel__composer">
+                        <div class="chat-panel__input" data-chat-input><span data-chat-input-text></span><span class="demo-cursor-char" data-chat-caret>|</span></div>
+                        <button class="chat-panel__send" data-chat-send type="button" tabindex="-1" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 7h11M8 2.5 12.5 7 8 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-cursor" data-chat-cursor aria-hidden="true"></div>
+              </div>
+        </div>
+        <div class="demo-panel" id="demo-panel-3" role="tabpanel" aria-labelledby="demo-tab-3" data-demo-panel="3" hidden>
+          <div class="container demo-stage" data-reveal data-rewrite-root>
+                <div class="demo-glow" aria-hidden="true"></div>
+                <div class="demo-device" data-demo-device>
+                  <div class="demo-device__bar">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 4h10M2 7h10M2 10h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    <span class="demo-device__breadcrumb">Organisationen <span class="demo-device__sep">›</span> Gastroenterologie <span class="demo-device__sep">›</span> G3 <span class="demo-device__sep">›</span> <strong>Aufnahme: Isabella Schulze, 68&nbsp;J., Weiblich</strong></span>
+                  </div>
+                  <div class="demo-device__meta">
+                    <div class="demo-device__meta-field"><span>Leitsymptom</span><strong>Rückenschmerzen</strong></div>
+                    <div class="demo-device__meta-field"><span>Diagnose</span><strong>Nierenstein</strong></div>
+                    <div class="demo-device__meta-field"><span>Momentane Behandlung</span><strong>ESWL von Steinen im Ureter</strong></div>
+                  </div>
+                  <div class="demo-device__body demo-device__body--rewrite">
+                    <div class="rewrite-panel">
+                      <div class="rewrite-panel__header">
+                        <span>Epikrise – Entwurf</span>
+                        <button class="rewrite-panel__btn" data-rewrite-btn type="button" tabindex="-1" aria-hidden="true">
+                          <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l1.6 4.8L16.4 8l-4.8 1.6L10 14.4 8.4 9.6 3.6 8l4.8-1.6L10 2z" fill="currentColor"/></svg>
+                          <span>Text verbessern</span>
+                        </button>
+                      </div>
+                      <div class="rewrite-panel__text" data-rewrite-text>pat. kam wegen rückenschmerzen re. seite. schon länger bekannt nierenstein. haben eswl gemacht, verlauf unauffällig, schmerzen rückläufig.</div>
+                      <span class="rewrite-panel__badge" data-rewrite-badge>✓ Verbessert</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-cursor" data-rewrite-cursor aria-hidden="true"></div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="section-pad bg-paper-dim">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: minmax(0,0.8fr) minmax(0,1.2fr); gap:var(--space-l); align-items:start;">
+        <div data-reveal>
+          <span class="eyebrow">Einsparungsrechner</span>
+          <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s);">Ihr Einsparungspotential</h2>
+          <p class="muted" style="max-width:34ch;">Anhand von Bettenzahl, Fallzahl und Anzahl der Ärzt*innen berechnen wir, wie viel Sie mit myScribe pro Jahr einsparen können.</p>
+        </div>
+        <div class="calculator" data-calculator data-reveal>
+          <div class="calc-row">
+            <div class="calc-row__top"><span>Ihre Bettenzahl</span><span class="calc-row__value"><span data-calc-beds-out>500</span></span></div>
+            <input type="range" min="50" max="1500" step="10" value="500" data-calc-beds aria-label="Bettenzahl">
+          </div>
+          <div class="calc-row">
+            <div class="calc-row__top"><span>Ihre Fälle / Jahr</span><span class="calc-row__value"><span data-calc-cases-out>20000</span></span></div>
+            <input type="range" min="1000" max="1000000" step="100" value="20000" data-calc-cases aria-label="Fälle pro Jahr">
+          </div>
+          <div class="calc-row">
+            <div class="calc-row__top"><span>Ihre Anzahl an Ärzt*innen</span><span class="calc-row__value"><span data-calc-doctors-out>100</span></span></div>
+            <input type="range" min="10" max="1000" step="1" value="100" data-calc-doctors aria-label="Anzahl Ärzt*innen">
+          </div>
+          <div class="calc-result">
+            <div class="calc-result__top">
+              <span class="calc-result__label">Theoretisches Einsparungspotenzial pro Jahr<sup>*</sup></span>
+              <span class="calc-result__value" data-calc-result>0 €</span>
+            </div>
+            <span class="calc-result__note">✓ Kosten von myScribe bereits eingerechnet</span>
+            <p class="calc-result__fussnote">* Annahme: durchschnittlicher Arztstundensatz von 60 €.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Von Ärzt*innen für Ärzt*innen (green gradient, animated icon cards — positioned like myscribe.de) -->
+  <section class="section-pad doctors-section">
+    <div class="container container--narrow doctors-intro" data-reveal>
+      <span class="eyebrow">Gebaut von Ärzt*innen</span>
+      <h2 style="font-size:var(--step-l); max-width:26ch; margin-inline:auto;">Von Ärzt*innen für Ärzt*innen</h2>
+    </div>
+    <div class="container doctors-grid">
+      <div class="doctors-card" data-reveal>
+        <span class="doctors-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 3v6a4 4 0 0 0 8 0V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="3" r="1.4" stroke="currentColor" stroke-width="1.3"/><circle cx="14" cy="3" r="1.4" stroke="currentColor" stroke-width="1.3"/><path d="M10 13v2.5a4 4 0 0 0 8 0v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="18.5" cy="14.3" r="1.9" stroke="currentColor" stroke-width="1.3"/></svg>
+        </span>
+        <h3>Von Ärzt*innen für Ärzt*innen</h3>
+        <p>Als praktizierende Ärzt*innen haben wir selbst die Probleme der Dokumentation erfahren und wissen daher genau, worauf es ankommt.</p>
+      </div>
+      <div class="doctors-card" data-reveal>
+        <span class="doctors-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 11.5A8 8 0 0 0 6.3 6.3L4 8.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4v5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12.5A8 8 0 0 0 17.7 17.7L20 15.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 20v-5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Optimiert für den Alltag</h3>
+        <p>Ob eine Patientenübersicht bei Visite oder ein Ersatz für die Aufgabenliste – myScribe bietet alles für einen effizienten Workflow.</p>
+      </div>
+      <div class="doctors-card" data-reveal>
+        <span class="doctors-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5.5" width="12" height="8" rx="1.2" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 16.5h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="16" y="8.5" width="6.5" height="10.5" rx="1.2" stroke="currentColor" stroke-width="1.5"/><path d="M18.2 16.5h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Uneingeschränkte Mobilität</h3>
+        <p>myScribe ist sowohl auf einem Tablet am Krankenbett, als auch am Desktop-PC nutzbar.</p>
+      </div>
+      <div class="doctors-card" data-reveal>
+        <span class="doctors-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="9" width="5" height="3.4" rx="0.8" stroke="currentColor" stroke-width="1.3"/><rect x="2" y="13.2" width="5" height="3.4" rx="0.8" stroke="currentColor" stroke-width="1.3"/><circle cx="4.5" cy="10.7" r="0.5" fill="currentColor"/><circle cx="4.5" cy="14.9" r="0.5" fill="currentColor"/><path d="M11 12.2a4 4 0 1 0 .6 7.94h6.9a3.3 3.3 0 0 0 .5-6.56 5 5 0 0 0-8-1.38z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>On Premise oder Cloud</h3>
+        <p>myScribe kann je nach Präferenz des Krankenhauses on Premise oder in der Cloud implementiert werden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section-pad">
+    <div class="container quote-split">
+      <div class="testimonial" data-reveal>
+        <span class="testimonial__mark" aria-hidden="true">"</span>
+        <!-- PLATZHALTER: Zitat und Person folgen. Layout bleibt wie es ist —
+             Text in .testimonial__quote, Name und Funktion darunter, statt
+             des leeren Kreises wieder ein <img class="testimonial__avatar-img">. -->
+        <p class="testimonial__quote testimonial__quote--offen">Zitat folgt.</p>
+        <div class="testimonial__author">
+          <span class="testimonial__avatar-leer" aria-hidden="true"></span>
+          <div>
+            <div class="testimonial__name">Name folgt</div>
+            <div class="testimonial__role">Funktion, Klinik</div>
+          </div>
+        </div>
+
+        <!-- Das Zitat als Balken: myScribe ist nach einem Drittel fertig. -->
+        <div class="time-compare" data-time-compare>
+          <div class="time-row">
+            <span class="time-row__label">Ohne myScribe</span>
+            <span class="time-row__track"><span class="time-row__fill" data-time-fill="100"></span></span>
+            <span class="time-row__value">45 Min</span>
+          </div>
+          <div class="time-row time-row--myscribe">
+            <span class="time-row__label">Mit myScribe</span>
+            <span class="time-row__track"><span class="time-row__fill" data-time-fill="33"></span></span>
+            <span class="time-row__value">15 Min</span>
+          </div>
+          <span class="time-compare__note">Ein langer Arztbrief, gemessen im Klinikalltag.</span>
+        </div>
+      </div>
+
+      <!-- Rechte Spalte: Platz für ein Kundenvideo + Weg zu den
+           Case Studies. Bis das Video da ist, steht hier der Leerzustand. -->
+      <aside class="quote-side" data-reveal>
+        <div class="quote-side__slot">
+          <!-- ERSETZEN: <video class="video-slot__media" poster="…" controls playsinline
+                                preload="metadata">
+                           <source src="https://marvscribe.github.io/my-scribe-site/assets/video/case-study.mp4" type="video/mp4">
+                         </video>
+               und den folgenden Leerzustand entfernen -->
+          <div class="video-slot">
+            <div class="video-slot__empty">
+              <span class="video-slot__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 14 14" fill="none"><path d="M3 1.5v11l10-5.5-10-5.5z" fill="currentColor"/></svg>
+              </span>
+              <span class="video-slot__label">Video folgt</span>
+              <span class="video-slot__hint">Stimme aus einer Klinik, ca. 60–90 Sek.</span>
+            </div>
+          </div>
+          <p class="quote-side__caption">Name und Funktion folgen</p>
+        </div>
+
+        <div class="quote-side__cta">
+          <p class="quote-side__lead">Wie Kliniken myScribe bereits einsetzen, sehen Sie in den Case Studies.</p>
+          <a class="btn btn--primary" href="/case-studies">Case Studies ansehen <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Video teaser (full-bleed dark section, near-square video card, persistent lower-third — positioned like flatiron.com) -->
+  <section id="video" class="section-pad bg-mist">
+    <div class="container container--narrow" data-reveal>
+      <span class="eyebrow">So entsteht der Brief</span>
+      <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s); max-width:26ch;">myScribe erklärt in unter 2 Minuten</h2>
+      <p class="muted" style="max-width:52ch; margin-bottom:var(--space-2xs); font-weight:300;">Was passiert, wenn Ärzt*innen mehr Zeit vor dem Bildschirm als am Patientenbett verbringen? Gründerin Dr. Ira Stoll hat genau das erlebt – und deshalb myScribe gegründet.</p>
+      <p class="muted" style="max-width:52ch; font-weight:300;">Mit diesem Elevator Pitch gewann myScribe den Founder's Summit 2025 und 500.000&nbsp;€.</p>
+    </div>
+    <div class="container" style="margin-top:var(--space-l);">
+      <div class="yt-facade" data-reveal data-yt-facade data-yt-id="LIixijRwU8k" style="background-image:url('https://img.youtube.com/vi/LIixijRwU8k/maxresdefault.jpg');" role="button" tabindex="0" aria-label="Video abspielen: Founders Summit 2025 Elevator Pitch">
+        <div class="yt-facade__scrim" aria-hidden="true"></div>
+        <span class="yt-facade__play" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 14 14" fill="none"><path d="M3 1.5v11l10-5.5-10-5.5z" fill="var(--petrol-ink)"/></svg>
+        </span>
+        <div class="yt-facade__caption">
+          <span class="yt-facade__name">Dr. med. Ira Stoll</span>
+          <span class="yt-facade__role">Gründerin &amp; CEO, myScribe · Founders Summit 2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo form -->
+  <section id="demo" class="section-pad bg-mist">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: minmax(0,0.7fr) minmax(0,1.3fr); gap:var(--space-l);">
+        <div data-reveal>
+          <span class="eyebrow">Demotermin</span>
+          <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s);">Buchen Sie einen Demotermin</h2>
+          <p class="muted" style="max-width:32ch;">Wir melden uns innerhalb von 1–2 Werktagen bei Ihnen.</p>
+        </div>
+        <form class="form-grid" data-reveal onsubmit="return false;">
+          <div class="field"><label for="vorname">Vorname</label><input id="vorname" name="Vorname" type="text" required></div>
+          <div class="field"><label for="name">Name</label><input id="name" name="Name" type="text" required></div>
+          <div class="field field--full"><label for="email">Email Adresse</label><input id="email" name="Email" type="email" required></div>
+          <div class="field field--full"><label for="unternehmen">Unternehmen/Krankenhaus</label><input id="unternehmen" name="Unternehmen" type="text" required></div>
+          <div class="field"><label for="strasse">Straße/Hausnr.</label><input id="strasse" name="Strasse" type="text"></div>
+          <div class="field"><label for="ort">Ort</label><input id="ort" name="Ort" type="text"></div>
+          <div class="field field--full"><label for="nachricht">Ihre Nachricht</label><textarea id="nachricht" name="Nachricht" rows="3"></textarea></div>
+          <div class="field field--full">
+            <label for="quelle">Wie sind Sie auf uns aufmerksam geworden?</label>
+            <select id="quelle" name="Quelle">
+              <option value="">Auswählen</option>
+              <option>Kongress</option>
+              <option>LinkedIn</option>
+              <option>Zeitungsartikel</option>
+              <option>Brief</option>
+              <option>Andere</option>
+            </select>
+          </div>
+          <div class="field field--full field--checkbox">
+            <input type="checkbox" id="datenschutz" required>
+            <label for="datenschutz" style="margin:0; font-weight:400;">Ich bin damit einverstanden, dass meine Daten zur Verarbeitung meiner Anfrage und zur anschließenden Koordination eines Termines genutzt werden. Ich akzeptiere die Datenschutzerklärung.</label>
+          </div>
+          <div class="field field--full">
+            <button type="submit" class="btn btn--primary">Demotermin buchen</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section-pad">
+    <div class="container" style="display:flex; align-items:center; gap:var(--space-m); flex-wrap:wrap;" data-reveal>
+      <img src="https://marvscribe.github.io/my-scribe-site/assets/people/kira-knauer.png" alt="Dr. med. Kira Knauer" class="testimonial__avatar-img" style="width:64px; height:64px;">
+      <div>
+        <div class="eyebrow" style="margin-bottom:0.3rem;">Noch Fragen?</div>
+        <div style="font-weight:700; font-size:var(--step-body-l);">Dr. med. Kira Knauer</div>
+        <div class="muted">Doctors' Engagement Managerin · <a href="mailto:k.knauer@myscribe.de" style="color:var(--brand-text); text-decoration:underline;">k.knauer@myscribe.de</a> · +49 151 50382497</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer bg-dark">
+  <div class="container">
+    <div class="site-footer__grid">
+      <a href="/" class="nav__logo"><img src="https://marvscribe.github.io/my-scribe-site/assets/logos/myscribe-logo-footer.webp" alt="myScribe" class="nav__logo-img nav__logo-img--on-dark"></a>
+      <nav class="site-footer__links" aria-label="Footer-Navigation">
+        <a href="/">Homepage</a>
+        <a href="/ueber-uns">Über Uns</a>
+        <a href="/karriere">Karriere</a>
+        <a href="/presse">Presse</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="site-footer__bottom"><span>kontakt@myscribe.de · +49 172 3603198</span><span>© 2026 myScribe GmbH</span></div>
+  </div>
+</footer>
