@@ -1,0 +1,154 @@
+/* ==========================================================================
+   myScribe — Design Tokens
+   Direction: clinical calm & trust. Petrol + lime, expanded tonally.
+   Signature: structured-data vernacular (mono field tags) borrowed from the
+   product's own chart UI (Leitsymptom / Diagnose / Prozedere / Epikrise).
+   ========================================================================== */
+
+:root {
+  /* ---- Color: surfaces ---- */
+  --paper: #FAF8F3;       /* page background — warm, not sterile white */
+  --paper-dim: #F2EFE6;   /* slightly deeper paper, alternating sections */
+  --mist: #EEF1E9;        /* card / secondary surface */
+  --white: #FFFFFF;
+
+  /* ---- Color: brand ---- */
+  --petrol: #437E76;      /* primary — headlines, links, primary actions.
+                             Dritte Aufhellung: weiße Schrift darauf liegt bei
+                             5.25:1, damit noch klar über AA. */
+  --petrol-deep: #3D766D; /* hover states, dark section fill */
+  --petrol-ink: #42635D;  /* darkest — text on lime, deep dark sections.
+                             Von #12332D aufgehellt: die Seite hat sechs dunkle
+                             Bänder, das wirkte insgesamt zu schwer. */
+  --lime: #D1E226;        /* sparing accent — chips, status, one signal per view */
+  --lime-soft: #EEF3C4;   /* pale lime tint — chip fill on light surfaces */
+
+  /* ---- Color: Rollen ----
+     --petrol/-deep/-ink sind Flächen. Für Text braucht die Marke eine eigene
+     Rolle, sonst lässt sich das Set nicht auf einen dunklen Grund umstellen:
+     eine Farbe kann nicht gleichzeitig als Fläche und als Schrift darauf
+     funktionieren. */
+  --brand-text: #39746C;  /* Marke als Schrift/Rahmen auf hellem Grund */
+  --on-brand: #FFFFFF;    /* Schrift auf Marken-Flächen */
+
+  /* ---- Color: ink & text ---- */
+  --ink: #16261F;         /* primary text, petrol-tinted near-black */
+  --slate: #4C5852;       /* secondary/body-muted text — AA on paper & mist */
+  --slate-soft: #636F67;  /* tertiary — captions, meta, placeholders only.
+                             Abgedunkelt von #7C8880: das erreichte auf hellen
+                             Flaechen nur 3.5:1 und damit kein AA. */
+  --line: #DDE2D6;        /* hairline borders/dividers */
+  --line-strong: #C7CDC0;
+
+  /* ---- Color: on-dark ---- */
+  --on-dark: #F3F1E7;
+  --on-dark-muted: #CEDCD2; /* mit den helleren Bändern angehoben, sonst
+                               fiel der Text darauf unter AA */
+
+  /* ---- Type — matched 1:1 to myscribe.de (Cabin, single family throughout) ---- */
+  --font-display: 'Cabin', Arial, sans-serif;
+  --font-body: 'Cabin', Arial, sans-serif;
+  --font-mono: 'Cabin', Arial, sans-serif;
+
+  /* ---- Type scale (desktop caps measured from myscribe.de: h1 64px, h2 36px, lead 24px, small-label 14px) ---- */
+  --step-2xl: clamp(2.25rem, 1.7rem + 2.4vw, 4rem);
+  --step-xl: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+  --step-l: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  --step-body-l: clamp(1.125rem, 1rem + 1.25vw, 1.5rem);
+  --step-body: 1rem;
+  --step-micro: 0.875rem;
+
+  /* ---- Space ---- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: 1.25rem;
+  --space-m: 2rem;
+  --space-l: 3.5rem;
+  --space-xl: 5.5rem;
+  --space-2xl: 8.5rem;
+
+  /* ---- Shape ---- */
+  --radius-s: 10px;
+  --radius-m: 18px;
+  --radius-l: 30px;
+  --radius-pill: 999px;
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-s: 180ms;
+  --dur-m: 420ms;
+  --dur-l: 900ms;
+
+  /* ---- Layout ---- */
+  --container: 1180px;
+  --container-narrow: 760px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-s: 0ms;
+    --dur-m: 0ms;
+    --dur-l: 0ms;
+  }
+}
+
+/* ==========================================================================
+   Dark Mode
+   Die Seite lebt von abwechselnd hellen Bändern mit gelegentlich dunklen.
+   Damit das erhalten bleibt, wird der Grund dunkel und die dunklen Bänder
+   (--petrol-ink) noch eine Stufe tiefer — sie lesen sich weiter als "tiefer",
+   nicht als "heller". Die Marken-Flächen bleiben unverändert Petrol; nur die
+   Textrolle wird aufgehellt.
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* Flächen — Grund, alternierende Bänder, Karten, erhöhte Flächen */
+    --paper: #222C28;
+    --paper-dim: #283631;
+    --mist: #2D3E38;
+    --white: #31453E;
+
+    /* Marken-Flächen bleiben; das tiefste Band rutscht unter den Grund */
+    --petrol: #3C7A71;
+    --petrol-deep: #2E655C;
+    --petrol-ink: #1C2421;
+
+    /* Rollen */
+    --brand-text: #8FCDBB;
+    --on-brand: #FFFFFF;   /* reines Weiß: auf dem helleren Markengrün
+                              kommt #F3F1E7 nur auf 4.4:1 */
+
+    --lime: #D1E226;
+    --lime-soft: #2E3F16;
+
+    /* Schrift */
+    --ink: #EAF0EC;
+    --slate: #A9B7AF;
+    --slate-soft: #A3B1A9;
+
+    --line: #26372F;
+    --line-strong: #35493F;
+  }
+
+  /* Die Nav hat einen fest hinterlegten hellen Milchglas-Grund. */
+  :root:not([data-theme="light"]) .nav {
+    background: rgba(16, 26, 22, 0.88);
+  }
+  /* Logo ist eine dunkelgrüne Bilddatei — auf dunklem Grund aufhellen. */
+  :root:not([data-theme="light"]) .nav__logo-img:not(.nav__logo-img--on-dark) {
+    filter: brightness(0) invert(1);
+    opacity: 0.92;
+  }
+  /* Chips auf --lime-soft: dort ist die Fläche jetzt dunkel, also Lime-Schrift. */
+  :root:not([data-theme="light"]) .field-tag,
+  :root:not([data-theme="light"]) .calc-result__note,
+  :root:not([data-theme="light"]) .rewrite-panel__badge,
+  :root:not([data-theme="light"]) .stepswitch__status {
+    color: var(--lime);
+  }
+  /* Der Haken im Demo-Kästchen war auf Weiß gezeichnet. */
+  :root:not([data-theme="light"]) .demo-check input::after {
+    background: var(--on-brand);
+  }
+}
