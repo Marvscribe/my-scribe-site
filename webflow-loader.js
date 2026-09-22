@@ -14,7 +14,7 @@
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
     .then(function (frag) {
       host.innerHTML = frag;
-      var q = [BASE + '/js/presse-daten.js', BASE + '/js/main.js', BASE + '/js/demos.js'];
+      var q = [BASE + '/presse-daten.js', BASE + '/main.js', BASE + '/demos.js'];
       (function next(i) {
         if (i >= q.length) { return zumAnker(); }
         var sc = document.createElement('script');
