@@ -6,6 +6,12 @@
    in Webflow muss nichts angefasst werden. */
 (function () {
   var BASE = "https://marvscribe.github.io/my-scribe-site";
+  /* Seite immer im hellen Modus zeigen, egal welchen System-Modus der
+     Besucher hat. Der Dunkelmodus im CSS ist per [data-theme="light"]
+     abschaltbar. */
+  document.documentElement.setAttribute('data-theme', 'light');
+  try { document.documentElement.style.colorScheme = 'light'; } catch (e) {}
+
   var host = document.querySelector('[data-mys-page]');
   if (!host) return;
   var slug = host.getAttribute('data-mys-page');
