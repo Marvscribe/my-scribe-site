@@ -6,3 +6,5 @@ Webflow-Seite via `webflow-loader.js` eingebunden.
 
 Bearbeiten: Datei ändern → committen/pushen → nach ~1 Minute live.
 Struktur ist flach (alle Dateien im Wurzelordner).
+
+Stand: Zugang eingerichtet – Änderungen können direkt gepusht werden.
