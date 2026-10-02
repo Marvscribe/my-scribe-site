@@ -732,6 +732,27 @@ input[type="range"]::-moz-range-thumb {
 }
 .yt-facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
+/* ---- Nativer Video-Player (läuft auf der Seite, ohne YouTube) ---- */
+.native-video {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  background-color: var(--petrol-deep);
+  width: 100%;
+  box-shadow: 0 24px 60px -20px rgba(0,0,0,0.5);
+}
+.native-video__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  border: 0;
+  display: block;
+}
+
 /* ---- Live demo: animated app UI mockup ("wow moment") ---- */
 .demo-stage {
   position: relative;
