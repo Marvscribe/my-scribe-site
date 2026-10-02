@@ -21,8 +21,10 @@
     .then(function (frag) {
       host.innerHTML = frag;
       /* Safari spielt per innerHTML eingefügte Videos nicht von selbst –
-         daher hier explizit laden und (stumm) starten. */
-      host.querySelectorAll('video').forEach(function (v) {
+         daher NUR Videos mit autoplay-Attribut (z. B. das Hero-Hintergrund-
+         video) explizit laden und stumm starten. Ein normaler Player im
+         Inhalt hat kein autoplay-Attribut und startet so erst auf Klick. */
+      host.querySelectorAll('video[autoplay]').forEach(function (v) {
         try { v.muted = true; v.load(); var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {}
       });
       var q = [BASE + '/presse-daten.js', BASE + '/main.js', BASE + '/demos.js'];
