@@ -646,6 +646,11 @@ input[type="range"]::-moz-range-thumb {
   opacity: 1;
   filter: grayscale(0);
 }
+/* Kundenlogos im Startseiten-Banner insgesamt etwas größer (alle gleich groß,
+   da jedes Logo auf einer einheitlichen Bühne zentriert ist). Gilt nur im
+   Banner (.partners), nicht für die Partner-Logos auf der Presse-Seite. */
+.partners .partners__item { height: 54px; }
+.partners .partners__logo { max-width: 220px; }
 /* Der Streifen läuft durch, auch unter dem Mauszeiger — nur die Farbe
    kommt beim Überfahren zurück. */
 @keyframes partners-scroll {
