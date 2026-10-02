@@ -39,7 +39,27 @@
 
   function zumAnker() {
     if (!location.hash) return;
-    var ziel = document.querySelector(location.hash);
-    if (ziel) ziel.scrollIntoView();
+    var ziel;
+    try { ziel = document.querySelector(location.hash); } catch (e) { return; }
+    if (!ziel) return;
+    /* Sofort zum Ziel – und kurz nachjustieren, solange Bilder/Video die
+       Seitenhöhe noch verändern. Sobald der Besucher selbst scrollt, sofort
+       aufhören, damit ihn nichts an den Anker zurückzieht. */
+    ziel.scrollIntoView();
+    var start = Date.now();
+    var aus = false;
+    function nutzerScrollt() {
+      aus = true;
+      window.removeEventListener('wheel', nutzerScrollt);
+      window.removeEventListener('touchmove', nutzerScrollt);
+      window.removeEventListener('keydown', nutzerScrollt);
+    }
+    window.addEventListener('wheel', nutzerScrollt, { passive: true });
+    window.addEventListener('touchmove', nutzerScrollt, { passive: true });
+    window.addEventListener('keydown', nutzerScrollt);
+    var iv = setInterval(function () {
+      if (aus || Date.now() - start > 1200) { clearInterval(iv); nutzerScrollt(); return; }
+      ziel.scrollIntoView();
+    }, 150);
   }
 }());

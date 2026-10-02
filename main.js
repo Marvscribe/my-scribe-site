@@ -9,6 +9,27 @@
 function mysReady(fn){ if (document.readyState !== 'loading') { fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
 mysReady(() => {
 
+  /* ---- Sanftes, konfliktfreies Anker-Scrollen ----
+     In-Page-Anker (#…) selbst behandeln, damit sie nicht mit Webflows
+     eigener Anker-Animation kollidieren — dieser Konflikt führte dazu, dass
+     die Seite nach dem Sprung beim Weiterscrollen wieder nach oben sprang.
+     Nur echte seiten-interne Anker abfangen; seitenübergreifende Links wie
+     "/#live-demo" bleiben normale Navigation. */
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    const sel = a.getAttribute('href');
+    if (!sel || sel === '#' || sel.length < 2) return;
+    let ziel;
+    try { ziel = document.querySelector(sel); } catch (_) { return; }
+    if (!ziel) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const top = ziel.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({ top, behavior: 'smooth' });
+    if (history && history.pushState) history.pushState(null, '', sel);
+  }, true);
+
   /* Reveal-on-scroll */
   const revealEls = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window) {
