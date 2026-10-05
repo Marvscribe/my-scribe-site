@@ -586,6 +586,24 @@ input[type="range"]::-moz-range-thumb {
 .hero .btn--ghost { color: var(--on-dark); border-color: rgba(243,241,231,0.35); }
 .hero .btn--ghost:hover { border-color: var(--lime); color: var(--lime); }
 
+/* ---- Animierte Hero-Headline: "Der" / rotierendes Wort / "Arztbrief",
+   verschmelzen am Ende zu "Der Arztbrief". Linksbündig, Seiten-Schriften (Cabin).
+   Reserviert dauerhaft drei Zeilen Höhe -> Eyebrow/Subline/Buttons wandern nie. ---- */
+.hero-headline { position: relative; }
+.hhl-anim { display: block; position: relative; }
+.hhl-line { display: block; white-space: nowrap; line-height: 1.1; }
+.hhl-der   { display: inline-block; transform-origin: 50% 55%; }
+.hhl-brief { display: inline-block; color: var(--on-dark-muted); font-weight: 300; font-style: italic; transform-origin: 50% 55%; }
+/* Zeile 2: feste Ein-Zeilen-Höhe; rotierendes Wort liegt absolut (kein Layout-
+   sprung beim Wortwechsel). Keine overflow-Maske (Unterlängen/Blur sichtbar). */
+.hhl-l2 { position: relative; height: 1.1em; }
+.hhl-rot { display: block; position: absolute; inset: 0 auto auto 0; }
+.hhl-word { position: absolute; left: 0; top: 0; white-space: nowrap; }
+/* unsichtbare Referenzzeile im Endlayout ("Der Arztbrief"), linksbündig, für FLIP */
+.hhl-ref { position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-start; visibility: hidden; pointer-events: none; }
+.hhl-ref-row { display: inline-flex; align-items: baseline; gap: 0.25em; white-space: nowrap; }
+.hhl-brief-ref { color: var(--on-dark-muted); font-weight: 300; font-style: italic; }
+
 @media (max-width: 860px) {
   .hero { min-height: auto; padding-block: calc(var(--space-l) + 4rem) var(--space-l); }
   /* Hier steht der Text über die volle Breite, ein seitlicher Verlauf

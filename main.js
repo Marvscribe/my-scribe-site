@@ -667,3 +667,162 @@ mysReady(() => {
   }
 
 });
+
+/* ====================================================================
+   Animierte Hero-Headline (nur Startseite)
+   Drei Zeilen — "Der" / rotierendes Wort / "Arztbrief" — die am Ende zu
+   "Der Arztbrief" verschmelzen. Zielpositionen per FLIP aus einer
+   unsichtbaren Referenzzeile; animiert werden nur transform/translate/
+   scale/opacity/filter, daher kein Reflow von Eyebrow/Subline/Buttons.
+   ==================================================================== */
+mysReady(function () {
+  var rot = document.getElementById('hhl-rot');
+  if (!rot) return;                       // nur auf der Startseite vorhanden
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // statischer Drei-Zeiler
+
+  var der   = document.getElementById('hhl-der');
+  var brief = document.getElementById('hhl-brief');
+  var ref   = document.getElementById('hhl-ref');
+  var refRow   = ref.querySelector('.hhl-ref-row');
+  var refDer   = ref.querySelector('.hhl-der-ref');
+  var refBrief = ref.querySelector('.hhl-brief-ref');
+
+  var WORDS = ['KI-generierte', 'neue', 'intelligente', 'bewährte', 'sichere', 'entlastende'];
+  var ROT = { enter: 320, hold: 340, exit: 260 };
+  var FINALE_DUR = 850, PEAK = 0.42, POP_SCALE = 1.14;
+  var EASE_ENTER = 'cubic-bezier(0.2, 0.7, 0.2, 1)';
+  var EASE_EXIT  = 'cubic-bezier(0.6, 0, 0.75, 0.3)';
+  var EASE_MOVE  = 'cubic-bezier(0.33, 1, 0.68, 1)';
+  var EASE_POP_DOWN = 'cubic-bezier(0.65, 0, 0.35, 1)';
+
+  var sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
+
+  var ENTER = [
+    { opacity: 0, transform: 'translateY(0.5em)',  filter: 'blur(5px)' },
+    { opacity: 1, transform: 'translateY(0)',       filter: 'blur(0)' }
+  ];
+  var EXIT = [
+    { opacity: 1, transform: 'translateY(0)',       filter: 'blur(0)' },
+    { opacity: 0, transform: 'translateY(-0.5em)',  filter: 'blur(5px)' }
+  ];
+
+  function makeWord(w) {
+    var el = document.createElement('span');
+    el.className = 'hhl-word';
+    el.textContent = w;
+    el.style.opacity = '0';
+    el.style.willChange = 'transform, opacity, filter';
+    return el;
+  }
+  function measureTargets() {
+    var a = der.getBoundingClientRect(),  b = brief.getBoundingClientRect();
+    var ra = refDer.getBoundingClientRect(), rb = refBrief.getBoundingClientRect();
+    return {
+      der:   { x: ra.left - a.left, y: ra.top - a.top },
+      brief: { x: rb.left - b.left, y: rb.top - b.top },
+      rowW:  refRow.getBoundingClientRect().width
+    };
+  }
+  function popScaleFor(rowW) {
+    var avail = document.documentElement.clientWidth - 32;
+    var maxScale = rowW > 0 ? avail / rowW : POP_SCALE;
+    return Math.max(1, Math.min(POP_SCALE, maxScale));
+  }
+
+  var finaleDone = false;
+
+  function rotateWord(w) {
+    var el = makeWord(w);
+    rot.appendChild(el);
+    return el.animate(ENTER, { duration: ROT.enter, easing: EASE_ENTER, fill: 'both' }).finished
+      .then(function () { return sleep(ROT.hold); })
+      .then(function () { return el.animate(EXIT, { duration: ROT.exit, easing: EASE_EXIT, fill: 'both' }).finished; })
+      .then(function () { el.remove(); });
+  }
+
+  function finale(lastEl) {
+    var t = measureTargets();
+    var pop = popScaleFor(t.rowW);
+    der.style.willChange = 'translate, scale';
+    brief.style.willChange = 'translate, scale';
+    // letztes Wort verblasst an Ort und Stelle (kein Weg), während Der/Arztbrief zusammenrücken
+    lastEl.animate(
+      [{ opacity: 1, filter: 'blur(0)', scale: '1' }, { opacity: 0, filter: 'blur(5px)', scale: '0.94' }],
+      { duration: ROT.exit, easing: EASE_EXIT, fill: 'both' }
+    );
+    setTimeout(function () { lastEl.remove(); }, ROT.exit);
+
+    function moveAndPop(elm, tgt) {
+      elm.animate([{ translate: '0px 0px' }, { translate: tgt.x + 'px ' + tgt.y + 'px' }],
+        { duration: FINALE_DUR, easing: EASE_MOVE, fill: 'both' });
+      return elm.animate(
+        [{ scale: '1', offset: 0, easing: EASE_MOVE },
+         { scale: String(pop), offset: PEAK, easing: EASE_POP_DOWN },
+         { scale: '1', offset: 1 }],
+        { duration: FINALE_DUR, fill: 'both' }
+      ).finished;
+    }
+    return Promise.all([moveAndPop(der, t.der), moveAndPop(brief, t.brief)]).then(function () {
+      der.getAnimations().forEach(function (an) { an.cancel(); });
+      brief.getAnimations().forEach(function (an) { an.cancel(); });
+      der.style.translate   = t.der.x + 'px ' + t.der.y + 'px';   der.style.scale = '1';
+      brief.style.translate = t.brief.x + 'px ' + t.brief.y + 'px'; brief.style.scale = '1';
+      der.style.willChange = ''; brief.style.willChange = '';
+      rot.innerHTML = '';
+      finaleDone = true;
+    });
+  }
+
+  function waitVisible() {
+    if (!document.hidden) return Promise.resolve();
+    return new Promise(function (res) {
+      document.addEventListener('visibilitychange', function onV() {
+        if (!document.hidden) { document.removeEventListener('visibilitychange', onV); res(); }
+      });
+    });
+  }
+
+  function run() {
+    return (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve())
+      .then(waitVisible)
+      .then(function () {
+        // erstes Wort steht schon sichtbar im Markup: kurz halten, dann abtreten
+        var first = rot.querySelector('.hhl-word');
+        return sleep(240 + ROT.hold).then(function () {
+          if (!first) return;
+          return first.animate(EXIT, { duration: ROT.exit, easing: EASE_EXIT, fill: 'both' }).finished
+            .then(function () { first.remove(); });
+        });
+      })
+      .then(function () {
+        var chain = Promise.resolve();
+        for (var i = 1; i < WORDS.length; i++) {
+          (function (idx) {
+            chain = chain.then(function () {
+              if (idx < WORDS.length - 1) return rotateWord(WORDS[idx]);
+              var el = makeWord(WORDS[idx]);
+              rot.appendChild(el);
+              return el.animate(ENTER, { duration: ROT.enter, easing: EASE_ENTER, fill: 'both' }).finished
+                .then(function () { return sleep(ROT.hold); })
+                .then(function () { return finale(el); });
+            });
+          })(i);
+        }
+        return chain;
+      });
+  }
+
+  // Endlayout an Breitenänderungen anpassen (nur nach der Finale)
+  var rz;
+  new ResizeObserver(function () {
+    clearTimeout(rz);
+    rz = setTimeout(function () {
+      if (!finaleDone) return;
+      var t = measureTargets();
+      der.style.translate   = t.der.x + 'px ' + t.der.y + 'px';
+      brief.style.translate = t.brief.x + 'px ' + t.brief.y + 'px';
+    }, 150);
+  }).observe(document.documentElement);
+
+  run();
+});

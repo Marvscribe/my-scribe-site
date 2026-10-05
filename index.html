@@ -37,7 +37,15 @@
     <div class="container hero__content">
       <div class="hero__grid hero__grid--single" data-reveal>
         <span class="eyebrow">Klinische Dokumentation neu gedacht</span>
-        <h1 style="font-size:var(--step-2xl); line-height:1.1; margin-bottom:var(--space-s); max-width:16ch;">Der<br><span style="color:var(--on-dark-muted); font-weight:300; font-style:italic;">KI-generierte Arztbrief</span></h1>
+        <h1 class="hero-headline" style="font-size:var(--step-2xl); line-height:1.1; margin-bottom:var(--space-s); max-width:16ch;">
+          <span class="sr-only">Der KI-generierte Arztbrief</span>
+          <span class="hhl-anim" aria-hidden="true">
+            <span class="hhl-line"><span class="hhl-der" id="hhl-der">Der</span></span>
+            <span class="hhl-line hhl-l2"><span class="hhl-rot" id="hhl-rot"><span class="hhl-word">KI-generierte</span></span></span>
+            <span class="hhl-line"><span class="hhl-brief" id="hhl-brief">Arztbrief</span></span>
+          </span>
+          <span class="hhl-ref" aria-hidden="true" id="hhl-ref"><span class="hhl-ref-row"><span class="hhl-der-ref">Der</span><span class="hhl-brief-ref">Arztbrief</span></span></span>
+        </h1>
         <p class="muted" style="font-size:var(--step-body-l); font-weight:300; max-width:34ch; margin-bottom:var(--space-m);">myScribe erfindet die klinische Dokumentation neu – intuitiv und effizient.</p>
         <div style="display:flex; gap:1rem; flex-wrap:wrap;">
           <a href="#demo" class="btn btn--primary">Demotermin vereinbaren</a>
