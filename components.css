@@ -1405,9 +1405,13 @@ input[type="range"]::-moz-range-thumb {
   margin-bottom: 0.15rem;
 }
 .team-card__role {
-  font-size: var(--step-micro);
+  font-size: 0.8125rem;
   color: var(--slate);
-  line-height: 1.4;
+  line-height: 1.3;
+  text-wrap: balance;
+  /* Platz für bis zu zwei Zeilen reservieren, damit alle Karten einer Reihe
+     gleich hoch wirken und die Namen auf einer Linie stehen. */
+  min-height: 2.125rem;
 }
 @media (max-width: 720px) {
   .team-grid {
