@@ -11,10 +11,11 @@ mysReady(() => {
 
   /* ---- Sanftes, konfliktfreies Anker-Scrollen ----
      In-Page-Anker (#…) selbst behandeln, damit sie nicht mit Webflows
-     eigener Anker-Animation kollidieren — dieser Konflikt führte dazu, dass
-     die Seite nach dem Sprung beim Weiterscrollen wieder nach oben sprang.
-     Nur echte seiten-interne Anker abfangen; seitenübergreifende Links wie
-     "/#live-demo" bleiben normale Navigation. */
+     eigener Anker-Animation kollidieren. Die sanfte Animation wird zudem
+     sofort abgebrochen, sobald der Nutzer selbst scrollt — sonst kämpft die
+     (bei großen Distanzen lange) Animation gegen das Weiterscrollen und zieht
+     an die Sprungstelle zurück. Nur seiten-interne Anker abfangen;
+     seitenübergreifende Links wie "/#live-demo" bleiben normale Navigation. */
   document.addEventListener('click', function (e) {
     const a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if (!a) return;
@@ -25,9 +26,38 @@ mysReady(() => {
     if (!ziel) return;
     e.preventDefault();
     e.stopPropagation();
-    const top = ziel.getBoundingClientRect().top + window.pageYOffset;
-    window.scrollTo({ top, behavior: 'smooth' });
     if (history && history.pushState) history.pushState(null, '', sel);
+
+    const top = ziel.getBoundingClientRect().top + window.pageYOffset;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, top);
+      return;
+    }
+
+    let done = false;
+    const opts = { passive: true, capture: true };
+    function entkoppeln() {
+      window.removeEventListener('wheel', abbrechen, opts);
+      window.removeEventListener('touchmove', abbrechen, opts);
+      window.removeEventListener('keydown', aufTaste, true);
+    }
+    function abbrechen() {
+      if (done) return;
+      done = true;
+      /* Laufende sanfte Animation an der aktuellen Position anhalten, damit
+         die Eingabe des Nutzers ungestört übernimmt. */
+      window.scrollTo({ top: window.pageYOffset, behavior: 'auto' });
+      entkoppeln();
+    }
+    function aufTaste(ev) {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Spacebar'].indexOf(ev.key) !== -1) abbrechen();
+    }
+    window.addEventListener('wheel', abbrechen, opts);
+    window.addEventListener('touchmove', abbrechen, opts);
+    window.addEventListener('keydown', aufTaste, true);
+    setTimeout(entkoppeln, 1600);
+
+    window.scrollTo({ top: top, behavior: 'smooth' });
   }, true);
 
   /* Reveal-on-scroll */
