@@ -3,10 +3,8 @@
    ========================================================================== */
 
 *, *::before, *::after { box-sizing: border-box; }
-/* Kein globales Smooth-Scrolling: Anker-Sprünge erledigt main.js sofort.
-   Ein sanftes Scrollen hier führte dazu, dass die Seite nach einem Anker-
-   Sprung beim Weiterscrollen wieder zur Sprungstelle zurückzog. */
-html { scroll-behavior: auto; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
   margin: 0;

@@ -9,13 +9,12 @@
 function mysReady(fn){ if (document.readyState !== 'loading') { fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
 mysReady(() => {
 
-  /* ---- Anker-Scrollen ohne Animation ----
-     In-Page-Anker (#…) selbst behandeln und SOFORT (ohne sanfte Animation)
-     zur Zielmarke springen. Eine laufende Animation hatte dazu geführt, dass
-     die Seite beim Weiterscrollen wieder an die Sprungstelle zurückzog. Ohne
-     Animation gibt es nichts, gegen das das Scrollen ankämpfen kann. Nur
-     seiten-interne Anker; seitenübergreifende Links wie "/#live-demo" bleiben
-     normale Navigation. */
+  /* ---- Sanftes, abbrechbares Anker-Scrollen ----
+     In-Page-Anker (#…) selbst behandeln: sanft zur Zielmarke gleiten, die
+     Animation aber sofort abbrechen, sobald der Nutzer selbst scrollt — so
+     gleitet der Sprung schön, bleibt danach frei scrollbar und zieht nicht an
+     die Sprungstelle zurück. Nur seiten-interne Anker; seitenübergreifende
+     Links wie "/#live-demo" bleiben normale Navigation. */
   document.addEventListener('click', function (e) {
     const a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if (!a) return;
@@ -27,8 +26,37 @@ mysReady(() => {
     e.preventDefault();
     e.stopPropagation();
     if (history && history.pushState) history.pushState(null, '', sel);
+
     const top = ziel.getBoundingClientRect().top + window.pageYOffset;
-    window.scrollTo({ top: top, behavior: 'auto' });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, top);
+      return;
+    }
+
+    let done = false;
+    const opts = { passive: true, capture: true };
+    function entkoppeln() {
+      window.removeEventListener('wheel', abbrechen, opts);
+      window.removeEventListener('touchmove', abbrechen, opts);
+      window.removeEventListener('keydown', aufTaste, true);
+    }
+    function abbrechen() {
+      if (done) return;
+      done = true;
+      /* Laufende Gleit-Animation an der aktuellen Position anhalten, damit die
+         Eingabe des Nutzers ungestört übernimmt. */
+      window.scrollTo({ top: window.pageYOffset, behavior: 'auto' });
+      entkoppeln();
+    }
+    function aufTaste(ev) {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Spacebar'].indexOf(ev.key) !== -1) abbrechen();
+    }
+    window.addEventListener('wheel', abbrechen, opts);
+    window.addEventListener('touchmove', abbrechen, opts);
+    window.addEventListener('keydown', aufTaste, true);
+    setTimeout(entkoppeln, 1600);
+
+    window.scrollTo({ top: top, behavior: 'smooth' });
   }, true);
 
   /* Reveal-on-scroll */
