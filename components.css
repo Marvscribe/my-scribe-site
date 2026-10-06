@@ -588,7 +588,9 @@ input[type="range"]::-moz-range-thumb {
 
 /* ---- Animierte Hero-Headline: "Der" / rotierendes Wort / "Arztbrief",
    verschmelzen am Ende zu "Der Arztbrief". Linksbündig, Seiten-Schriften (Cabin).
-   Reserviert dauerhaft drei Zeilen Höhe -> Eyebrow/Subline/Buttons wandern nie. ---- */
+   Waehrend der Rotation bleiben drei Zeilen reserviert (kein Layout-Shift).
+   Im Endzustand (.is-compact) rueckt der Block auf eine Zeile zusammen; die
+   Lime-Zeile und die Buttons gleiten dabei per Transform mit nach oben. ---- */
 .hero-headline { position: relative; }
 .hhl-anim { display: block; position: relative; }
 .hhl-line { display: block; white-space: nowrap; line-height: 1.1; }
@@ -603,6 +605,44 @@ input[type="range"]::-moz-range-thumb {
 .hhl-ref { position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-start; visibility: hidden; pointer-events: none; }
 .hhl-ref-row { display: inline-flex; align-items: baseline; gap: 0.25em; white-space: nowrap; }
 .hhl-brief-ref { color: var(--on-dark-muted); font-weight: 300; font-style: italic; }
+/* Kompakter Endzustand: Headline-Block auf eine Zeile. Die drei Zeilen liegen
+   deckungsgleich oben; "Der"/"Arztbrief" sitzen per FLIP-Transform auf dieser
+   Zeile. Nur die Hoehe aendert sich hier, und das genau einmal nach dem Finale,
+   niemals waehrend einer laufenden Animation. */
+.hero-headline.is-compact .hhl-anim { height: 1.1em; }
+.hero-headline.is-compact .hhl-line { position: absolute; top: 0; left: 0; }
+
+/* Lime-Zeile unter der Headline (frueher das Eyebrow, jetzt ein Absatz). */
+.hero-kicker {
+  color: var(--lime);
+  font-family: var(--font-mono);
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  margin-top: clamp(1.25rem, 2.2vw, 1.75rem);  /* 20 bis 28px Abstand zur Headline */
+}
+.hero-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  margin-right: 0.6em;
+  background: var(--lime);
+  vertical-align: middle;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: clamp(2.25rem, 3.4vw, 2.75rem);  /* 36 bis 44px Abstand zu den Buttons */
+}
+@media (max-width: 860px) {
+  /* proportional kleinere Abstaende auf schmalen Displays */
+  .hero-kicker { margin-top: clamp(0.9rem, 3.5vw, 1.25rem); }
+  .hero-actions { margin-top: clamp(1.5rem, 5vw, 2.25rem); }
+}
 
 @media (max-width: 860px) {
   .hero { min-height: auto; padding-block: calc(var(--space-l) + 4rem) var(--space-l); }

@@ -672,8 +672,11 @@ mysReady(() => {
    Animierte Hero-Headline (nur Startseite)
    Drei Zeilen — "Der" / rotierendes Wort / "Arztbrief" — die am Ende zu
    "Der Arztbrief" verschmelzen. Zielpositionen per FLIP aus einer
-   unsichtbaren Referenzzeile; animiert werden nur transform/translate/
-   scale/opacity/filter, daher kein Reflow von Eyebrow/Subline/Buttons.
+   unsichtbaren Referenzzeile. Es werden ausschliesslich transform/translate/
+   scale/opacity/filter animiert (nie height/margin/top), daher kein Layout-
+   Shift. Im Finale rueckt der Block zusaetzlich auf eine Zeile zusammen: die
+   Lime-Zeile und die Buttons gleiten per translateY mit nach oben, danach wird
+   die reservierte Hoehe einmalig fest auf eine Zeile gesetzt.
    ==================================================================== */
 mysReady(function () {
   var rot = document.getElementById('hhl-rot');
@@ -686,6 +689,9 @@ mysReady(function () {
   var refRow   = ref.querySelector('.hhl-ref-row');
   var refDer   = ref.querySelector('.hhl-der-ref');
   var refBrief = ref.querySelector('.hhl-brief-ref');
+  var headline = document.querySelector('.hero-headline');
+  var kicker   = document.getElementById('hero-kicker');   // Lime-Zeile unter der Headline
+  var actions  = document.getElementById('hero-actions');  // Button-Reihe
 
   var WORDS = ['KI-generierte', 'neue', 'intelligente', 'bewährte', 'sichere', 'entlastende'];
   var ROT = { enter: 320, hold: 340, exit: 260 };
@@ -714,15 +720,6 @@ mysReady(function () {
     el.style.willChange = 'transform, opacity, filter';
     return el;
   }
-  function measureTargets() {
-    var a = der.getBoundingClientRect(),  b = brief.getBoundingClientRect();
-    var ra = refDer.getBoundingClientRect(), rb = refBrief.getBoundingClientRect();
-    return {
-      der:   { x: ra.left - a.left, y: ra.top - a.top },
-      brief: { x: rb.left - b.left, y: rb.top - b.top },
-      rowW:  refRow.getBoundingClientRect().width
-    };
-  }
   function popScaleFor(rowW) {
     var avail = document.documentElement.clientWidth - 32;
     var maxScale = rowW > 0 ? avail / rowW : POP_SCALE;
@@ -740,11 +737,50 @@ mysReady(function () {
       .then(function () { el.remove(); });
   }
 
+  /* Setzt "Der"/"Arztbrief" per FLIP exakt auf die Referenzzeile. Muss mit
+     bereits gesetztem Endzustand (.is-compact oder nicht) aufgerufen werden;
+     misst die Basis ohne Transform und legt das Transform passend neu an. */
+  function placeHeadline() {
+    der.style.translate = ''; der.style.scale = '';
+    brief.style.translate = ''; brief.style.scale = '';
+    void headline.offsetWidth;
+    var a = der.getBoundingClientRect(),  b = brief.getBoundingClientRect();
+    var ra = refDer.getBoundingClientRect(), rb = refBrief.getBoundingClientRect();
+    der.style.translate   = (ra.left - a.left) + 'px ' + (ra.top - a.top) + 'px';   der.style.scale = '1';
+    brief.style.translate = (rb.left - b.left) + 'px ' + (rb.top - b.top) + 'px'; brief.style.scale = '1';
+  }
+
   function finale(lastEl) {
-    var t = measureTargets();
-    var pop = popScaleFor(t.rowW);
+    // 1. Reservierte (dreizeilige) Ausgangspositionen merken.
+    var derF   = der.getBoundingClientRect();
+    var briefF = brief.getBoundingClientRect();
+    var kickF  = kicker  ? kicker.getBoundingClientRect()  : null;
+    var actF   = actions ? actions.getBoundingClientRect() : null;
+
+    // 2. Zielpositionen im kompakten Endzustand messen: Klasse kurz anlegen,
+    //    Layout lesen (inkl. Re-Zentrierung des Hero-Inhalts), wieder entfernen.
+    headline.classList.add('is-compact');
+    void headline.offsetWidth;
+    var refD = refDer.getBoundingClientRect();
+    var refB = refBrief.getBoundingClientRect();
+    var rowW = refRow.getBoundingClientRect().width;
+    var kickL = kicker  ? kicker.getBoundingClientRect()  : null;
+    var actL  = actions ? actions.getBoundingClientRect() : null;
+    headline.classList.remove('is-compact');
+    void headline.offsetWidth;
+
+    // 3. FLIP-Deltas von reserviert nach kompakt.
+    var tDer   = { x: refD.left - derF.left,   y: refD.top - derF.top };
+    var tBrief = { x: refB.left - briefF.left, y: refB.top - briefF.top };
+    var dKick  = kickF ? (kickL.top - kickF.top) : 0;
+    var dAct   = actF  ? (actL.top  - actF.top)  : 0;
+    var pop = popScaleFor(rowW);
+
     der.style.willChange = 'translate, scale';
     brief.style.willChange = 'translate, scale';
+    if (kicker)  kicker.style.willChange  = 'transform';
+    if (actions) actions.style.willChange = 'transform';
+
     // letztes Wort verblasst an Ort und Stelle (kein Weg), während Der/Arztbrief zusammenrücken
     lastEl.animate(
       [{ opacity: 1, filter: 'blur(0)', scale: '1' }, { opacity: 0, filter: 'blur(5px)', scale: '0.94' }],
@@ -762,12 +798,36 @@ mysReady(function () {
         { duration: FINALE_DUR, fill: 'both' }
       ).finished;
     }
-    return Promise.all([moveAndPop(der, t.der), moveAndPop(brief, t.brief)]).then(function () {
+    // Lime-Zeile und Buttons ruecken gleichzeitig (gleiche Dauer und Easing wie
+    // die Finale-Bewegung) per translateY nach oben.
+    function slideY(elm, dy) {
+      if (!elm) return Promise.resolve();
+      return elm.animate(
+        [{ transform: 'translateY(0px)' }, { transform: 'translateY(' + dy + 'px)' }],
+        { duration: FINALE_DUR, easing: EASE_MOVE, fill: 'both' }
+      ).finished;
+    }
+
+    return Promise.all([
+      moveAndPop(der, tDer),
+      moveAndPop(brief, tBrief),
+      slideY(kicker, dKick),
+      slideY(actions, dAct)
+    ]).then(function () {
+      // Endzustand hart setzen: reservierte Hoehe auf eine Zeile, Transforms weg,
+      // Der/Arztbrief exakt auf die kompakte Referenzzeile. Alles in einem Tick,
+      // damit nichts sichtbar springt (gemessenes Ziel == committetes Layout).
       der.getAnimations().forEach(function (an) { an.cancel(); });
       brief.getAnimations().forEach(function (an) { an.cancel(); });
-      der.style.translate   = t.der.x + 'px ' + t.der.y + 'px';   der.style.scale = '1';
-      brief.style.translate = t.brief.x + 'px ' + t.brief.y + 'px'; brief.style.scale = '1';
+      if (kicker)  kicker.getAnimations().forEach(function (an) { an.cancel(); });
+      if (actions) actions.getAnimations().forEach(function (an) { an.cancel(); });
+      headline.classList.add('is-compact');
+      if (kicker)  kicker.style.transform  = '';
+      if (actions) actions.style.transform = '';
+      placeHeadline();
       der.style.willChange = ''; brief.style.willChange = '';
+      if (kicker)  kicker.style.willChange  = '';
+      if (actions) actions.style.willChange = '';
       rot.innerHTML = '';
       finaleDone = true;
     });
@@ -812,15 +872,15 @@ mysReady(function () {
       });
   }
 
-  // Endlayout an Breitenänderungen anpassen (nur nach der Finale)
+  // Endlayout an Breitenänderungen anpassen (nur nach der Finale). Die Lime-Zeile
+  // und die Buttons liegen im kompakten Zustand im normalen Fluss und ordnen sich
+  // selbst neu; nur "Der"/"Arztbrief" muessen neu auf die Referenzzeile gesetzt werden.
   var rz;
   new ResizeObserver(function () {
     clearTimeout(rz);
     rz = setTimeout(function () {
       if (!finaleDone) return;
-      var t = measureTargets();
-      der.style.translate   = t.der.x + 'px ' + t.der.y + 'px';
-      brief.style.translate = t.brief.x + 'px ' + t.brief.y + 'px';
+      placeHeadline();
     }, 150);
   }).observe(document.documentElement);
 
