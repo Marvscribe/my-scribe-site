@@ -7,6 +7,28 @@
 /* Läuft sofort, wenn das DOM schon steht (z. B. bei nachgeladenem Inhalt in
    Webflow), sonst wie gewohnt bei DOMContentLoaded. */
 function mysReady(fn){ if (document.readyState !== 'loading') { fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
+
+/* Zentraler, sofortiger Sprung zum Demo-Formular, ganz ohne Gleit-Animation,
+   plus Fokus aufs erste Feld. Eine Stelle fuer beides: den Klick auf jeden
+   "Demo anfragen"-Trigger (gemeinsamer Handler unten) und das Landen nach dem
+   Seitenwechsel von einer Unterseite (webflow-loader.js ruft es auf). So steht
+   das Verhalten nicht mehrfach im Code. doFocus false zieht nur die Position
+   nach, ohne erneut zu fokussieren. */
+window.mysJumpToDemo = function (doFocus) {
+  var demo = document.getElementById('demo');
+  if (!demo) return false;
+  var root = document.documentElement;
+  var prev = root.style.scrollBehavior;
+  root.style.scrollBehavior = 'auto';  // ueberschreibt scroll-behavior: smooth, also kein Gleiten
+  window.scrollTo(0, demo.getBoundingClientRect().top + window.pageYOffset);
+  var first = document.getElementById('df-vorname');
+  if (first && doFocus !== false) {
+    try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); }
+  }
+  root.style.scrollBehavior = prev;
+  return true;
+};
+
 mysReady(() => {
 
   /* ---- Sanftes, abbrechbares Anker-Scrollen ----
@@ -16,6 +38,20 @@ mysReady(() => {
      die Sprungstelle zurück. Nur seiten-interne Anker; seitenübergreifende
      Links wie "/#live-demo" bleiben normale Navigation. */
   document.addEventListener('click', function (e) {
+    /* Jeder "Demo anfragen"-Trigger (href endet auf #demo) springt sofort zum
+       Formular, ohne Gleiten. Liegt das Formular auf dieser Seite, hier
+       abfangen und springen. Sonst (Unterseite) normale Navigation zu /#demo,
+       das Landen uebernimmt dann der Seiten-Lader. */
+    const demoTrigger = e.target.closest ? e.target.closest('a[href$="#demo"]') : null;
+    if (demoTrigger) {
+      if (document.getElementById('demo')) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (history && history.pushState) history.pushState(null, '', '#demo');
+        window.mysJumpToDemo(true);
+      }
+      return;
+    }
     const a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if (!a) return;
     const sel = a.getAttribute('href');

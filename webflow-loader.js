@@ -44,6 +44,28 @@
     var ziel;
     try { ziel = document.querySelector(location.hash); } catch (e) { return; }
     if (!ziel) return;
+    /* Demo-Formular: sofortiger Sprung ohne Animation plus Fokus aufs erste
+       Feld. Die Logik steht zentral in main.js (mysJumpToDemo), hier nur die
+       kurze Nachjustierung, solange sich die Seitenhoehe noch aendert. */
+    if (location.hash === '#demo' && typeof window.mysJumpToDemo === 'function') {
+      window.mysJumpToDemo(true);
+      var s0 = Date.now();
+      var aus0 = false;
+      function stopp0() {
+        aus0 = true;
+        window.removeEventListener('wheel', stopp0);
+        window.removeEventListener('touchmove', stopp0);
+        window.removeEventListener('keydown', stopp0);
+      }
+      window.addEventListener('wheel', stopp0, { passive: true });
+      window.addEventListener('touchmove', stopp0, { passive: true });
+      window.addEventListener('keydown', stopp0);
+      var iv0 = setInterval(function () {
+        if (aus0 || Date.now() - s0 > 1000) { clearInterval(iv0); stopp0(); return; }
+        window.mysJumpToDemo(false);
+      }, 150);
+      return;
+    }
     /* Sofort zum Ziel – und kurz nachjustieren, solange Bilder/Video die
        Seitenhöhe noch verändern. Sobald der Besucher selbst scrollt, sofort
        aufhören, damit ihn nichts an den Anker zurückzieht. */
