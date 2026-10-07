@@ -22,26 +22,10 @@
       host.innerHTML = frag;
       /* Safari spielt per innerHTML eingefuegte Videos nicht von selbst. Daher
          werden NUR Videos mit autoplay-Attribut (etwa das Hero-Hintergrundvideo)
-         per Skript geladen und stumm gestartet. Ein normaler Player im Inhalt
-         hat kein autoplay-Attribut und startet so erst auf Klick.
-         Auf schmalen Displays (hoechstens 768px) und bei aktiver Datensparsamkeit
-         wird kein Video geladen: das Poster bleibt als Bild stehen. Die Quelle
-         liegt in data-hero-src und wird nur im erlaubten Fall gesetzt. */
+         per Skript geladen und stumm gestartet, auf allen Geraeten. Ein normaler
+         Player im Inhalt hat kein autoplay-Attribut und startet so erst auf Klick. */
       host.querySelectorAll('video[autoplay]').forEach(function (v) {
-        try {
-          var schmal = window.matchMedia('(max-width: 768px)').matches;
-          var datensparend = (navigator.connection && navigator.connection.saveData) ||
-                             window.matchMedia('(prefers-reduced-data: reduce)').matches;
-          if (schmal || datensparend) {
-            v.preload = 'none';
-            v.removeAttribute('autoplay');
-            return;
-          }
-          var quelle = v.getAttribute('data-hero-src');
-          if (quelle && !v.querySelector('source') && !v.getAttribute('src')) { v.setAttribute('src', quelle); }
-          v.muted = true; v.load();
-          var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
-        } catch (e) {}
+        try { v.muted = true; v.load(); var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {}
       });
       var q = [BASE + '/presse-daten.js', BASE + '/main.js', BASE + '/demos.js'];
       (function next(i) {
