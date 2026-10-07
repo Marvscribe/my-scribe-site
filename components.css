@@ -712,20 +712,23 @@ input[type="range"]::-moz-range-thumb {
   max-width: 150px;
   width: auto;
   object-fit: contain;
-  opacity: 0.72;
-  filter: grayscale(1);
-  transition: opacity var(--dur-m) var(--ease), filter var(--dur-m) var(--ease);
-}
-/* Entsättigt als Ruhezustand, Farbe erst bei Aufmerksamkeit. */
-.partners__item:hover .partners__logo {
   opacity: 1;
-  filter: grayscale(0);
+  filter: grayscale(1) brightness(0.45);
+  transition: filter 200ms var(--ease);
+}
+/* Entsaettigt und abgedunkelt als Ruhezustand, Farbe erst bei Aufmerksamkeit. */
+.partners__item:hover .partners__logo {
+  filter: none;
 }
 /* Kundenlogos im Startseiten-Banner insgesamt etwas größer (alle gleich groß,
    da jedes Logo auf einer einheitlichen Bühne zentriert ist). Gilt nur im
    Banner (.partners), nicht für die Partner-Logos auf der Presse-Seite. */
-.partners .partners__item { height: 66px; }
+.partners { border-top: 1px solid var(--line); }
+.partners .partners__item { height: 44px; }
 .partners .partners__logo { max-width: 240px; }
+@media (max-width: 700px) {
+  .partners .partners__item { height: 36px; }
+}
 /* Der Streifen läuft durch, auch unter dem Mauszeiger — nur die Farbe
    kommt beim Überfahren zurück. */
 @keyframes partners-scroll {
@@ -3208,99 +3211,80 @@ input[type="range"]::-moz-range-thumb {
    Video: laut Review-Call sind das die Punkte, auf die Klinik-Entscheider
    zuerst schauen.
    ========================================================================== */
+/* Heller Grund (.bg-cool): fuenf gleich gebaute Eintraege. Flexbox mit
+   Umbruch, damit die Teilreihen (Tablet drei plus zwei, Mobil zwei plus einer)
+   zentriert stehen. */
 .trustbar {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-l) var(--space-m);
 }
-
-/* Jede Kachel hat dieselbe Gliederung: Kopfzeile fester Höhe, darunter das
-   Label. So starten alle Labels auf einer Linie – vorher begann jedes auf
-   einer anderen Höhe, weil Zahl, Icon und Siegel verschieden hoch waren. */
 .trust-item {
+  flex: 0 0 calc((100% - 4 * var(--space-m)) / 5);   /* fuenf Spalten */
+  min-width: 0;
   display: grid;
+  justify-items: center;
+  text-align: center;
   align-content: start;
   gap: var(--space-2xs);
-  padding: 0 var(--space-s);
-  border-left: 1px solid rgba(243, 241, 231, 0.18);
 }
-.trust-item:first-child { border-left: 0; padding-left: 0; }
-.trust-item:last-child { padding-right: 0; }
 
+/* Oberer Slot mit fester Hoehe: gemeinsame Grundlinie fuer alle fuenf. */
 .trust-item__top {
   display: flex;
   align-items: center;
-  /* feste Höhe = gemeinsame Grundlinie für alle fünf Kacheln */
-  height: 64px;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 48px;
 }
-
-/* Beide Zahlen gleich groß: die Leitkennzahl hebt sich über die Lime-Farbe
-   ab, nicht über die Schriftgröße. */
 .trust-item__value {
   font-family: var(--font-mono);
-  font-size: var(--step-xl);
+  font-size: var(--step-section);
+  font-weight: 600;
   line-height: 1;
-  color: var(--on-dark);
+  color: var(--ink);
 }
-.trust-item--lead .trust-item__value { color: var(--lime); }
-
+/* 6px Lime-Punkt als Marker, neben dem Kopfwert und oben rechts am Icon-Kreis. */
+.trust-item__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lime);
+  flex-shrink: 0;
+}
+.trust-item__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--petrol);
+  background: var(--white);
+  color: var(--petrol);
+}
+.trust-item__icon .trust-item__dot { position: absolute; top: 0; right: 0; }
 .trust-item__label {
-  font-size: 0.95rem;
-  line-height: 1.45;
-  color: var(--on-dark);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--slate);
   max-width: 22ch;
 }
 .trust-item__hint {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--on-dark-muted);
+  color: var(--slate-soft);
 }
-
-/* Icon-Variante für die Aussagen ohne Zahl – gleicher Durchmesser für alle. */
-.trust-item__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: rgba(209, 226, 38, 0.16);
-  color: var(--lime);
-}
-/* Gestrichelt = Platzhalter, bis das echte Siegel da ist. */
-.trust-item__icon--offen {
-  background: transparent;
-  border: 1px dashed rgba(243, 241, 231, 0.35);
-  color: var(--on-dark-muted);
-}
-.trust-item__seal {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-}
-
 
 @media (max-width: 1100px) {
-  .trustbar {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: var(--space-m);
-  }
-  /* In der zweiten Reihe sitzt links wieder eine Kachel am Rand. */
-  .trust-item:nth-child(4) { border-left: 0; padding-left: 0; }
-  .trust-item:last-child { padding-right: var(--space-s); }
+  .trust-item { flex-basis: calc((100% - 2 * var(--space-m)) / 3); }  /* drei Spalten */
 }
 @media (max-width: 700px) {
-  .trustbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .trust-item:nth-child(4) { border-left: 1px solid rgba(243, 241, 231, 0.18); padding-left: var(--space-s); }
-  .trust-item:nth-child(odd) { border-left: 0; padding-left: 0; }
-  .trust-item__top { height: 56px; }
-}
-@media (max-width: 460px) {
-  .trustbar { grid-template-columns: 1fr; row-gap: var(--space-s); }
-  .trust-item { border-left: 0; padding-left: 0; }
-  .trust-item__top { height: 48px; }
+  .trust-item { flex-basis: calc((100% - 1 * var(--space-m)) / 2); }  /* zwei Spalten */
 }
 
 /* ==========================================================================
@@ -3560,3 +3544,11 @@ input[type="range"]::-moz-range-thumb {
 @media (prefers-reduced-motion: reduce) {
   .demo-bar { transition: none; }
 }
+
+/* ==========================================================================
+   Paket 3: Statement-Abschnitt unter den Kundenlogos.
+   ========================================================================== */
+.statement { max-width: 24ch; margin-inline: auto; text-align: center; }
+/* Kurzer Lime-Strich als Marker, kein Lime als Schrift auf hellem Grund. */
+.statement__marker { display: block; width: 48px; height: 4px; border-radius: 2px; background: var(--lime); margin: 0 auto var(--space-m); }
+.statement__text { font-size: var(--step-display); line-height: 1.2; color: var(--ink); }

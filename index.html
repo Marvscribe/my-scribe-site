@@ -65,28 +65,33 @@
 
   <!-- Vertrauens-Leiste: direkt unter dem Video, weil das laut Review-Call
        die Punkte sind, auf die Klinik-Entscheider zuerst schauen. -->
-  <section class="section-pad bg-dark" style="padding-block:var(--space-l);">
+  <section class="section--facts bg-cool">
     <div class="container" data-reveal>
       <div class="trustbar">
 
-        <div class="trust-item trust-item--lead">
+        <div class="trust-item">
           <span class="trust-item__top">
-            <span class="trust-item__value" data-count-to="2" data-suffix=" h">0 h</span>
+            <span class="trust-item__value num" data-count-to="2" data-suffix=" h">0 h</span>
+            <span class="trust-item__dot" aria-hidden="true"></span>
           </span>
-          <span class="trust-item__label">Zeitersparnis pro Arzt und Tag</span>
+          <span class="trust-item__label">Zeitersparnis pro Ärzt*in und Tag</span>
         </div>
 
         <div class="trust-item">
           <span class="trust-item__top">
-            <span class="trust-item__value" data-count-to="100" data-suffix=" %">0 %</span>
+            <span class="trust-item__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="trust-item__dot"></span>
+            </span>
           </span>
-          <span class="trust-item__label">DSGVO-konform – auf Wunsch lokal gehostet</span>
+          <span class="trust-item__label">DSGVO-konform, auf Wunsch lokal gehostet</span>
         </div>
 
         <div class="trust-item">
           <span class="trust-item__top">
             <span class="trust-item__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 20 20" fill="none"><path d="M10 2.5l6 2.2v5.1c0 3.4-2.4 6.5-6 7.7-3.6-1.2-6-4.3-6-7.7V4.7l6-2.2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.2 10.2l1.9 1.9 3.7-3.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="trust-item__dot"></span>
             </span>
           </span>
           <span class="trust-item__label">Kein KI-Training mit Patientendaten</span>
@@ -95,15 +100,16 @@
         <div class="trust-item">
           <span class="trust-item__top">
             <!-- ERSETZEN: <img class="trust-item__seal" src="https://marvscribe.github.io/my-scribe-site/iso-siegel.png"
-                                alt="ISO 9001 zertifiziert" width="60" height="60">
-                 und den gestrichelten Kreis samt Hinweis darunter entfernen.
-                 Bitte prüfen, welche Norm gemeint ist – 9001 (Qualitätsmanagement),
-                 27001 (Informationssicherheit) oder 13485 (Medizinprodukte). -->
-            <span class="trust-item__icon trust-item__icon--offen" aria-hidden="true">
+                                alt="ISO/IEC 27001:2022 zertifiziert" width="60" height="60">
+                 und den Icon-Kreis samt Hinweis darunter entfernen.
+                 Norm laut Zertifikat ISO/IEC 27001:2022, Siegel erst einbauen,
+                 wenn TÜV Rheinland die Nutzung freigegeben hat. -->
+            <span class="trust-item__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="5.6" stroke="currentColor" stroke-width="1.5"/><path d="M8.6 13.6L7.5 21l4.5-2.3 4.5 2.3-1.1-7.4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              <span class="trust-item__dot"></span>
             </span>
           </span>
-          <span class="trust-item__label">Zertifiziert nach ISO&nbsp;9001</span>
+          <span class="trust-item__label">Zertifiziert nach ISO/IEC 27001:2022</span>
           <span class="trust-item__hint">Siegel folgt</span>
         </div>
 
@@ -112,6 +118,7 @@
             <span class="trust-item__icon" aria-hidden="true">
               <!-- Doppeltes Häkchen: geprüft und vom Kontrollmodell gegengeprüft -->
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M2.5 12.6l3.6 3.6L13.4 9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12.6l3.6 3.6L21.5 8.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="trust-item__dot"></span>
             </span>
           </span>
           <span class="trust-item__label">Halluzinationsschutz durch ein zweites Kontrollmodell</span>
@@ -122,9 +129,9 @@
   </section>
 
   <!-- Kunden & Partner -->
-  <section class="section-pad bg-paper-dim partners">
+  <section class="section-pad bg-cool partners">
     <div class="container" data-reveal>
-      <h2 style="font-size:var(--step-l);">Unsere Kunden</h2>
+      <h2 class="eyebrow--l" style="text-align:center;">Unsere Kunden</h2>
     </div>
     <div class="partners__viewport" data-reveal>
       <!-- Vier gleiche Sätze: verschoben wird um genau einen Satz.
@@ -132,41 +139,54 @@
            deshalb vier, sonst klafft hinter dem letzten Logo eine Lücke. -->
       <div class="partners__track">
         <div class="partners__set">
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-uksh.png" alt="Universitätsklinikum Schleswig-Holstein (UKSH)" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-shg.png" alt="SHG Saarland Heilstätten" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-harzklinikum.png" alt="Harzklinikum Dorothea Christiane Erxleben" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-agaplesion.png" alt="Agaplesion Diakonieklinikum Rotenburg" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-ategris.png" alt="Ategris" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-kreiskliniken.png" alt="Kreiskliniken Dillingen Wertingen" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-rostock.png" alt="Universitätsmedizin Rostock" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-uksh.png" alt="Universitätsklinikum Schleswig-Holstein (UKSH)" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-shg.png" alt="SHG Saarland Heilstätten" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-harzklinikum.png" alt="Harzklinikum Dorothea Christiane Erxleben" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-agaplesion.png" alt="Agaplesion Diakonieklinikum Rotenburg" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-ategris.png" alt="Ategris" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-kreiskliniken.png" alt="Kreiskliniken Dillingen Wertingen" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-rostock.png" alt="Universitätsmedizin Rostock" width="400" height="131" loading="lazy"></div>
         </div>
         <div class="partners__set" aria-hidden="true">
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-uksh.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-shg.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-harzklinikum.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-agaplesion.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-ategris.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-kreiskliniken.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-rostock.png" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-uksh.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-shg.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-harzklinikum.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-agaplesion.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-ategris.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-kreiskliniken.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-rostock.png" alt="" width="400" height="131" loading="lazy"></div>
         </div>
         <div class="partners__set" aria-hidden="true">
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-uksh.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-shg.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-harzklinikum.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-agaplesion.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-ategris.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-kreiskliniken.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-rostock.png" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-uksh.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-shg.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-harzklinikum.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-agaplesion.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-ategris.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-kreiskliniken.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-rostock.png" alt="" width="400" height="131" loading="lazy"></div>
         </div>
         <div class="partners__set" aria-hidden="true">
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-uksh.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-shg.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-harzklinikum.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-agaplesion.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-ategris.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-kreiskliniken.png" alt="" loading="lazy"></div>
-          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-rostock.png" alt="" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-uksh.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-shg.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-harzklinikum.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-agaplesion.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-ategris.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-kreiskliniken.png" alt="" width="400" height="131" loading="lazy"></div>
+          <div class="partners__item"><img class="partners__logo" src="https://marvscribe.github.io/my-scribe-site/kunde-rostock.png" alt="" width="400" height="131" loading="lazy"></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marker-Trenner auf der Kante zum Statement, ohne eigene Hoehe im Fluss -->
+  <div class="divider-marker" aria-hidden="true" role="presentation" style="--divider-bg: var(--paper)"></div>
+
+  <!-- Statement -->
+  <section class="section--moment bg-paper">
+    <div class="container">
+      <div class="statement" data-reveal>
+        <span class="statement__marker" aria-hidden="true"></span>
+        <p class="statement__text">Klinische Dokumentation darf nicht der Grund dafür sein, dass Ärzt*innen ihren Job <span class="accent-italic">aufgeben</span>.</p>
       </div>
     </div>
   </section>
