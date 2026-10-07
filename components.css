@@ -80,7 +80,18 @@
   font-weight: 600;
 }
 .nav__links a { color: var(--slate); transition: color var(--dur-s) var(--ease); }
-.nav__links a:hover, .nav__links a[aria-current="page"] { color: var(--brand-text); }
+.nav__links a:hover { color: var(--brand-text); }
+/* Aktive Seite: 2px Lime-Unterstrich als Marker, die Textfarbe bleibt. */
+.nav__links a[aria-current="page"] { position: relative; }
+.nav__links a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background: var(--lime);
+}
 .nav__actions { display: flex; align-items: center; gap: var(--space-s); }
 .nav__toggle { display: none; background: none; border: none; padding: 0.4rem; }
 
@@ -632,16 +643,31 @@ input[type="range"]::-moz-range-thumb {
   background: var(--lime);
   vertical-align: middle;
 }
+/* Subline unter dem Kicker: ruhiger Fliesstext, Hoehe steht von Anfang an fest
+   (reserviert, damit beim Einblenden nichts springt). */
+.hero-subline {
+  color: var(--on-dark);
+  font-size: var(--step-body-l);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 54ch;
+  margin-top: 0.75rem;
+}
 .hero-actions {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-top: clamp(2.25rem, 3.4vw, 2.75rem);  /* 36 bis 44px Abstand zu den Buttons */
+  margin-top: 1.75rem;  /* Abstand Subline zu den Buttons */
 }
 @media (max-width: 860px) {
   /* proportional kleinere Abstaende auf schmalen Displays */
   .hero-kicker { margin-top: clamp(0.9rem, 3.5vw, 1.25rem); }
-  .hero-actions { margin-top: clamp(1.5rem, 5vw, 2.25rem); }
+  .hero-actions { margin-top: 1.5rem; }
+}
+@media (max-width: 768px) {
+  /* Auf dem Handy stehen die Buttons untereinander in voller Breite. */
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
 }
 
 @media (max-width: 860px) {
@@ -1821,8 +1847,7 @@ input[type="range"]::-moz-range-thumb {
   opacity: 0.92;
 }
 .nav--on-dark .nav__links a { color: var(--on-dark-muted); }
-.nav--on-dark .nav__links a:hover,
-.nav--on-dark .nav__links a[aria-current="page"] { color: var(--lime); }
+.nav--on-dark .nav__links a:hover { color: var(--lime); }
 .nav--on-dark .nav__toggle { color: var(--on-dark); }
 /* Petrol-Button auf Petrol-Grund hätte zu wenig Kontrast. */
 .nav--on-dark .btn--primary {
@@ -1831,21 +1856,6 @@ input[type="range"]::-moz-range-thumb {
 }
 .nav--on-dark .btn--primary:hover { background: #c3d422; }
 
-/* Nur der CTA oben rechts in der Kopfzeile — alle übrigen .btn--primary
-   bleiben grün. Schriftfarbe fest statt über --ink: im Dunkelmodus würde
-   der Token hell und käme auf Orange nur auf 2,1:1. #16261F erreicht
-   7,78:1. */
-.nav__actions .btn--primary,
-.nav--on-dark .nav__actions .btn--primary {
-  background: #F5A623;
-  border-color: #F5A623;
-  color: #16261F;
-}
-.nav__actions .btn--primary:hover,
-.nav--on-dark .nav__actions .btn--primary:hover {
-  background: #E09517;
-  border-color: #E09517;
-}
 .nav--on-dark .nav__mobile { border-top-color: rgba(243, 241, 231, 0.14); }
 .nav--on-dark .nav__mobile a { color: var(--on-dark); }
 @media (prefers-reduced-motion: reduce) {
@@ -3408,4 +3418,72 @@ input[type="range"]::-moz-range-thumb {
 }
 @media (prefers-reduced-motion: reduce) {
   .logoswitch__logo { transition: none; }
+}
+
+/* ==========================================================================
+   Paket 1: neue Hilfsklassen (Fundament). Noch nicht angewandt, spaetere
+   Pakete setzen sie ein. Bestehende Klassen bleiben unveraendert.
+   ========================================================================== */
+
+/* Aktions-Button fuer alle Demo-Aufrufe: Amber-Flaeche, dunkle Schrift. */
+.btn--cta {
+  background: var(--cta);
+  color: var(--ink);
+  border-color: var(--cta);
+  min-height: 48px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.btn--cta:hover { background: var(--cta-hover); border-color: var(--cta-hover); }
+
+/* Groessere Variante fuer Buttons, die nicht .btn--cta sind. */
+.btn--lg { min-height: 48px; font-size: 1rem; }
+
+/* Groessere Eyebrow-Variante. */
+.eyebrow--l { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* Ziffern mit gleicher Breite (fuer Zahlen in Tabellen und Statistiken). */
+.num { font-variant-numeric: tabular-nums; }
+
+/* Betontes Kursiv nach dem Vorbild von .hhl-brief. */
+.accent-italic { font-style: italic; font-weight: 300; }
+
+/* Abschnitts-Rhythmus: Moment grosszuegig, Proof und Facts enger. */
+.section--moment { padding-block: var(--space-2xl); }
+.section--proof, .section--facts { padding-block: var(--space-xl); }
+@media (max-width: 768px) {
+  .section--moment { padding-block: calc(var(--space-2xl) * 0.66); }
+  .section--proof, .section--facts { padding-block: calc(var(--space-xl) * 0.66); }
+}
+
+/* Flaechen-Hilfsklassen. .bg-paper, .bg-mist und .bg-paper-dim stehen bereits
+   in base.css und werden hier nicht gedoppelt. */
+.bg-night { background: var(--petrol-night); color: var(--on-dark); }
+.bg-night .eyebrow { color: var(--on-dark-muted); }
+.bg-night a:not(.btn) { color: var(--on-dark-muted); }
+.bg-cool { background: var(--surface-cool); }
+.bg-white { background: var(--white); }
+
+/* Trenner mit Lime-Punkt in der Mitte. Der Punkt ist ein Marker, kein Flaechen-
+   einsatz. --divider-bg ist die Grundfarbe des Abschnitts fuer den Rand um den
+   Punkt. var(--space-m) ist der Container-Innenabstand (das Projekt-Gutter). */
+.divider-marker { position: relative; height: 0; z-index: 2; --divider-bg: var(--white); }
+.divider-marker::before {
+  content: "";
+  display: block;
+  width: min(100% - 2 * var(--space-m), var(--container));
+  margin-inline: auto;
+  border-top: 1px solid var(--line);
+}
+.divider-marker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 6px var(--divider-bg);
+  transform: translate(-50%, -50%);
 }

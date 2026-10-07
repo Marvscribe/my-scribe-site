@@ -5,6 +5,13 @@
    product's own chart UI (Leitsymptom / Diagnose / Prozedere / Epikrise).
    ========================================================================== */
 
+/* ==========================================================================
+   Lime-Regel (Kennzeichnungsfarbe)
+   Lime ist ausschliesslich Kennzeichnung: als Punkt, Linie, Chip, als Marker
+   eines aktiven Zustands und als einzelnes Hervorhebungswort auf dunklem Grund.
+   Nie als Flaeche, nie als Schrift auf hellem Grund (dort nur 1,35 zu 1).
+   ========================================================================== */
+
 :root {
   /* ---- Color: surfaces ---- */
   --paper: #FAF8F3;       /* page background — warm, not sterile white */
@@ -22,6 +29,12 @@
                              Bänder, das wirkte insgesamt zu schwer. */
   --lime: #D1E226;        /* sparing accent — chips, status, one signal per view */
   --lime-soft: #EEF3C4;   /* pale lime tint — chip fill on light surfaces */
+
+  /* ---- Aktion & neue Flaechen (Paket 1) ---- */
+  --cta: #E5AA4C;          /* Aktionsfarbe fuer alle Demo-Buttons, Text darauf --ink, ca. 7,7 zu 1 */
+  --cta-hover: #E09517;    /* Hover-Ton der Aktionsfarbe */
+  --petrol-night: #12332D; /* tiefer Nachtton fuer Hero, Demo, Gruenderinnen-Abschnitt und Footer, Lime darauf ca. 9,5 zu 1 */
+  --surface-cool: #F6F8F7; /* kuehles Weiss fuer System-Abschnitte */
 
   /* ---- Color: Rollen ----
      --petrol/-deep/-ink sind Flächen. Für Text braucht die Marke eine eigene
@@ -57,6 +70,11 @@
   --step-body-l: clamp(1.125rem, 1rem + 1.25vw, 1.5rem);
   --step-body: 1rem;
   --step-micro: 0.875rem;
+
+  /* ---- Groessen-Tokens (Paket 1, zusaetzlich zu den bestehenden --step-*) ---- */
+  --step-section: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);  /* Abschnitts-H2, 28 bis 40 px */
+  --step-display: clamp(2.25rem, 1.4rem + 3.2vw, 4rem);    /* grosse Saetze, 36 bis 64 px */
+  --step-card-title: 1.25rem;                              /* Karten-Titel, 20 px */
 
   /* ---- Space ---- */
   --space-3xs: 0.25rem;
@@ -129,6 +147,12 @@
 
     --line: #26372F;
     --line-strong: #35493F;
+
+    /* Aktion & neue Flaechen (Paket 1), Gegenwerte fuer den Dunkelmodus */
+    --cta: #E5AA4C;
+    --cta-hover: #E09517;
+    --petrol-night: #12332D;
+    --surface-cool: #273330;
   }
 
   /* Die Nav hat einen fest hinterlegten hellen Milchglas-Grund. */

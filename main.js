@@ -692,6 +692,8 @@ mysReady(function () {
   var headline = document.querySelector('.hero-headline');
   var kicker   = document.getElementById('hero-kicker');   // Lime-Zeile unter der Headline
   var actions  = document.getElementById('hero-actions');  // Button-Reihe
+  var subline  = document.getElementById('hero-subline');  // Subline unter dem Kicker
+  if (subline) subline.style.opacity = '0';  // startet unsichtbar, blendet kurz nach dem Kicker ein
 
   var WORDS = ['KI-generierte', 'neue', 'intelligente', 'bewährte', 'sichere', 'entlastende'];
   var ROT = { enter: 320, hold: 340, exit: 260 };
@@ -750,12 +752,26 @@ mysReady(function () {
     brief.style.translate = (rb.left - b.left) + 'px ' + (rb.top - b.top) + 'px'; brief.style.scale = '1';
   }
 
+  function fadeInSubline() {
+    if (!subline) return;
+    // Erscheint zusammen mit dem Kicker, etwa 175 ms versetzt, in der gleichen
+    // Technik wie die Wort-Einblendung der Headline (opacity, translateY, blur).
+    setTimeout(function () {
+      subline.animate(
+        [{ opacity: 0, transform: 'translateY(0.4em)', filter: 'blur(4px)' },
+         { opacity: 1, transform: 'translateY(0)',      filter: 'blur(0)' }],
+        { duration: 420, easing: EASE_ENTER, fill: 'forwards' }
+      );
+    }, 175);
+  }
+
   function finale(lastEl) {
     // 1. Reservierte (dreizeilige) Ausgangspositionen merken.
     var derF   = der.getBoundingClientRect();
     var briefF = brief.getBoundingClientRect();
     var kickF  = kicker  ? kicker.getBoundingClientRect()  : null;
     var actF   = actions ? actions.getBoundingClientRect() : null;
+    var subF   = subline ? subline.getBoundingClientRect() : null;
 
     // 2. Zielpositionen im kompakten Endzustand messen: Klasse kurz anlegen,
     //    Layout lesen (inkl. Re-Zentrierung des Hero-Inhalts), wieder entfernen.
@@ -766,6 +782,7 @@ mysReady(function () {
     var rowW = refRow.getBoundingClientRect().width;
     var kickL = kicker  ? kicker.getBoundingClientRect()  : null;
     var actL  = actions ? actions.getBoundingClientRect() : null;
+    var subL  = subline ? subline.getBoundingClientRect() : null;
     headline.classList.remove('is-compact');
     void headline.offsetWidth;
 
@@ -774,12 +791,14 @@ mysReady(function () {
     var tBrief = { x: refB.left - briefF.left, y: refB.top - briefF.top };
     var dKick  = kickF ? (kickL.top - kickF.top) : 0;
     var dAct   = actF  ? (actL.top  - actF.top)  : 0;
+    var dSub   = subF  ? (subL.top  - subF.top)  : 0;
     var pop = popScaleFor(rowW);
 
     der.style.willChange = 'translate, scale';
     brief.style.willChange = 'translate, scale';
     if (kicker)  kicker.style.willChange  = 'transform';
     if (actions) actions.style.willChange = 'transform';
+    if (subline) subline.style.willChange = 'transform';
 
     // letztes Wort verblasst an Ort und Stelle (kein Weg), während Der/Arztbrief zusammenrücken
     lastEl.animate(
@@ -812,7 +831,8 @@ mysReady(function () {
       moveAndPop(der, tDer),
       moveAndPop(brief, tBrief),
       slideY(kicker, dKick),
-      slideY(actions, dAct)
+      slideY(actions, dAct),
+      slideY(subline, dSub)
     ]).then(function () {
       // Endzustand hart setzen: reservierte Hoehe auf eine Zeile, Transforms weg,
       // Der/Arztbrief exakt auf die kompakte Referenzzeile. Alles in einem Tick,
@@ -821,13 +841,16 @@ mysReady(function () {
       brief.getAnimations().forEach(function (an) { an.cancel(); });
       if (kicker)  kicker.getAnimations().forEach(function (an) { an.cancel(); });
       if (actions) actions.getAnimations().forEach(function (an) { an.cancel(); });
+      if (subline) subline.getAnimations().forEach(function (an) { an.cancel(); });
       headline.classList.add('is-compact');
       if (kicker)  kicker.style.transform  = '';
       if (actions) actions.style.transform = '';
+      if (subline) { subline.style.transform = ''; subline.style.opacity = ''; }
       placeHeadline();
       der.style.willChange = ''; brief.style.willChange = '';
       if (kicker)  kicker.style.willChange  = '';
       if (actions) actions.style.willChange = '';
+      if (subline) subline.style.willChange = '';
       rot.innerHTML = '';
       finaleDone = true;
     });
@@ -846,6 +869,7 @@ mysReady(function () {
     return (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve())
       .then(waitVisible)
       .then(function () {
+        fadeInSubline();  // Subline kurz nach dem Kicker einblenden
         // erstes Wort steht schon sichtbar im Markup: kurz halten, dann abtreten
         var first = rot.querySelector('.hhl-word');
         return sleep(240 + ROT.hold).then(function () {
