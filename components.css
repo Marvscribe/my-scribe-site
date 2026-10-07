@@ -634,15 +634,6 @@ input[type="range"]::-moz-range-thumb {
   text-wrap: balance;
   margin-top: clamp(1.25rem, 2.2vw, 1.75rem);  /* 20 bis 28px Abstand zur Headline */
 }
-.hero-kicker::before {
-  content: '';
-  display: inline-block;
-  width: 40px;
-  height: 2px;
-  margin-right: 0.6em;
-  background: var(--lime);
-  vertical-align: middle;
-}
 /* Subline unter dem Kicker: ruhiger Fliesstext, Hoehe steht von Anfang an fest
    (reserviert, damit beim Einblenden nichts springt). */
 .hero-subline {
