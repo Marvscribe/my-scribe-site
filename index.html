@@ -568,26 +568,40 @@
     </div>
   </section>
 
-  <!-- Demo form -->
+  <!-- Demo anfragen: Formular plus Kontaktkarte -->
   <section id="demo" class="section-pad bg-mist">
     <div class="container">
-      <div style="display:grid; grid-template-columns: minmax(0,0.7fr) minmax(0,1.3fr); gap:var(--space-l);">
-        <div data-reveal>
-          <span class="eyebrow">Demotermin</span>
-          <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s);">Buchen Sie einen Demotermin</h2>
-          <p class="muted" style="max-width:32ch;">Wir melden uns innerhalb von 1–2 Werktagen bei Ihnen.</p>
-        </div>
-        <form class="form-grid" data-reveal onsubmit="return false;">
-          <div class="field"><label for="vorname">Vorname</label><input id="vorname" name="Vorname" type="text" required></div>
-          <div class="field"><label for="name">Name</label><input id="name" name="Name" type="text" required></div>
-          <div class="field field--full"><label for="email">Email Adresse</label><input id="email" name="Email" type="email" required></div>
-          <div class="field field--full"><label for="unternehmen">Unternehmen/Krankenhaus</label><input id="unternehmen" name="Unternehmen" type="text" required></div>
-          <div class="field"><label for="strasse">Straße/Hausnr.</label><input id="strasse" name="Strasse" type="text"></div>
-          <div class="field"><label for="ort">Ort</label><input id="ort" name="Ort" type="text"></div>
-          <div class="field field--full"><label for="nachricht">Ihre Nachricht</label><textarea id="nachricht" name="Nachricht" rows="3"></textarea></div>
+      <div class="demo-head" data-reveal>
+        <span class="eyebrow">Demotermin</span>
+        <h2 style="font-size:var(--step-l); margin-bottom:var(--space-s);">Buchen Sie einen Demotermin</h2>
+        <p class="muted" style="max-width:40ch;">Wir melden uns innerhalb von 1 bis 2 Werktagen bei Ihnen.</p>
+      </div>
+      <div class="demo-grid">
+        <aside class="contact-card" data-reveal>
+          <img src="https://marvscribe.github.io/my-scribe-site/ira-stoll.png" alt="Dr. med. Ira Stoll" class="contact-card__photo" width="72" height="72">
+          <p class="eyebrow--l contact-card__eyebrow">Ihre Ansprechperson</p>
+          <p class="contact-card__name">Dr. med. Ira Stoll</p>
+          <p class="contact-card__role">CEO</p>
+          <ul class="contact-card__ways">
+            <li><a href="mailto:i.stoll@myscribe.de">i.stoll@myscribe.de</a></li>
+            <li><a href="tel:+491723603198">+49 172 3603198</a></li>
+          </ul>
+          <p class="contact-card__note">Sie sprechen direkt mit einer Person aus dem Team.</p>
+        </aside>
+        <form class="demo-form form-grid" id="demo-form" data-reveal novalidate>
+          <!-- Honeypot gegen Spam: fuer Menschen unsichtbar, von Bots oft ausgefuellt -->
+          <div class="demo-form__hp" aria-hidden="true">
+            <label for="df-website">Website</label>
+            <input id="df-website" name="website" type="text" tabindex="-1" autocomplete="off" data-honeypot>
+          </div>
+          <div class="field"><label for="df-vorname">Vorname</label><input id="df-vorname" name="vorname" type="text" autocomplete="given-name" required aria-describedby="err-vorname"><span class="field__error" id="err-vorname"></span></div>
+          <div class="field"><label for="df-nachname">Name</label><input id="df-nachname" name="nachname" type="text" autocomplete="family-name" required aria-describedby="err-nachname"><span class="field__error" id="err-nachname"></span></div>
+          <div class="field field--full"><label for="df-email">Email Adresse</label><input id="df-email" name="email" type="email" autocomplete="email" required aria-describedby="err-email"><span class="field__error" id="err-email"></span></div>
+          <div class="field field--full"><label for="df-unternehmen">Unternehmen oder Krankenhaus</label><input id="df-unternehmen" name="unternehmen" type="text" autocomplete="organization" required aria-describedby="err-unternehmen"><span class="field__error" id="err-unternehmen"></span></div>
+          <div class="field field--full"><label for="df-nachricht">Ihre Nachricht</label><textarea id="df-nachricht" name="nachricht" rows="3"></textarea></div>
           <div class="field field--full">
-            <label for="quelle">Wie sind Sie auf uns aufmerksam geworden?</label>
-            <select id="quelle" name="Quelle">
+            <label for="df-quelle">Wie sind Sie auf uns aufmerksam geworden?</label>
+            <select id="df-quelle" name="quelle">
               <option value="">Auswählen</option>
               <option>Kongress</option>
               <option>LinkedIn</option>
@@ -597,25 +611,16 @@
             </select>
           </div>
           <div class="field field--full field--checkbox">
-            <input type="checkbox" id="datenschutz" required>
-            <label for="datenschutz" style="margin:0; font-weight:400;">Ich bin damit einverstanden, dass meine Daten zur Verarbeitung meiner Anfrage und zur anschließenden Koordination eines Termines genutzt werden. Ich akzeptiere die Datenschutzerklärung.</label>
+            <input type="checkbox" id="df-datenschutz" name="datenschutz" required aria-describedby="err-datenschutz">
+            <label for="df-datenschutz">Ich bin damit einverstanden, dass meine Daten zur Bearbeitung meiner Anfrage und zur Koordination eines Termins genutzt werden. Ich akzeptiere die <a href="/datenschutz">Datenschutzerklärung</a>.</label>
+            <span class="field__error" id="err-datenschutz"></span>
           </div>
           <div class="field field--full">
-            <button type="submit" class="btn btn--primary">Demotermin buchen</button>
+            <button type="submit" class="btn btn--cta">Demo anfragen</button>
           </div>
+          <p class="demo-form__status" data-form-status role="status" aria-live="polite"></p>
+          <p class="demo-form__hint">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur Bearbeitung der Anfrage zu. Mehr dazu in der <a href="/datenschutz">Datenschutzerklärung</a>.</p>
         </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="section-pad">
-    <div class="container" style="display:flex; align-items:center; gap:var(--space-m); flex-wrap:wrap;" data-reveal>
-      <img src="https://marvscribe.github.io/my-scribe-site/ira-stoll.png" alt="Dr. med. Ira Stoll" class="testimonial__avatar-img" style="width:64px; height:64px;">
-      <div>
-        <div class="eyebrow" style="margin-bottom:0.3rem;">Noch Fragen?</div>
-        <div style="font-weight:700; font-size:var(--step-body-l);">Dr. med. Ira Stoll</div>
-        <div class="muted">CEO · <a href="mailto:i.stoll@myscribe.de" style="color:var(--brand-text); text-decoration:underline;">i.stoll@myscribe.de</a> · +49 172 3603198</div>
       </div>
     </div>
   </section>
@@ -637,3 +642,8 @@
     <div class="site-footer__bottom"><span>kontakt@myscribe.de · +49 172 3603198</span><span>© 2026 myScribe GmbH</span></div>
   </div>
 </footer>
+
+<!-- Feste Leiste auf dem Handy: springt zum Anfrage-Formular. Nur unter 768px sichtbar. -->
+<div class="demo-bar" data-demo-bar inert>
+  <a href="#demo" class="btn btn--cta">Demo anfragen</a>
+</div>

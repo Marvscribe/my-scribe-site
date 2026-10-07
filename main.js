@@ -910,3 +910,151 @@ mysReady(function () {
 
   run();
 });
+
+/* ====================================================================
+   Paket 2: Demo-Formular
+   Prueft die Pflichtfelder, zeigt Fehler je Feld und uebergibt gueltige
+   Werte an das versteckte Webflow-Formular (wf-demo-form). Webflows
+   eigenes Skript sendet dann per Ajax. Ergebnis per MutationObserver am
+   umgebenden .w-form (w-form-done oder w-form-fail), sonst Timeout.
+   ==================================================================== */
+mysReady(function () {
+  var form = document.getElementById('demo-form');
+  if (!form) return;
+  var status = form.querySelector('[data-form-status]');
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var honeypot = form.querySelector('[data-honeypot]');
+  var submitLabel = submitBtn ? submitBtn.textContent : 'Demo anfragen';
+  var MAIL = 'kontakt@myscribe.de';
+
+  var required = [
+    { id: 'df-vorname',     msg: 'Bitte Vornamen eingeben.' },
+    { id: 'df-nachname',    msg: 'Bitte Namen eingeben.' },
+    { id: 'df-email',       msg: 'Bitte Email Adresse eingeben.', email: true },
+    { id: 'df-unternehmen', msg: 'Bitte Unternehmen oder Krankenhaus eingeben.' },
+    { id: 'df-datenschutz', msg: 'Bitte stimmen Sie der Verarbeitung zu.', checkbox: true }
+  ];
+  var SEND_NAMES = ['vorname', 'nachname', 'email', 'unternehmen', 'quelle', 'nachricht', 'datenschutz'];
+
+  function isEmail(v) { return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v); }
+  function setStatus(text, kind, asHtml) {
+    if (!status) return;
+    status.className = 'demo-form__status' + (kind ? ' is-' + kind : '');
+    if (asHtml) status.innerHTML = text; else status.textContent = text;
+  }
+  function fieldError(id, msg) {
+    var input = document.getElementById(id);
+    var errEl = document.getElementById('err-' + id.replace('df-', ''));
+    if (errEl) errEl.textContent = msg || '';
+    if (input) { if (msg) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid'); }
+  }
+  function clearErrors() { required.forEach(function (f) { fieldError(f.id, ''); }); setStatus('', ''); }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (honeypot && honeypot.value) { return; } // Bot: still verwerfen, nichts senden
+    clearErrors();
+    var firstBad = null;
+    required.forEach(function (f) {
+      var el = document.getElementById(f.id);
+      if (!el) return;
+      var msg = '';
+      if (f.checkbox) { if (!el.checked) msg = f.msg; }
+      else {
+        var v = (el.value || '').trim();
+        if (!v) msg = f.msg;
+        else if (f.email && !isEmail(v)) msg = 'Bitte eine gueltige Email Adresse eingeben.';
+      }
+      if (msg) { fieldError(f.id, msg); if (!firstBad) firstBad = el; }
+    });
+    if (firstBad) {
+      setStatus('Bitte fuellen Sie die markierten Felder aus.', 'error');
+      firstBad.focus();
+      return;
+    }
+    sendToWebflow();
+  });
+
+  function setSending(on) {
+    if (!submitBtn) return;
+    submitBtn.disabled = on;
+    submitBtn.textContent = on ? 'Wird gesendet' : submitLabel;
+  }
+
+  function sendToWebflow() {
+    var wf = document.getElementById('wf-demo-form');
+    if (!wf) {
+      console.warn('myScribe: Webflow-Formular "wf-demo-form" nicht im DOM. Es wurde nichts gesendet. Das Formular muss in Webflow angeschlossen werden.');
+      setStatus('Das Formular ist noch nicht angeschlossen. Schreiben Sie uns bitte an <a href="mailto:' + MAIL + '">' + MAIL + '</a>.', 'error', true);
+      return;
+    }
+    SEND_NAMES.forEach(function (n) {
+      var src = form.querySelector('[name="' + n + '"]');
+      var dst = wf.querySelector('[name="' + n + '"]');
+      if (!src || !dst) return;
+      if (dst.type === 'checkbox') dst.checked = src.checked;
+      else dst.value = src.value;
+    });
+    var wrap = wf.closest('.w-form') || wf.parentNode;
+    setSending(true);
+    setStatus('', '');
+    var finished = false;
+    function visible(el) { return !!el && getComputedStyle(el).display !== 'none'; }
+    function finish(ok) {
+      if (finished) return; finished = true;
+      obs.disconnect(); clearTimeout(timer);
+      if (ok) {
+        setStatus('Danke, wir melden uns innerhalb von 1 bis 2 Werktagen.', 'ok');
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = submitLabel; }
+      } else {
+        setStatus('Das hat nicht geklappt. Schreiben Sie uns bitte direkt an <a href="mailto:' + MAIL + '">' + MAIL + '</a>.', 'error', true);
+        setSending(false);
+      }
+    }
+    var obs = new MutationObserver(function () {
+      if (visible(wrap.querySelector('.w-form-done'))) finish(true);
+      else if (visible(wrap.querySelector('.w-form-fail'))) finish(false);
+    });
+    obs.observe(wrap, { attributes: true, childList: true, subtree: true, attributeFilter: ['style', 'class'] });
+    var timer = setTimeout(function () { finish(false); }, 10000);
+    try {
+      if (wf.requestSubmit) wf.requestSubmit();
+      else { var b = wf.querySelector('[type="submit"]'); if (b) b.click(); }
+    } catch (err) {
+      var b2 = wf.querySelector('[type="submit"]'); if (b2) b2.click();
+    }
+  }
+});
+
+/* ====================================================================
+   Paket 2: Feste Demo-Leiste auf dem Handy (unter 768px per CSS).
+   Erscheint nach dem Hero, verschwindet, sobald das Formular im Blick
+   ist, und haelt per Innenabstand am Body den Inhalt frei.
+   ==================================================================== */
+mysReady(function () {
+  var bar = document.querySelector('[data-demo-bar]');
+  if (!bar) return;
+  var hero = document.querySelector('.hero');
+  var demo = document.getElementById('demo');
+  var heroInView = true, demoInView = false;
+
+  function apply() {
+    var show = !heroInView && !demoInView;
+    if (show) {
+      bar.inert = false;
+      bar.classList.add('is-visible');
+      document.body.style.paddingBottom = bar.offsetHeight + 'px';
+    } else {
+      bar.classList.remove('is-visible');
+      bar.inert = true;
+      document.body.style.paddingBottom = '';
+    }
+  }
+  if (hero) {
+    new IntersectionObserver(function (es) { heroInView = es[0].isIntersecting; apply(); }, { threshold: 0 }).observe(hero);
+  } else { heroInView = false; }
+  if (demo) {
+    new IntersectionObserver(function (es) { demoInView = es[0].isIntersecting; apply(); }, { threshold: 0 }).observe(demo);
+  }
+  apply();
+});

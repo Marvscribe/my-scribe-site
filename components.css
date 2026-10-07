@@ -3478,3 +3478,85 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0 0 0 6px var(--divider-bg);
   transform: translate(-50%, -50%);
 }
+
+/* ==========================================================================
+   Paket 2: Demo anfragen (Formular, Kontaktkarte, feste Mobil-Leiste)
+   ========================================================================== */
+
+/* Intro oben, darunter Karte und Formular nebeneinander. */
+.demo-head { margin-bottom: var(--space-m); }
+.demo-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-l); align-items: start; }
+@media (min-width: 860px) {
+  .demo-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr); }
+  .demo-grid .demo-form { order: 1; }    /* Formular links */
+  .demo-grid .contact-card { order: 2; } /* Karte rechts */
+}
+
+/* Kontaktkarte: auf Mobil ueber dem Formular, auf Desktop rechts daneben. */
+.contact-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: var(--space-m);
+}
+.contact-card__photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin-bottom: var(--space-xs); }
+.contact-card__eyebrow { color: var(--brand-text); margin-bottom: var(--space-2xs); }
+.contact-card__name { font-weight: 700; font-size: var(--step-body-l); }
+.contact-card__role { color: var(--slate); margin-bottom: var(--space-xs); }
+.contact-card__ways { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: var(--space-xs); }
+.contact-card__ways a { color: var(--brand-text); text-decoration: underline; }
+.contact-card__note { color: var(--slate); font-size: var(--step-micro); }
+
+/* Formular: groessere Touch-Ziele (min 48px), sichtbarer Fokus, Fehler je Feld. */
+.demo-form .field input, .demo-form .field textarea, .demo-form .field select { min-height: 48px; }
+.demo-form .field textarea { min-height: 108px; padding-top: 0.7rem; }
+.demo-form .field input:focus-visible,
+.demo-form .field textarea:focus-visible,
+.demo-form .field select:focus-visible {
+  outline: 2.5px solid var(--brand-text);
+  outline-offset: 2px;
+  border-color: var(--brand-text);
+}
+.demo-form .field__error { display: block; color: #B42318; font-size: 13px; margin-top: 0.3rem; }
+.demo-form .field__error:empty { margin-top: 0; }
+.demo-form .field [aria-invalid="true"] { border-color: #B42318; }
+.demo-form .field--checkbox { flex-wrap: wrap; }
+.demo-form .field--checkbox .field__error { flex-basis: 100%; }
+.demo-form .field--checkbox a { color: var(--brand-text); text-decoration: underline; }
+
+/* Status (Erfolg oder Fehler) und Datenschutzhinweis spannen die volle Breite. */
+.demo-form__status, .demo-form__hint { grid-column: 1 / -1; margin: 0; }
+.demo-form__status { font-weight: 600; }
+.demo-form__status.is-ok { color: var(--brand-text); }
+.demo-form__status.is-error { color: #B42318; }
+.demo-form__status a { color: inherit; text-decoration: underline; }
+.demo-form__hint { font-size: 13px; color: var(--slate); }
+.demo-form__hint a { color: var(--brand-text); text-decoration: underline; }
+
+/* Honeypot: fuer Menschen unsichtbar, aus dem Layout genommen. */
+.demo-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Feste Leiste am unteren Rand, nur auf dem Handy (unter 768px). */
+.demo-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 120;
+  display: none;
+  padding: 0.75rem var(--space-s);
+  padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  background: rgba(250, 248, 243, 0.94);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  transform: translateY(110%);
+  transition: transform var(--dur-m) var(--ease);
+}
+.demo-bar .btn { width: 100%; justify-content: center; }
+.demo-bar.is-visible { transform: translateY(0); }
+@media (max-width: 767px) {
+  .demo-bar { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-bar { transition: none; }
+}
