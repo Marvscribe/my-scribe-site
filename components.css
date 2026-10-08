@@ -3552,3 +3552,17 @@ input[type="range"]::-moz-range-thumb {
 /* Kurzer Lime-Strich als Marker, kein Lime als Schrift auf hellem Grund. */
 .statement__marker { display: block; width: 48px; height: 4px; border-radius: 2px; background: var(--lime); margin: 0 auto var(--space-m); }
 .statement__text { font-size: var(--step-display); line-height: 1.2; color: var(--ink); }
+
+/* Verstecktes Webflow-Formular, bewusst nicht display none, damit der Bot-Schutz von Webflow arbeiten kann. */
+.mys-proxy-form {
+  display: block !important;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  overflow: hidden;
+  opacity: 0.01;
+  pointer-events: none;
+  z-index: -1;
+}
