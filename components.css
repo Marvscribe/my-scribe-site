@@ -724,7 +724,9 @@ input[type="range"]::-moz-range-thumb {
 /* Kundenlogos im Startseiten-Banner insgesamt etwas größer (alle gleich groß,
    da jedes Logo auf einer einheitlichen Bühne zentriert ist). Gilt nur im
    Banner (.partners), nicht für die Partner-Logos auf der Presse-Seite. */
-.partners { border-top: 1px solid var(--line); }
+/* Haarlinie entfaellt: Logos und Statement teilen sich jetzt dieselbe Flaeche
+   (beide .bg-paper), die Trennung dazwischen uebernimmt der Marker-Trenner. */
+.partners { padding-bottom: clamp(32px, 4vw, 48px); }
 .partners .partners__item { height: 44px; }
 .partners .partners__logo { max-width: 240px; }
 /* Ueberschrift dieses Bereichs etwas groesser als die anderen .eyebrow--l,
@@ -3551,7 +3553,7 @@ input[type="range"]::-moz-range-thumb {
    ========================================================================== */
 /* Eigener Innenabstand nur fuer diesen Abschnitt, kleiner als die uebliche
    .section--moment Groesse, weil der Satz selbst kleiner geworden ist. */
-.statement-section { padding-block: clamp(48px, 6vw, 80px); }
+.statement-section { padding-top: clamp(40px, 5vw, 64px); padding-bottom: clamp(48px, 6vw, 80px); }
 .statement { max-width: 36ch; margin-inline: auto; text-align: center; }
 /* Kurzer Lime-Strich als Marker, kein Lime als Schrift auf hellem Grund. */
 .statement__marker { display: block; width: 48px; height: 4px; border-radius: 2px; background: var(--lime); margin: 0 auto var(--space-m); }
