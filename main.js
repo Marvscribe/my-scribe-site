@@ -1017,6 +1017,25 @@ mysReady(function () {
     submitBtn.textContent = on ? 'Wird gesendet' : submitLabel;
   }
 
+  /* Blendet die Formularfelder aus und zeigt an derselben Stelle die
+     Dankeskarte. Kein Zuruecksetzen, kein Button fuer eine neue Anfrage:
+     erst ein Neuladen der Seite bringt das Formular wieder. */
+  function showThanks() {
+    var thanks = document.getElementById('demo-thanks');
+    if (!thanks) return;
+    form.classList.add('demo-form--done');
+    var rect = thanks.getBoundingClientRect();
+    var fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+    if (!fullyVisible) {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      thanks.scrollIntoView(reduce ? { block: 'center' } : { block: 'center', behavior: 'smooth' });
+    }
+    var titleEl = document.getElementById('demo-thanks-title');
+    if (titleEl) {
+      try { titleEl.focus({ preventScroll: true }); } catch (e) { titleEl.focus(); }
+    }
+  }
+
   function sendToWebflow() {
     var wf = document.getElementById('wf-demo-form');
     if (!wf) {
@@ -1040,8 +1059,7 @@ mysReady(function () {
       if (finished) return; finished = true;
       obs.disconnect(); clearTimeout(timer);
       if (ok) {
-        setStatus('Danke, wir melden uns innerhalb von 1 bis 2 Werktagen.', 'ok');
-        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = submitLabel; }
+        showThanks();
       } else {
         setStatus('Das hat nicht geklappt. Schreiben Sie uns bitte direkt an <a href="mailto:' + MAIL + '">' + MAIL + '</a>.', 'error', true);
         setSending(false);

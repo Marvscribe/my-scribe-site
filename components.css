@@ -3520,6 +3520,48 @@ input[type="range"]::-moz-range-thumb {
 .demo-form__hint { font-size: 13px; color: var(--slate); }
 .demo-form__hint a { color: var(--brand-text); text-decoration: underline; }
 
+/* Dankeskarte nach erfolgreichem Absenden. Ersetzt die Formularfelder an
+   derselben Stelle, Gestaltung wie die Kontaktkarte daneben (weisser Grund,
+   gleicher Rand, gleicher Radius, kein weicher Schatten). Die min-height
+   haelt die Spalte ungefaehr auf der Hoehe der vorherigen Formularfelder.
+   Umgeschaltet wird ueber eine Klasse am Formular selbst (.demo-form--done),
+   nicht ueber das hidden Attribut: .field--checkbox setzt display:flex mit
+   gleicher Spezifitaet wie [hidden], das Attribut wuerde also nicht greifen. */
+.demo-form--done .field,
+.demo-form--done .demo-form__hp,
+.demo-form--done .demo-form__hint { display: none; }
+.demo-thanks { display: none; }
+.demo-form--done .demo-thanks {
+  grid-column: 1 / -1;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: var(--space-m);
+}
+.demo-thanks__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1.5px solid var(--petrol);
+  background: var(--white);
+  color: var(--petrol);
+  margin-bottom: var(--space-s);
+}
+/* Kleiner Marker, keine Lime-Flaeche und keine Lime-Schrift. */
+.demo-thanks__dot { position: absolute; top: 2px; right: 2px; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+.demo-thanks__title { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); margin-bottom: var(--space-2xs); }
+.demo-thanks__text { font-size: 1.0625rem; color: var(--slate); }
+
 /* Honeypot: fuer Menschen unsichtbar, aus dem Layout genommen. */
 .demo-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
