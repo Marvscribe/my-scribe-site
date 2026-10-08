@@ -541,8 +541,6 @@ mysReady(() => {
   if (gallery) {
     const slides = [...gallery.querySelectorAll('[data-gallery-slide]')];
     const dots = [...gallery.querySelectorAll('[data-gallery-dot]')];
-    const prev = gallery.querySelector('[data-gallery-prev]');
-    const next = gallery.querySelector('[data-gallery-next]');
     let index = 0;
 
     function render() {
@@ -555,8 +553,6 @@ mysReady(() => {
         d.setAttribute('aria-selected', String(i === index));
         d.tabIndex = i === index ? 0 : -1;
       });
-      if (prev) prev.disabled = index === 0;
-      if (next) next.disabled = index === slides.length - 1;
     }
 
     function go(i) {
@@ -564,8 +560,6 @@ mysReady(() => {
       render();
     }
 
-    if (prev) prev.addEventListener('click', () => go(index - 1));
-    if (next) next.addEventListener('click', () => go(index + 1));
     dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
 
     /* Die Reiterleiste verhält sich wie eine echte Tableiste. */

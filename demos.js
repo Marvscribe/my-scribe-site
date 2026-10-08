@@ -363,12 +363,15 @@
 
     tabs.forEach((tab) => {
       tab.addEventListener('click', () => select(tab.dataset.demoTab));
-      /* Pfeiltasten wie bei einer echten Tableiste */
+      /* Pfeiltasten wie bei einer echten Tableiste, Pos1 und Ende springen an
+         die Enden, genauso wie in main.js im Block "Drei Schritte als Reiter". */
       tab.addEventListener('keydown', (e) => {
         const i = tabs.indexOf(tab);
         let next = null;
         if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
-        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') next = tabs[0];
+        else if (e.key === 'End') next = tabs[tabs.length - 1];
         if (next) { e.preventDefault(); select(next.dataset.demoTab); next.focus(); }
       });
     });

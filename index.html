@@ -199,16 +199,16 @@
         <!-- Benannte Reiter statt Pfeilen: die drei Ansichten sagen selbst,
              worum es geht — vorher stand da nur "01 / 03". -->
         <div class="gallery__tabs" role="tablist" aria-label="Ansicht wählen" data-gallery-tabs>
-          <button class="gallery__tab" type="button" role="tab" aria-selected="true"
+          <button class="gallery__tab" type="button" role="tab" id="gallery-tab-1" aria-selected="true" aria-controls="gallery-panel-1"
                   aria-label="Ansicht 1: KI-generierte Arztbriefe"
                   data-gallery-dot="1">Arztbrief</button>
-          <button class="gallery__tab" type="button" role="tab" aria-selected="false" tabindex="-1"
+          <button class="gallery__tab" type="button" role="tab" id="gallery-tab-2" aria-selected="false" aria-controls="gallery-panel-2" tabindex="-1"
                   aria-label="Ansicht 2: Strukturierte Daten in HL7-FHIR"
                   data-gallery-dot="2">HL7-FHIR</button>
         </div>
 
         <div class="gallery__stage" tabindex="0" role="group" aria-roledescription="Galerie" aria-label="Ansichten der myScribe App">
-          <div class="gallery__slide is-active" data-gallery-slide="1">
+          <div class="gallery__slide is-active" id="gallery-panel-1" role="tabpanel" aria-labelledby="gallery-tab-1" data-gallery-slide="1">
             <span class="gallery__media"><img class="gallery__img" src="https://marvscribe.github.io/my-scribe-site/ki-arztbrief.webp" alt="Tablet mit einer KI-generierten Epikrise für einen Arztbrief" decoding="async"></span>
             <span class="gallery__scrim" aria-hidden="true"></span>
             <div class="gallery__caption">
@@ -218,7 +218,7 @@
             </div>
             <span class="gallery__status"><span class="live-dot" aria-hidden="true"></span>Live aus dem FHIR-Server</span>
           </div>
-          <div class="gallery__slide" data-gallery-slide="2" aria-hidden="true">
+          <div class="gallery__slide" id="gallery-panel-2" role="tabpanel" aria-labelledby="gallery-tab-2" data-gallery-slide="2" aria-hidden="true">
             <span class="gallery__media"><img class="gallery__img" src="https://marvscribe.github.io/my-scribe-site/visitenansicht.webp" alt="Tablet mit der Visitenansicht der myScribe App" loading="lazy" decoding="async"></span>
             <span class="gallery__scrim" aria-hidden="true"></span>
             <div class="gallery__caption">
