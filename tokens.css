@@ -166,7 +166,6 @@
   }
   /* Chips auf --lime-soft: dort ist die Fläche jetzt dunkel, also Lime-Schrift. */
   :root:not([data-theme="light"]) .field-tag,
-  :root:not([data-theme="light"]) .calc-result__note,
   :root:not([data-theme="light"]) .rewrite-panel__badge,
   :root:not([data-theme="light"]) .stepswitch__status {
     color: var(--lime);

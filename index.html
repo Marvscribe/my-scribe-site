@@ -438,23 +438,40 @@
         </div>
         <div class="calculator" data-calculator data-reveal>
           <div class="calc-row">
-            <div class="calc-row__top"><span>Ihre Bettenzahl</span><span class="calc-row__value"><span data-calc-beds-out>500</span></span></div>
-            <input type="range" min="50" max="1500" step="10" value="500" data-calc-beds aria-label="Bettenzahl">
+            <div class="calc-row__top"><span>Arztbriefe pro Jahr</span><span class="calc-row__value"><span data-calc-letters-out>20.000</span></span></div>
+            <div class="calc-row__track">
+              <input type="range" min="1000" max="60000" step="500" value="20000" data-calc-letters data-snap-target="20000" data-snap-range="750" aria-label="Arztbriefe pro Jahr">
+              <span class="calc-row__dot" aria-hidden="true" style="left: calc(10px + (100% - 20px) * 0.322034);"></span>
+            </div>
+            <p class="calc-row__hint">Durchschnitt: 20.000, typisches Haus mit rund 500 Betten</p>
           </div>
           <div class="calc-row">
-            <div class="calc-row__top"><span>Ihre Fälle / Jahr</span><span class="calc-row__value"><span data-calc-cases-out>20000</span></span></div>
-            <input type="range" min="1000" max="1000000" step="100" value="20000" data-calc-cases aria-label="Fälle pro Jahr">
+            <div class="calc-row__top"><span>Minuten pro Arztbrief heute</span><span class="calc-row__value"><span data-calc-minutes-out>45 Min.</span></span></div>
+            <div class="calc-row__track">
+              <input type="range" min="20" max="75" step="1" value="45" data-calc-minutes data-snap-target="45" data-snap-range="1" aria-label="Minuten pro Arztbrief heute">
+              <span class="calc-row__dot" aria-hidden="true" style="left: calc(10px + (100% - 20px) * 0.454545);"></span>
+            </div>
+            <p class="calc-row__hint">Durchschnitt: 45 Min.</p>
           </div>
           <div class="calc-row">
-            <div class="calc-row__top"><span>Ihre Anzahl an Ärzt*innen</span><span class="calc-row__value"><span data-calc-doctors-out>100</span></span></div>
-            <input type="range" min="10" max="1000" step="1" value="100" data-calc-doctors aria-label="Anzahl Ärzt*innen">
+            <div class="calc-row__top"><span>Arztstundensatz</span><span class="calc-row__value"><span data-calc-rate-out>60 €</span></span></div>
+            <div class="calc-row__track">
+              <input type="range" min="40" max="100" step="5" value="60" data-calc-rate data-snap-target="60" data-snap-range="2" aria-label="Arztstundensatz">
+              <span class="calc-row__dot" aria-hidden="true" style="left: calc(10px + (100% - 20px) * 0.333333);"></span>
+            </div>
+            <p class="calc-row__hint">Durchschnitt: 60 €</p>
           </div>
           <div class="calc-result">
-            <div class="calc-result__top">
-              <span class="calc-result__label">Theoretisches Einsparungspotenzial pro Jahr<sup>*</sup></span>
-              <span class="calc-result__value" data-calc-result>0 €</span>
+            <div class="calc-result__metric">
+              <span class="calc-result__value" data-calc-hours>0 Stunden</span>
+              <span class="calc-result__label">gewonnene Arztzeit pro Jahr</span>
             </div>
-            <p class="calc-result__fussnote">* Annahme: durchschnittlicher Arztstundensatz von 60 €. Die Werte beruhen auf eigenen Messungen aus laufenden Projekten, die Lizenzkosten für myScribe sind darin noch nicht abgezogen. Das Ergebnis ist ein Rechenbeispiel und keine Zusicherung.</p>
+            <div class="calc-result__divider" aria-hidden="true"></div>
+            <div class="calc-result__metric">
+              <span class="calc-result__value calc-result__value--small" data-calc-euro>0 €</span>
+              <span class="calc-result__label">rechnerischer Gegenwert</span>
+            </div>
+            <p class="calc-result__fussnote">Erfahrungswerte aus laufenden Projekten: ohne myScribe rund 45 Minuten pro Arztbrief inklusive Dokumentation, mit myScribe rund 8 Minuten. Der Rechner setzt die gewonnene Zeit mit dem eingestellten Stundensatz an. Die Lizenzkosten für myScribe sind darin nicht abgezogen. Das Ergebnis ist ein Rechenbeispiel und keine Zusicherung.</p>
           </div>
         </div>
       </div>

@@ -367,9 +367,29 @@
   font-weight: 600;
 }
 .calc-row__value { font-family: var(--font-mono); color: var(--brand-text); }
+/* Haelt den Lime Punkt der Grundstellung hinter dem Reglerknopf. */
+.calc-row__track { position: relative; }
+.calc-row__track input[type="range"] { position: relative; z-index: 1; }
+.calc-row__dot {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.calc-row__hint {
+  margin-top: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--slate-soft);
+}
 input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
+  margin: 0;
   height: 4px;
   border-radius: var(--radius-pill);
   background: var(--line);
@@ -407,7 +427,15 @@ input[type="range"]::-moz-range-thumb {
   font-size: var(--step-xl);
   color: var(--brand-text);
 }
-/* Beschriftung über der Summe — nennt ausdrücklich ein theoretisches
+/* Deutlich kleiner, etwa auf halber Groesse, fuer die zweite, untergeordnete
+   Kennzahl (Gegenwert in Euro). */
+.calc-result__value--small { font-size: calc(var(--step-xl) / 2); }
+
+/* Zahl oben, Beschriftung darunter: eine Kennzahl je Block. */
+.calc-result__metric { display: flex; flex-direction: column; gap: 0.3rem; }
+.calc-result__divider { height: 1px; background: var(--line); margin-block: var(--space-s); }
+
+/* Beschriftung unter der Zahl, nennt ausdruecklich ein theoretisches
    Potenzial, nicht eine zugesagte Einsparung. */
 .calc-result__label {
   font-size: var(--step-micro);
@@ -423,20 +451,6 @@ input[type="range"]::-moz-range-thumb {
   line-height: 1.5;
   color: var(--slate-soft);
   max-width: 52ch;
-}
-
-.calc-result__note {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-top: 0.65rem;
-  background: var(--lime-soft);
-  color: var(--petrol-deep);
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.01em;
-  padding: 0.38rem 0.85rem;
-  border-radius: var(--radius-pill);
 }
 
 /* ---- Form ---- */

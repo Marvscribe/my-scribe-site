@@ -146,66 +146,101 @@ mysReady(() => {
     counters.forEach((el) => counterIo.observe(el));
   }
 
-  /* Einsparungsrechner */
+  /* Einsparungsrechner, aufgebaut auf einer einzigen belegbaren Groesse:
+     der Zeit pro Arztbrief. */
   const calc = document.querySelector('[data-calculator]');
   if (calc) {
-    const beds = calc.querySelector('[data-calc-beds]');
-    const cases = calc.querySelector('[data-calc-cases]');
-    const doctors = calc.querySelector('[data-calc-doctors]');
-    const bedsOut = calc.querySelector('[data-calc-beds-out]');
-    const casesOut = calc.querySelector('[data-calc-cases-out]');
-    const doctorsOut = calc.querySelector('[data-calc-doctors-out]');
-    const result = calc.querySelector('[data-calc-result]');
+    const letters = calc.querySelector('[data-calc-letters]');
+    const minutes = calc.querySelector('[data-calc-minutes]');
+    const rate = calc.querySelector('[data-calc-rate]');
+    const lettersOut = calc.querySelector('[data-calc-letters-out]');
+    const minutesOut = calc.querySelector('[data-calc-minutes-out]');
+    const rateOut = calc.querySelector('[data-calc-rate-out]');
+    const hoursResult = calc.querySelector('[data-calc-hours]');
+    const euroResult = calc.querySelector('[data-calc-euro]');
 
-    function formatEuro(value) {
-      return new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(value) + ' €';
+    function formatNumber(value) {
+      return new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(value);
     }
 
-    function update() {
-      const bedsVal = Number(beds.value);
-      const casesVal = Number(cases.value);
-      const doctorsVal = Number(doctors.value);
-      bedsOut.textContent = bedsVal;
-      casesOut.textContent = casesVal;
-      doctorsOut.textContent = doctorsVal;
-      /* Angenommener Stundensatz 60€:
-         - 2h Zeitersparnis pro Arzt/Tag, 220 Arbeitstage/Jahr
-         - 20min Zeitersparnis pro Arztbrief (Fallzahl)
-         - 500€ Entlastung pro Bett/Jahr (Koordination, Doppeldokumentation) */
-      const doctorSavings = doctorsVal * 2 * 220 * 60;
-      const caseSavings = casesVal * (20 / 60) * 60;
-      const bedSavings = bedsVal * 500;
-      const savings = Math.max(0, doctorSavings + caseSavings + bedSavings);
-      setResult(savings);
-    }
+    /* Minuten pro Arztbrief mit myScribe, Erfahrungswert. */
+    const MINUTEN_MIT_MYSCRIBE = 8;
 
-    /* Die Summe rollt auf den neuen Wert zu, statt zu springen — das macht
-       spürbar, dass der Regler wirklich etwas verändert. */
-    let shown = 0;
-    let raf = null;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function setResult(target) {
-      if (reduceMotion) {
-        shown = target;
-        result.textContent = formatEuro(target);
-        return;
-      }
-      if (raf) cancelAnimationFrame(raf);
-      const from = shown;
-      const start = performance.now();
-      const duration = 450;
-      function tick(now) {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        shown = from + (target - from) * eased;
-        result.textContent = formatEuro(shown);
-        if (p < 1) raf = requestAnimationFrame(tick);
-      }
-      raf = requestAnimationFrame(tick);
+    /* Die Zahl rollt auf den neuen Wert zu, statt zu springen, das macht
+       spuerbar, dass der Regler wirklich etwas veraendert. Jede der beiden
+       Kennzahlen bekommt ihre eigene, unabhaengige Animation. */
+    function makeAnimatedSetter(el, suffix) {
+      let shown = 0;
+      let raf = null;
+      return function setValue(target) {
+        if (reduceMotion) {
+          shown = target;
+          el.textContent = formatNumber(target) + suffix;
+          return;
+        }
+        if (raf) cancelAnimationFrame(raf);
+        const from = shown;
+        const start = performance.now();
+        const duration = 450;
+        function tick(now) {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          shown = from + (target - from) * eased;
+          el.textContent = formatNumber(shown) + suffix;
+          if (p < 1) raf = requestAnimationFrame(tick);
+        }
+        raf = requestAnimationFrame(tick);
+      };
+    }
+    const setHours = makeAnimatedSetter(hoursResult, ' Stunden');
+    const setEuro = makeAnimatedSetter(euroResult, ' €');
+
+    /* Jeder Regler rastet nahe seiner Grundstellung ein, aber nur beim
+       Ziehen mit Maus oder Finger. Ein Pointerdown schaltet das Einrasten
+       ein, ein Keydown (Pfeiltasten) schaltet es sofort wieder ab, damit
+       man per Tastatur immer um genau einen Schritt von der Grundstellung
+       wegkommt. Grundstellung und Fangbereich stehen als data Attribute
+       am jeweiligen Regler. */
+    function setupSnap(input) {
+      let dragging = false;
+      const target = Number(input.dataset.snapTarget);
+      const catchRange = Number(input.dataset.snapRange);
+      input.addEventListener('pointerdown', function () { dragging = true; });
+      input.addEventListener('keydown', function () { dragging = false; });
+      return function snap() {
+        if (!dragging) return;
+        const v = Number(input.value);
+        if (Math.abs(v - target) <= catchRange) input.value = String(target);
+      };
+    }
+    const snapLetters = setupSnap(letters);
+    const snapMinutes = setupSnap(minutes);
+    const snapRate = setupSnap(rate);
+
+    function update() {
+      snapLetters();
+      snapMinutes();
+      snapRate();
+
+      const lettersVal = Number(letters.value);
+      const minutesVal = Number(minutes.value);
+      const rateVal = Number(rate.value);
+
+      lettersOut.textContent = formatNumber(lettersVal);
+      minutesOut.textContent = minutesVal + ' Min.';
+      rateOut.textContent = rateVal + ' €';
+
+      const gesparteMinutenProBrief = Math.max(0, minutesVal - MINUTEN_MIT_MYSCRIBE);
+      const gesparteStunden = (lettersVal * gesparteMinutenProBrief) / 60;
+      const gegenwertEuro = gesparteStunden * rateVal;
+
+      setHours(gesparteStunden);
+      setEuro(gegenwertEuro);
     }
 
-    [beds, cases, doctors].forEach((input) => input && input.addEventListener('input', update));
+    [letters, minutes, rate].forEach((input) => input && input.addEventListener('input', update));
     update();
   }
 
