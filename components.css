@@ -3542,25 +3542,36 @@ input[type="range"]::-moz-range-thumb {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius-m);
-  padding: var(--space-m);
+  padding: clamp(28px, 4vw, 48px);
+}
+@media (max-width: 699px) {
+  /* Kein Formular hoch, das sie fuellen muesste: auf dem Handy nur so hoch
+     wie der Inhalt, keine leere Flaeche darunter. */
+  .demo-form--done .demo-thanks { min-height: 0; }
 }
 .demo-thanks__icon {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   border: 1.5px solid var(--petrol);
   background: var(--white);
   color: var(--petrol);
-  margin-bottom: var(--space-s);
+  margin-bottom: 20px;
 }
+/* Das Haekchen skaliert mit dem Kreis mit, gleiches Seitenverhaeltnis wie
+   zuvor (28px auf 64px), der Strich bleibt dadurch im gleichen Verhaeltnis. */
+.demo-thanks__icon svg { width: 31.5px; height: 31.5px; }
 /* Kleiner Marker, keine Lime-Flaeche und keine Lime-Schrift. */
 .demo-thanks__dot { position: absolute; top: 2px; right: 2px; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
-.demo-thanks__title { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); margin-bottom: var(--space-2xs); }
-.demo-thanks__text { font-size: 1.0625rem; color: var(--slate); }
+/* Kein sichtbarer Fokusrahmen: die Ueberschrift ist nicht klickbar und per
+   Tab nicht erreichbar, sie bekommt den Fokus nur per Skript, damit
+   Screenreader sie vorlesen. */
+.demo-thanks__title { font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.25rem); line-height: 1.2; margin-bottom: 12px; outline: none; }
+.demo-thanks__text { font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem); line-height: 1.5; color: var(--slate); }
 
 /* Honeypot: fuer Menschen unsichtbar, aus dem Layout genommen. */
 .demo-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
