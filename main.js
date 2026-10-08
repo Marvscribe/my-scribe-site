@@ -171,13 +171,11 @@ mysReady(() => {
       /* Angenommener Stundensatz 60€:
          - 2h Zeitersparnis pro Arzt/Tag, 220 Arbeitstage/Jahr
          - 20min Zeitersparnis pro Arztbrief (Fallzahl)
-         - 500€ Entlastung pro Bett/Jahr (Koordination, Doppeldokumentation)
-         abzüglich einer angenommenen Lizenzgebühr von 1.200€ pro Arzt/Jahr */
+         - 500€ Entlastung pro Bett/Jahr (Koordination, Doppeldokumentation) */
       const doctorSavings = doctorsVal * 2 * 220 * 60;
       const caseSavings = casesVal * (20 / 60) * 60;
       const bedSavings = bedsVal * 500;
-      const licenseCost = doctorsVal * 1200;
-      const savings = Math.max(0, doctorSavings + caseSavings + bedSavings - licenseCost);
+      const savings = Math.max(0, doctorSavings + caseSavings + bedSavings);
       setResult(savings);
     }
 
