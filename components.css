@@ -3148,16 +3148,18 @@ input[type="range"]::-moz-range-thumb {
    Referenzen: Kundenlogos als ruhiges Raster, ohne Laufband und ohne Filter.
    ========================================================================== */
 .ref-logos {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  gap: 2.5rem;
   margin-top: var(--space-l);
 }
 .ref-logos__item {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 calc(50% - 1.25rem);
 }
 .ref-logos__item img {
   height: 56px;
@@ -3165,10 +3167,10 @@ input[type="range"]::-moz-range-thumb {
   object-fit: contain;
 }
 @media (min-width: 768px) {
-  .ref-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ref-logos__item { flex: 0 0 calc(33.333% - 1.667rem); }
 }
 @media (min-width: 1024px) {
-  .ref-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .ref-logos__item { flex: 0 0 calc(25% - 1.875rem); }
 }
 
 /* ==========================================================================
