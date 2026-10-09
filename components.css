@@ -367,14 +367,19 @@
   font-weight: 600;
 }
 .calc-row__value { font-family: var(--font-mono); color: var(--brand-text); }
-/* Haelt den Lime Punkt der Grundstellung hinter dem Reglerknopf. */
+/* Haelt den Lime Punkt der Grundstellung hinter dem Reglerknopf. Der Regler
+   steht hier auf display block, sonst reserviert der Browser unter einem
+   inline block Element Platz fuer Unterlaengen und die Schiene (4px, siehe
+   input[type="range"] height) waere nicht mehr die tatsaechliche Hoehe
+   dieses Wrappers. top:50% trifft dadurch genau die Mitte der echten
+   Schiene, kein geratener Wert. */
 .calc-row__track { position: relative; }
-.calc-row__track input[type="range"] { position: relative; z-index: 1; }
+.calc-row__track input[type="range"] { display: block; position: relative; z-index: 1; }
 .calc-row__dot {
   position: absolute;
   top: 50%;
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--lime);
   transform: translate(-50%, -50%);
