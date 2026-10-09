@@ -1768,6 +1768,20 @@ input[type="range"]::-moz-range-thumb {
   color: var(--slate);
   padding: 0 0.5rem;
 }
+
+/* ---- Platzhalter fuer ein noch fehlendes Bild auf dunklem Grund ---- */
+.img-placeholder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.img-placeholder span {
+  font-size: 0.8125rem;
+  color: var(--on-dark-muted);
+}
 .presse-team__contact {
   display: flex;
   flex-direction: column;
