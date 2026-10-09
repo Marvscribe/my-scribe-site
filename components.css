@@ -458,6 +458,28 @@ input[type="range"]::-moz-range-thumb {
   max-width: 52ch;
 }
 
+/* Rechner auf dem Handy: eine Spalte statt zwei, Wert unter dem Label statt
+   daneben, Ueberschrift darf umbrechen, kleineres Innenpolster. Der Zwei
+   Spalten Raster und die Ueberschrift tragen ein inline style in index.html,
+   deshalb hier :has() auf das Elternelement der Karte statt eine Klasse. */
+@media (max-width: 767px) {
+  div:has(> .calculator) {
+    grid-template-columns: 1fr !important;
+  }
+  div:has(> .calculator) h2 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .calculator {
+    padding: 1.25rem;
+  }
+  .calc-row__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
 /* ---- Form ---- */
 .form-grid {
   display: grid;
