@@ -1682,6 +1682,40 @@ input[type="range"]::-moz-range-thumb {
   .presse-split--reverse .presse-split__media { order: 2; }
 }
 
+/* ---- Faktenkasten auf der Presse-Seite, Liste aus Label und Wert ---- */
+.presse-facts__list {
+  margin: var(--space-m) 0 0;
+}
+.presse-facts__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
+  padding-block: var(--space-xs);
+  border-bottom: 1px solid var(--line);
+}
+.presse-facts__row:first-child { border-top: 1px solid var(--line); }
+.presse-facts__row dt {
+  font-size: var(--step-micro);
+  color: var(--slate);
+}
+.presse-facts__row dd {
+  margin: 0;
+  color: var(--ink);
+}
+.presse-facts__row dd a { color: var(--brand-text); text-decoration: underline; }
+.presse-facts__note {
+  margin-top: var(--space-s);
+  font-size: 0.8125rem;
+  color: var(--slate);
+}
+@media (min-width: 768px) {
+  .presse-facts__row {
+    grid-template-columns: minmax(0,1fr) minmax(0,2fr);
+    gap: var(--space-m);
+    align-items: baseline;
+  }
+}
+
 .presse-team {
   position: relative;
   overflow: hidden;
