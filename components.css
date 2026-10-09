@@ -3145,6 +3145,92 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* ==========================================================================
+   Referenzen: Kundenlogos als ruhiges Raster, ohne Laufband und ohne Filter.
+   ========================================================================== */
+.ref-logos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  align-items: center;
+  margin-top: var(--space-l);
+}
+.ref-logos__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ref-logos__item img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+@media (min-width: 768px) {
+  .ref-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .ref-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ==========================================================================
+   Referenzen: Zitatkarten. Gleiche Karte auf der Referenzen-Seite und im
+   Testimonial-Abschnitt der Startseite, deshalb eine eigene Klasse statt
+   die aeltere .quotecard (Logo-Umschalter) oder .testimonial weiter zu nutzen.
+   ========================================================================== */
+.quote-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  margin-top: var(--space-l);
+}
+.quote-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: var(--space-m);
+}
+.quote-card__quote {
+  margin: 0 0 var(--space-s);
+  border-left: 4px solid var(--lime);
+  padding-left: 1rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+  line-height: 1.45;
+  max-width: 46ch;
+  color: var(--ink);
+}
+.quote-card__author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.quote-card__photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.quote-card__name { font-weight: 700; }
+.quote-card__role { font-size: 0.9375rem; line-height: 1.4; color: var(--slate); }
+
+/* ==========================================================================
+   Referenzen: Zertifizierung. Zwei Spalten ab 768 Pixel, Geltungsbereich
+   immer ueber die volle Breite.
+   ========================================================================== */
+.cert-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-s) var(--space-l);
+  margin-top: var(--space-l);
+}
+.cert-item { display: flex; flex-direction: column; gap: 0.3rem; }
+.cert-item--full { grid-column: 1 / -1; }
+.cert-item__label { font-size: var(--step-micro); color: var(--on-dark-muted); }
+.cert-item__value { color: var(--on-dark); font-weight: 600; }
+@media (min-width: 768px) {
+  .cert-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ==========================================================================
    Stimmen / Testimonials  (in sich geschlossen — einzeln nach Webflow)
 
    Aus dem Review-Call: 3–5 Stimmen nebeneinander, horizontal scrollbar,
