@@ -1,4 +1,4 @@
-/* Provisorisches Ersatz-Skript — main.js vom Original ging verloren.
+/* Provisorisches Ersatz-Skript: main.js vom Original ging verloren.
    Deckt Grundfunktionen ab: Reveal-on-scroll, Nav-Toggle, Rechner,
    Zähler, FAQ-Accordion, YouTube-Facade. Die drei Live-Demo-Animationen
    (Live-Demo, KI-Assistent, Text verbessern) fehlen, da deren Inhalte
@@ -33,7 +33,7 @@ mysReady(() => {
 
   /* ---- Sanftes, abbrechbares Anker-Scrollen ----
      In-Page-Anker (#…) selbst behandeln: sanft zur Zielmarke gleiten, die
-     Animation aber sofort abbrechen, sobald der Nutzer selbst scrollt — so
+     Animation aber sofort abbrechen, sobald der Nutzer selbst scrollt, so
      gleitet der Sprung schön, bleibt danach frei scrollbar und zieht nicht an
      die Sprungstelle zurück. Nur seiten-interne Anker; seitenübergreifende
      Links wie "/#live-demo" bleiben normale Navigation. */
@@ -296,7 +296,7 @@ mysReady(() => {
   if (nav && darkSections.length) {
     let navTicking = false;
     function updateNavTheme() {
-      /* Knapp unter der Nav-Unterkante messen — sonst greift der Wechsel am
+      /* Knapp unter der Nav-Unterkante messen, sonst greift der Wechsel am
          Seitenanfang nicht, wo eine dunkle Sektion direkt anschließt. */
       const line = nav.getBoundingClientRect().bottom + 1;
       let onDark = false;
@@ -311,7 +311,7 @@ mysReady(() => {
       if (!navTicking) { navTicking = true; requestAnimationFrame(updateNavTheme); }
     }, { passive: true });
     window.addEventListener('resize', updateNavTheme);
-    /* Im Hintergrund-Tab pausiert requestAnimationFrame — beim Zurückkehren
+    /* Im Hintergrund-Tab pausiert requestAnimationFrame, beim Zurückkehren
        einmal nachziehen, damit Nav und Fortschritt nicht veraltet dastehen. */
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) {
@@ -382,7 +382,7 @@ mysReady(() => {
     const seiten = [...brief.querySelectorAll('[data-brief-seite]')];
     const seitenzahl = brief.querySelector('[data-brief-seitenzahl]');
     const stempel = brief.querySelector('[data-brief-stempel]');
-    /* Alle Bausteine in Dokumentreihenfolge — so läuft die Animation den
+    /* Alle Bausteine in Dokumentreihenfolge, so läuft die Animation den
        Brief von oben nach unten durch, über beide Seiten. */
     const teile = [...brief.querySelectorAll('[data-brief-zeile], [data-brief-ein]')];
     const zeilen = teile.filter((el) => el.dataset.briefZeile);
@@ -450,7 +450,7 @@ mysReady(() => {
         for (let i = 1; i <= text.length; i++) {
           if (abgebrochen()) { el.classList.remove('brief__zeile--tippt'); return; }
           el.textContent = text.slice(0, i);
-          /* Nach Satzzeichen eine Spur länger — das wirkt wie geschrieben
+          /* Nach Satzzeichen eine Spur länger, das wirkt wie geschrieben
              und nicht wie ein Fortschrittsbalken. */
           await schlaf(/[.,:;]/.test(text[i - 1]) ? 24 : 6);
         }
@@ -500,7 +500,7 @@ mysReady(() => {
     const gesucht = new URLSearchParams(location.search).get('beitrag');
     const eintrag = window.PRESSE.find((e) => e.slug === gesucht) || window.PRESSE[0];
 
-    document.title = eintrag.titel + ' — myScribe Presse';
+    document.title = eintrag.titel + ': myScribe Presse';
     const beschreibung = document.querySelector('meta[name="description"]');
     const ersterAbsatz = (eintrag.bloecke.find((b) => b.art === 'p') || {}).text || '';
     if (beschreibung && ersterAbsatz) beschreibung.setAttribute('content', ersterAbsatz.slice(0, 155));
@@ -634,7 +634,7 @@ mysReady(() => {
   });
 
   /* ---- Stimmen: seitliches Scrollen ----
-         Das Scrollen selbst macht CSS (scroll-snap). Hier nur die Pfeile —
+         Das Scrollen selbst macht CSS (scroll-snap). Hier nur die Pfeile,
          und sie verschwinden, wenn alle Karten ohnehin nebeneinander
          passen, damit keine funktionslosen Schalter dastehen. ---- */
   document.querySelectorAll('[data-voices]').forEach((voices) => {
@@ -653,7 +653,7 @@ mysReady(() => {
 
     function aktualisieren() {
       /* Toleranz deckt den Innenabstand des Tracks ab (4px für den
-         Fokusring) — sonst gilt der Anfang nie als "ganz links". */
+         Fokusring), sonst gilt der Anfang nie als "ganz links". */
       const rand = 8;
       const scrollbar = track.scrollWidth - track.clientWidth > rand;
       if (head) head.hidden = !scrollbar;
@@ -733,7 +733,7 @@ mysReady(() => {
 
 /* ====================================================================
    Animierte Hero-Headline (nur Startseite)
-   Drei Zeilen — "Der" / rotierendes Wort / "Arztbrief" — die am Ende zu
+   Drei Zeilen, "Der" / rotierendes Wort / "Arztbrief", die am Ende zu
    "Der Arztbrief" verschmelzen. Zielpositionen per FLIP aus einer
    unsichtbaren Referenzzeile. Es werden ausschliesslich transform/translate/
    scale/opacity/filter animiert (nie height/margin/top), daher kein Layout-

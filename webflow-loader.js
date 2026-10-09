@@ -1,9 +1,9 @@
-/* myScribe — Webflow-Lader
+/* myScribe: Webflow-Lader
    Holt den echten Seiteninhalt von der externen Adresse und blendet ihn in
    das Embed ein. Danach werden die Skripte in der richtigen Reihenfolge
    nachgeladen; sie initialisieren sich selbst (readyState-Prüfung).
-   Bei jeder Änderung an den Dateien auf dem Host ist die Seite sofort aktuell –
-   in Webflow muss nichts angefasst werden. */
+   Bei jeder Änderung an den Dateien auf dem Host ist die Seite sofort aktuell.
+   In Webflow muss nichts angefasst werden. */
 (function () {
   var BASE = "https://marvscribe.github.io/my-scribe-site";
   /* Seite immer im hellen Modus zeigen, egal welchen System-Modus der
@@ -33,7 +33,7 @@
         var sc = document.createElement('script');
         sc.src = q[i];
         sc.onload = function () { next(i + 1); };
-        sc.onerror = function () { next(i + 1); }; // presse-daten fehlt evtl. – egal
+        sc.onerror = function () { next(i + 1); }; // presse-daten fehlt evtl., egal
         document.body.appendChild(sc);
       })(0);
     })
@@ -66,7 +66,7 @@
       }, 150);
       return;
     }
-    /* Sofort zum Ziel – und kurz nachjustieren, solange Bilder/Video die
+    /* Sofort zum Ziel, und kurz nachjustieren, solange Bilder/Video die
        Seitenhöhe noch verändern. Sobald der Besucher selbst scrollt, sofort
        aufhören, damit ihn nichts an den Anker zurückzieht. */
     ziel.scrollIntoView();

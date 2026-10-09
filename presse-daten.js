@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------------------------
    Inhalte der Pressemitteilungen.
-   Eine Datei, ein Eintrag pro Meldung — die Detailseite rendert daraus.
+   Eine Datei, ein Eintrag pro Meldung. Die Detailseite rendert daraus.
    Neuen Eintrag anlegen: Block kopieren, slug (= Adresse), titel, datum,
    bild und die Absätze eintragen. Mehr ist nicht nötig; Übersicht und
    Detailseite ziehen sich alles Weitere selbst.
@@ -153,7 +153,7 @@ window.PRESSE = [
       },
       {
         "art": "p",
-        "text": "Stationsärzt:innen in Krankenhäusern verbringen knapp die Hälfte ihrer Arbeitszeit mit der Dokumentation – Tendenz steigend. 5-9 Überstunden pro Arzt und Ärztin pro Woche sind aufgrund von Dokumentationspflichten die Regel. Eine KI gestützte WebAPP ermöglicht jetzt, dass Ärzte und Ärztinnen wieder ihr volles Potenzial ausschöpfen und die Dokumentationspflichten auf ein Minimum reduzieren können.\nmyScribe ist die erste webbasierte Anwendung, die Visitenlisten & Arztbriefe im stationären Krankenhausbetrieb vollautomatisch & KI gestützt generiert."
+        "text": "Stationsärzt:innen in Krankenhäusern verbringen knapp die Hälfte ihrer Arbeitszeit mit der Dokumentation, Tendenz steigend. 5-9 Überstunden pro Arzt und Ärztin pro Woche sind aufgrund von Dokumentationspflichten die Regel. Eine KI gestützte WebAPP ermöglicht jetzt, dass Ärzte und Ärztinnen wieder ihr volles Potenzial ausschöpfen und die Dokumentationspflichten auf ein Minimum reduzieren können.\nmyScribe ist die erste webbasierte Anwendung, die Visitenlisten & Arztbriefe im stationären Krankenhausbetrieb vollautomatisch & KI gestützt generiert."
       },
       {
         "art": "h",
@@ -173,7 +173,7 @@ window.PRESSE = [
       },
       {
         "art": "p",
-        "text": "Für die Gründer ein bedeutungsvoller Meilenstein – durch das MEXI-Preisgeld und die mediale Aufmerksamkeit stehen die Zeichen für das junge Softwareunternehmen jetzt auf Wachstum."
+        "text": "Für die Gründer ein bedeutungsvoller Meilenstein. Durch das MEXI-Preisgeld und die mediale Aufmerksamkeit stehen die Zeichen für das junge Softwareunternehmen jetzt auf Wachstum."
       }
     ],
     "bild": "https://marvscribe.github.io/my-scribe-site/pm-mexi-gruenderpreis.jpg"
@@ -261,7 +261,7 @@ window.PRESSE = [
       },
       {
         "art": "p",
-        "text": "The idea for myScribe came from the daily work routine that co-founder and assistant doctor Ira Stoll experienced after her medical studies: A lot of bureaucracy and little patient contact. Following the example of the American Scribes, where interns or students accompany doctors and record all results by hand, the myScribe team developed a software that, in contrast to the alternative forms of documentation used so far, is not only digitalised but also largely automated. Based on a typical working day of the assistant doctor, a time saving of over 50% could be determined in the first version of myScribe. Due to the significant time savings, the business model can achieve both a considerable financial added value for the hospital – through additional treatments in the saved working time – and a better work-life balance for the staff."
+        "text": "The idea for myScribe came from the daily work routine that co-founder and assistant doctor Ira Stoll experienced after her medical studies: A lot of bureaucracy and little patient contact. Following the example of the American Scribes, where interns or students accompany doctors and record all results by hand, the myScribe team developed a software that, in contrast to the alternative forms of documentation used so far, is not only digitalised but also largely automated. Based on a typical working day of the assistant doctor, a time saving of over 50% could be determined in the first version of myScribe. Due to the significant time savings, the business model can achieve both a considerable financial added value for the hospital, through additional treatments in the saved working time, and a better work-life balance for the staff."
       },
       {
         "art": "h",

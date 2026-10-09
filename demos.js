@@ -6,7 +6,7 @@
    und Formulierungen sind Platzhalter und sollten fachlich geprüft werden,
    bevor die Seite online geht.
 
-   Es läuft immer nur das aktive Kapitel — und nur, solange die Sektion
+   Es läuft immer nur das aktive Kapitel, und nur, solange die Sektion
    sichtbar ist.
    ========================================================================== */
 
@@ -157,7 +157,7 @@
         question: 'Welche Auffälligkeiten zeigen die Laborwerte?',
         userMsg: '1',
         answerMsg: '2',
-        answer: 'Erhöhtes CRP und eine leichte Leukozytose – vereinbar mit einer begleitenden Entzündung. Das Kreatinin liegt leicht über der Norm.',
+        answer: 'Erhöhtes CRP und eine leichte Leukozytose, vereinbar mit einer begleitenden Entzündung. Das Kreatinin liegt leicht über der Norm.',
       },
       {
         question: 'Fasse die Anamnese in einem Satz zusammen.',
@@ -356,7 +356,7 @@
         p.classList.toggle('is-active', on);
         if (on) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
       });
-      /* Wer klickt, will es laufen sehen — Sichtbarkeit frisch bestimmen. */
+      /* Wer klickt, will es laufen sehen, Sichtbarkeit frisch bestimmen. */
       inView = computeInView();
       playActive();
     }
@@ -387,7 +387,7 @@
       }, { threshold: 0.25 }).observe(tabsRoot);
     }
 
-    /* Zweiter, unabhängiger Weg — greift auch dort, wo der Observer
+    /* Zweiter, unabhängiger Weg: greift auch dort, wo der Observer
        keine Aktualisierung liefert. */
     let scrollTimer = null;
     window.addEventListener('scroll', () => {
